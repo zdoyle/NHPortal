@@ -1,0 +1,137 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/MasterPages/ReportMaster.master" AutoEventWireup="true" CodeBehind="ChartMaster.master.cs" Inherits="NHPortal.MasterPages.ChartMaster" %>
+
+<%@ MasterType VirtualPath="~/MasterPages/ReportMaster.master" %>
+
+<%@ Register Assembly="NHPortal" Namespace="NHPortal.Classes.WebControls" TagPrefix="GD" %>
+<%@ Register Src="~/UserControls/DateTextBox.ascx" TagPrefix="GD" TagName="DatePicker" %>
+<asp:Content runat="server" ID="ReportMasterContent" ContentPlaceHolderID="ReportContent">
+
+    <link rel="stylesheet" type="text/css" href='<%=ResolveClientUrl("~/Style/Chart.css")%>' />
+
+    <div id="masterMainDiv" class="main-div">
+        <asp:Panel runat="server" ID="divMainCriteria" CssClass="chart-main-criteria padded centered">
+            <table id="masterCriteriaTbl">
+                <tr>
+                    <td class="chart-criteria-top">
+                        <label class="report-criteria__label">Start Date</label>
+                        <GD:DatePicker runat="server" ID="dpStart" />
+                    </td>
+                    <td class="chart-criteria-top">
+                        <label class="report-criteria__label">End Date</label>
+                        <GD:DatePicker runat="server" ID="dpEnd" />
+                    </td>
+                    <td class="chart-criteria-top chart-groupby">
+                        <label class="report-criteria__label">Group By</label>
+                        <asp:DropDownList runat="server" ID="cboGroupBy"></asp:DropDownList>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="height: 20px;">
+                        <label class="report-criteria__label">Chart Type</label>
+                        <asp:DropDownList runat="server" Width="90" ID="cboChartType"></asp:DropDownList>
+                    </td>
+                    <td>
+                        <label class="report-criteria__label">Chart Display</label>
+                        <asp:DropDownList runat="server" Width="60" ID="cboChartDimention"></asp:DropDownList>
+                    </td>
+                    <td>
+                        <label class="report-criteria__label">Drill&nbsp;Down&nbsp;Order</label>
+                        &nbsp;&nbsp;
+                        <asp:DropDownList runat="server" ID="cboDrillOrder" Width="140"></asp:DropDownList>
+                    </td>
+                </tr>
+            </table>
+        </asp:Panel>
+
+        <asp:Panel runat="server" ID="divDTC" CssClass="div-centered">
+            <input type="button" value="DTC Format" onclick="javascript: dtcFormat();" />
+            &nbsp;
+            <input type="button" value="DTC P Codes" onclick="javascript: dtcCodes();" />
+        </asp:Panel>
+
+        <asp:ContentPlaceHolder runat="server" ID="ExtraChartContent"></asp:ContentPlaceHolder>
+
+    </div>
+
+    <asp:Panel runat="server" ID="divReportContainer" CssClass="container-chart">
+    </asp:Panel>
+
+
+
+    <div id="div-format-overlay" class="hidden overlay" onclick="hideChartOverlay(this);">
+        <div id="div-dtc-format" class="div-centered dtc-format dtc-body">
+            <table id="tblDTCDef">
+                <tr>
+                    <td>
+                        <h3 class="dtc-definition">DTC Definition
+                        </h3>
+                        <p class="dtc-message">
+                            A DTC is made up of 5 digits. The figure below demonstrates the composition of a DTC.
+                        </p>
+                        <p>
+                            <img src="../Images/DTC_DIAGRAM.gif" alt="DTC Diagram" />
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" class="btn-close" value="Close Window" onclick="closeWindowClick();" />
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div id="div-code-overlay" class="hidden overlay" onclick="hideChartOverlay(this);">
+        <div id="divDTCParent" class="dtc-body-outer div-centered">
+            <div class="div-centered div-close">
+                <input type="button" class="btn-close" value="Close Window" onclick="closeWindowClick();" />
+            </div>
+            <div id="div-dtc-codes" class=" dtc-codes dtc-body">
+                <!-- #include file="../Classes/Reports/Charts/DTCCodes.html" -->
+            </div>
+        </div>
+    </div>
+
+    <asp:HiddenField runat="server" ID="hidReportType" />
+    <asp:HiddenField runat="server" ID="hidSeriesName" ClientIDMode="Static" />
+    <asp:HiddenField runat="server" ID="hidSeriesClicked" ClientIDMode="Static" />
+    <asp:HiddenField runat="server" ID="hidPointClicked" ClientIDMode="Static" />
+
+    <script src="../Scripts/jquery.tablesorter.min.js"></script>
+    <script src="../Scripts/Charts/highcharts.js"></script>
+    <script src="../Scripts/Charts/highcharts-3d.js"></script>
+    <script src="../Scripts/Charts/Modules/no-data-to-display.js"></script>
+    <script src="../Scripts/Charts/Modules/drilldown.js"></script>
+    <script src="../Scripts/Charts/Modules/data.js"></script>
+    <script src="../Scripts/Charts/gd-charts.js"></script>
+    <script src="../Scripts/Charts/gd-global-options.js"></script>
+
+</asp:Content>
+
+<asp:Content runat="server" ID="ChartContent" ContentPlaceHolderID="ChartContentPlaceholder">
+    <asp:Panel runat="server" ID="divToggleChart" CssClass="centered div-toggle-element">
+        <a class="optionBtn" onclick="toggleChartDiv();" id="aToggleCharts">Hide Charts</a>
+    </asp:Panel>
+
+    <div class="container-chart" id="divChartContainer">
+        <asp:Literal runat="server" ID="ltCharts"></asp:Literal>
+    </div>
+
+    <asp:UpdatePanel ID="udpCharts" runat="server" ChildrenAsTriggers="true">
+        <ContentTemplate>
+            <div id="divHidButton" style="display: none">
+                <asp:Button runat="server" ID="btnUpdate" OnClick="LoadDrillTable" ClientIDMode="Static" />
+            </div>
+        </ContentTemplate>
+    </asp:UpdatePanel>
+
+    <asp:UpdateProgress ID="updateProgress" runat="server">
+        <ProgressTemplate>
+            <div style="position: fixed; text-align: center; height: 100%; width: 100%; top: 0; right: 0; left: 0; z-index: 9999999; background-color: #000000; opacity: 0.2;">
+            </div>
+            <asp:Image ID="imgUpdateProgress" runat="server" ImageUrl="~/Images/ajax-loading.gif" AlternateText="Loading ..." ToolTip="Loading ..." Style="padding: 10px; position: fixed; top: 45%; left: 45%;" />
+        </ProgressTemplate>
+    </asp:UpdateProgress>
+
+</asp:Content>

@@ -1,0 +1,75 @@
+﻿.doc-section {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.doc-section__title {
+    text-align: center;
+    font-size: 1.25em;
+    font-weight: bold;
+    display: block;
+}
+
+.doc-section__table {
+    text-align: left;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+    .doc-section__table td, th {
+        border: 1px solid #000;
+        padding: 3px;
+    }
+
+    .doc-section__table th {
+        text-align: left;
+    }
+
+    .doc-section__table tr:nth-of-type(2n+1) {
+        background-color: #aaaaaa;
+        color: #000000;
+    }
+
+    .doc-section__table tr:nth-of-type(2n) {
+        background-color: #ffffff;
+        color: #000000;
+    }
+
+.doc-section__table-col1 {
+    width: 225px;
+}
+
+.doc-section__table-col2 {
+    width: 650px;
+}
+
+.doc-section__table-col3 {
+    width: 45px;
+}
+
+.upload-section {
+    padding: 10px;
+    margin: 10px auto 0px auto;
+    border: 1px solid #ccc;
+}
+
+.upload-section__span {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    width: 125px;
+    text-align: right;
+    float: left;
+}
+
+.max-length-text {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.doc-description-txtbox {
+    width: 600px;
+}
+
+.document-uploader {
+    /*background-color: #ffffff;*/
+}

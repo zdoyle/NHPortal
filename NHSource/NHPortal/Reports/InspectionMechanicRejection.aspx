@@ -1,0 +1,2 @@
+﻿<%@ Page Title="Gordon-Darby Mechanic Rejection" Language="C#" MasterPageFile="~/MasterPages/InspectionReportMaster.Master" AutoEventWireup="true" CodeBehind="InspectionMechanicRejection.aspx.cs" Inherits="NHPortal.InspectionMechanicRejection" %>
+<%@ MasterType VirtualPath="~/MasterPages/InspectionReportMaster.Master" %>

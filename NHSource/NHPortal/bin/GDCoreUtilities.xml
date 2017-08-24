@@ -1,0 +1,1149 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GDCoreUtilities</name>
+    </assembly>
+    <members>
+        <member name="T:GDCoreUtilities.Email.EmailAddress">
+            <summary>Class used to store an email address.</summary>
+        </member>
+        <member name="M:GDCoreUtilities.Email.EmailAddress.#ctor(System.String,GDCoreUtilities.Email.EmailSendTarget)">
+            <summary>Instantiates a new instance of the GDCoreUtilities.Email.EmailAddress class.</summary>
+            <param name="address">Email address.</param>
+            <param name="target">Target priority of the email address.</param>
+            <exception cref="T:System.Exception">Thrown when an invalid email address has been passed.</exception>
+        </member>
+        <member name="M:GDCoreUtilities.Email.EmailAddress.AsMailAddress">
+            <summary>Returns a MailAddress object converted from the EmailAddress.</summary>
+            <returns>MailAddress object.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.Email.EmailAddress.ToString">
+            <summary>Returns the value stored in the Address property of the email.</summary>
+            <returns>Address property value.</returns>
+        </member>
+        <member name="P:GDCoreUtilities.Email.EmailAddress.Address">
+            <summary>Gets the email address.</summary>
+        </member>
+        <member name="P:GDCoreUtilities.Email.EmailAddress.Target">
+            <summary>Gets the send target of the email address.</summary>
+        </member>
+        <member name="T:GDCoreUtilities.Email.EmailSendTarget">
+            <summary>
+            Defines the send target of an email.
+            </summary>
+        </member>
+        <member name="F:GDCoreUtilities.Email.EmailSendTarget.To">
+            <summary>
+            Email address should be included in the 'To' field.
+            </summary>
+        </member>
+        <member name="F:GDCoreUtilities.Email.EmailSendTarget.Cc">
+            <summary>
+            Email address should be included in the 'Cc' field.
+            </summary>
+        </member>
+        <member name="F:GDCoreUtilities.Email.EmailSendTarget.Bcc">
+            <summary>
+            Email address should be included in the 'Bcc' field.
+            </summary>
+        </member>
+        <member name="T:GDCoreUtilities.Email.EmailUtilities">
+            <summary>Used for sending emails.</summary>
+        </member>
+        <member name="M:GDCoreUtilities.Email.EmailUtilities.#cctor">
+            <summary>Static constructor for the EmailUtilities class.</summary>
+        </member>
+        <member name="M:GDCoreUtilities.Email.EmailUtilities.SendEmail(GDCoreUtilities.Email.EmailSettings,System.String,System.String,System.Boolean)">
+            <summary>Sends an email using the provided settings.</summary>
+            <param name="settings">Settings to use for sending the email.</param>
+            <param name="subject">Subject of the email.</param>
+            <param name="body">Body of the email.</param>
+            <param name="isHtml">Whether or not the email is html.</param>
+            <returns>True if the email successfully sent, false otherwise.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.Email.EmailUtilities.GetSmtpClient(GDCoreUtilities.Email.EmailSettings)">
+            <summary>Generates a SmtpClient object for the provided settings.</summary>
+            <param name="settings">Email settings to use.</param>
+            <returns>SmtpClient for the email settings.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.Email.EmailUtilities.GenerateMailMessage(System.String,System.String,System.String,System.Boolean)">
+            <summary>Instantiates a new MailMessage object.</summary>
+            <param name="sender">The sender of the email.</param>
+            <param name="subject">Subject of the email.</param>
+            <param name="body">Body of the email.</param>
+            <param name="isBodyHtml">Whether or not the body is in HTML.</param>
+            <returns>MailMessage object.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.Email.EmailUtilities.CopyAddresses(System.Net.Mail.MailMessage,GDCoreUtilities.Email.EmailSettings)">
+            <summary>Copies email addresses from the EmailSettings object to the MailMessage object.</summary>
+            <param name="mail">MailMessage object to copy addresses to.</param>
+            <param name="settings">EmailSettings object to copy addresses from.</param>
+        </member>
+        <member name="M:GDCoreUtilities.Email.EmailUtilities.IsValidEmail(System.String)">
+            <summary>Checks whether the provided email is valid.</summary>
+            <param name="email">Email to check.</param>
+            <returns>True if the email is valid, false otherwise.</returns>
+        </member>
+        <member name="P:GDCoreUtilities.Email.EmailUtilities.Logger">
+            <summary>Gets the EmailUtilities class logger.</summary>
+        </member>
+        <member name="T:GDCoreUtilities.Email.EmailSettings">
+            <summary>Stores settings used for sending emails.</summary>
+        </member>
+        <member name="M:GDCoreUtilities.Email.EmailSettings.#ctor">
+            <summary>Instantiates a new instance of the EmailSettings class.</summary>
+        </member>
+        <member name="M:GDCoreUtilities.Email.EmailSettings.AddEmail(GDCoreUtilities.Email.EmailAddress)">
+            <summary>Adds a target email address.</summary>
+            <param name="address">Email address to add.</param>
+        </member>
+        <member name="M:GDCoreUtilities.Email.EmailSettings.AddEmail(System.String,GDCoreUtilities.Email.EmailSendTarget)">
+            <summary>Adds a target email address.</summary>
+            <param name="address">Email address to add.</param>
+            <param name="target">Target level of the address.</param>
+        </member>
+        <member name="M:GDCoreUtilities.Email.EmailSettings.GetEmails(GDCoreUtilities.Email.EmailSendTarget)">
+            <summary>Gets a comma delimited list of all emails for the target level.</summary>
+            <param name="target">Target level to get the email addresses of.</param>
+            <returns>Comma delimited string of all emails.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.Email.EmailSettings.GetLogString">
+            <summary>Returns the log string for the EmailSettings object.</summary>
+            <returns>EmailSettings log string.</returns>
+        </member>
+        <member name="P:GDCoreUtilities.Email.EmailSettings.Addresses">
+            <summary>Gets an array of email addresses.</summary>
+        </member>
+        <member name="P:GDCoreUtilities.Email.EmailSettings.Host">
+            <summary>Gets or sets the host of the email.</summary>
+        </member>
+        <member name="P:GDCoreUtilities.Email.EmailSettings.Port">
+            <summary>Gets or sets the Port to use for the email.</summary>
+        </member>
+        <member name="P:GDCoreUtilities.Email.EmailSettings.Sender">
+            <summary>Gets or sets the sender of the email.</summary>
+        </member>
+        <member name="P:GDCoreUtilities.Email.EmailSettings.UseSSL">
+            <summary>Gets or sets whether or not to use SSL encryption.</summary>
+        </member>
+        <member name="P:GDCoreUtilities.Email.EmailSettings.Username">
+            <summary>Gets or sets the username. Used when sending SSL encrypted emails.</summary>
+        </member>
+        <member name="P:GDCoreUtilities.Email.EmailSettings.Password">
+            <summary>Gets or sets the password. Used when sending SSL encrypted emails.</summary>
+        </member>
+        <member name="T:GDCoreUtilities.IniSettings">
+            <summary>Used to read and store IniSettings from an ini file.</summary>
+        </member>
+        <member name="F:GDCoreUtilities.IniSettings.DIRECTORY_INDICATOR">
+            <summary>String for indicating if a key contains a value for a directory.</summary>
+        </member>
+        <member name="F:GDCoreUtilities.IniSettings.DELIMITER">
+            <summary>Key/value delimiter.</summary>
+        </member>
+        <member name="M:GDCoreUtilities.IniSettings.#ctor">
+            <summary>Static constructor for the IniSettings class.</summary>
+        </member>
+        <member name="M:GDCoreUtilities.IniSettings.Initialize(System.String)">
+            <summary>Reads an ini file to load settings.</summary>
+            <param name="file">Name of the file to load.</param>
+        </member>
+        <member name="M:GDCoreUtilities.IniSettings.GetValue(System.String)">
+            <summary>
+            Retrieves the value of a setting by its key.<para /> 
+            Returns the value of the first matching key.
+            </summary>
+            <param name="key">Key of the setting to find.</param>
+            <returns>The value for the specified key, or an empty string if no match found.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.IniSettings.GetValues(System.String)">
+            <summary>Retrieves the values of all settings matching the provided key.</summary>
+            <param name="key">Key of the settings to find.</param>
+            <returns>Array of all values for the key.</returns>
+        </member>
+        <member name="P:GDCoreUtilities.IniSettings.All">
+            <summary>Gets an array of all settings stored from an ini file.</summary>
+        </member>
+        <member name="T:GDCoreUtilities.IniSetting">
+            <summary>Used to store a setting from an ini file.</summary>
+        </member>
+        <member name="M:GDCoreUtilities.IniSetting.#ctor(System.String,System.String)">
+            <summary>Instantiates a new instance of the IniSEtting class.</summary>
+            <param name="key">Key for the setting.</param>
+            <param name="value">Value for the setting.</param>
+        </member>
+        <member name="P:GDCoreUtilities.IniSetting.Key">
+            <summary>Gets the key of the setting. Read-only field.</summary>
+        </member>
+        <member name="P:GDCoreUtilities.IniSetting.Value">
+            <summary>Gets the value of the setting. Read-only field.</summary>
+        </member>
+        <member name="T:GDCoreUtilities.IO.CSVReader">
+            <summary>Used for reading CSV files to convert into other formats.</summary>
+        </member>
+        <member name="M:GDCoreUtilities.IO.CSVReader.#ctor(System.String)">
+            <summary>Instantiates a new instance of the CSVReader class.</summary>
+            <exception cref="T:System.IO.IOException">Throws an exception if a CSV file is not passed.</exception>
+        </member>
+        <member name="M:GDCoreUtilities.IO.CSVReader.ToDataTable">
+            <summary>Converts the data in the CSV file to a DataTable.</summary>
+            <returns>DataTable representing the data contained in the CSV file.</returns>
+        </member>
+        <member name="T:GDCoreUtilities.LibraryCore">
+            <summary>Class for usage within the libraries.</summary>
+        </member>
+        <member name="F:GDCoreUtilities.LibraryCore.FILENAME">
+            <summary>Defines the file name to read for the library settings.</summary>
+        </member>
+        <member name="M:GDCoreUtilities.LibraryCore.#cctor">
+            <summary>Static constructor for the LibraryCore class.</summary>
+        </member>
+        <member name="P:GDCoreUtilities.LibraryCore.LibrarySettings">
+            <summary>Gets the IniSettings for hte library.</summary>
+        </member>
+        <member name="T:GDCoreUtilities.Enums.EnumExtensions">
+            <summary>Class containing extension methods for enums.</summary>
+        </member>
+        <member name="M:GDCoreUtilities.Enums.EnumExtensions.GetStringValue(System.Enum)">
+            <summary>Returns the value set in the StringAttribute attribute of the enum.</summary>
+            <param name="e">Enum to get the StringAttribute value of.</param>
+            <returns>The string value specified in the StringAttribute if it exists, or an empty string.</returns>
+        </member>
+        <member name="T:GDCoreUtilities.Helpers.CollectionHelper">
+            <summary>Contains methods for working with collection objects.</summary>
+        </member>
+        <member name="M:GDCoreUtilities.Helpers.CollectionHelper.IsValidIndex``1(System.Collections.Generic.ICollection{``0},System.Int32)">
+            <summary>Checks whether the provided index is valid in the collection.</summary>
+            <typeparam name="T">The type of collection.</typeparam>
+            <param name="c">The collection.</param>
+            <param name="index">The index to check.</param>
+            <returns>True if the provided index is valid, false otherwise.</returns>
+        </member>
+        <member name="T:GDCoreUtilities.Helpers.ExceptionHelper">
+            <summary>Class containing methods used to help work with exceptions.</summary>
+        </member>
+        <member name="M:GDCoreUtilities.Helpers.ExceptionHelper.WriteToDebugOutput(System.Exception,System.String)">
+            <summary>Writes an exception out to the Debug output.</summary>
+            <param name="ex">Exception to output.</param>
+            <param name="origin">The originator of the exception.</param>
+        </member>
+        <member name="T:GDCoreUtilities.IO.DirectoryHelper">
+            <summary>
+            Static class containing methods used to assist when working with directories.
+            </summary>
+        </member>
+        <member name="M:GDCoreUtilities.IO.DirectoryHelper.TryGetDirectoryInfo(System.String,System.IO.DirectoryInfo@)">
+            <summary>Gets a DirectoryInfo object for the directory.  A return value indicates if a DirectoryInfo object was successfully created.</summary>
+            <param name="directory">Directory to get information for.</param>
+            <param name="di">Out parameter for the DirectoryInfo object to be generated for the directory.</param>
+            <returns>True if a DirectoryInfo object was successfully created for the directory.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.IO.DirectoryHelper.TryCreateDirectory(System.String)">
+            <summary>Creates a directory.  A return value indicates if the directory was successfully created.</summary>
+            <param name="directory">Path of the directory to create.</param>
+            <returns>True if the directory was successfully created.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.IO.DirectoryHelper.TryCreateDirectory(System.String,System.IO.DirectoryInfo@)">
+            <summary>Creates a directory.  A return value indicates if the directory was successfully created.</summary>
+            <param name="directory">Path of the directory to create.</param>
+            <param name="directoryInfo">Out parameter for the DirectoryInfo object to be generated for the directory.</param>
+            <returns>True if the directory was successfully created.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.IO.DirectoryHelper.GetAllFiles(System.String)">
+            <summary>Gets all files in the provided directory and any subdirectories.</summary>
+            <param name="directory">Directory to get all files from.</param>
+            <returns>Array of FileInfo objects representing all files found.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.IO.DirectoryHelper.GetAllFiles(System.IO.DirectoryInfo)">
+            <summary>Gets all files in the provided directory and any subdirectories.</summary>
+            <param name="directory">Directory to get all files from.</param>
+            <returns>Array of FileInfo objects representing all files found.</returns>
+            <remarks>
+            TODO: Error handling for inaccessible files/directories needs to be added.
+            Used in lieu of DirectoryInfo.GetFiles("*.*", SearchOption.AllDirectories) (has issues with inaccessible directories?)
+            </remarks>
+        </member>
+        <member name="M:GDCoreUtilities.IO.DirectoryHelper.FindFile(System.String,System.String)">
+            <summary>Finds all files matching the provided file name in the provided directory.  Searches in subdirectories.</summary>
+            <param name="directory">Name of the directory to search in.</param>
+            <param name="fileName">Name of the file to find.</param>
+            <returns>Array of all files found matching the file name provided.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.IO.DirectoryHelper.FindFile(System.IO.DirectoryInfo,System.String)">
+            <summary>Finds all files matching the provided file name in the provided directory.  Searches in subdirectories.</summary>
+            <param name="directory">Name of the directory to search in.</param>
+            <param name="fileName">Name of the file to find.</param>
+            <returns>Array of all files found matching the file name provided.</returns>
+        </member>
+        <member name="T:GDCoreUtilities.IO.FileHelper">
+            <summary>Static helper class containing methods used to assist with working with files.</summary>
+        </member>
+        <member name="M:GDCoreUtilities.IO.FileHelper.WriteToFile(System.IO.FileInfo,System.String,System.Boolean)">
+            <summary>Writes to the specified file.</summary>
+            <param name="fileToWriteTo">File to write to.</param>
+            <param name="contentToWrite">Contents to write to the file.</param>
+            <param name="debugEnabled">True to display debugging output.</param>
+        </member>
+        <member name="M:GDCoreUtilities.IO.FileHelper.WriteToFile(System.IO.FileInfo,System.String[],System.Boolean)">
+            <summary>Writes to the specified file.</summary>
+            <param name="fileToWriteTo">File to write to.</param>
+            <param name="contentToWrite">Contents to write to the file.</param>
+            <param name="debugEnabled">True to display debugging output.</param>
+        </member>
+        <member name="M:GDCoreUtilities.IO.FileHelper.ReadFileContents(System.String)">
+            <summary>Reads contents from a file.</summary>
+            <param name="fileToRead">Full path of file to read.</param>
+            <returns>Byte array containing file contents.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.IO.FileHelper.ReadFileContents(System.IO.FileInfo)">
+            <summary>Reads contents from a file.</summary>
+            <param name="fileToRead">File to read.</param>
+            <returns>Byte array containing file contents.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.IO.FileHelper.ReadFileContents(System.IO.FileInfo,System.Int32)">
+            <summary>Reads contents from a file.</summary>
+            <param name="fileToRead">File to read.</param>
+            <param name="startingPos">Starting position to read from.</param>
+            <returns>Byte array containing file contents.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.IO.FileHelper.ReadFileContents(System.IO.FileInfo,System.Int32,System.Int32)">
+            <summary>Reads contents from a file.</summary>
+            <param name="fileToRead">File to read.</param>
+            <param name="startingPos">Starting position to read from.</param>
+            <param name="bufferSize">Size of the buffer to use when reading from file.</param>
+            <returns>Byte array containing file contents.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.IO.FileHelper.ReadAllLines(System.String)">
+            <summary>Reads all lines in a file.</summary>
+            <param name="fileToRead">Full path of the file to read.</param>
+            <returns>String array of all lines in the file.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.IO.FileHelper.ReadAllLines(System.IO.FileInfo)">
+            <summary>Reads all lines in a file.</summary>
+            <param name="fileToRead">FileInfo object representing the file to read.</param>
+            <returns>String array of all lines in the file.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.IO.FileHelper.GetAvailableFileNameForCreation(System.String)">
+            <summary>
+            Gets an available file name for creation for the specified file name, in the event file name collisions occur.
+            </summary>
+            <param name="fileName">File to get a writable filename for.</param>
+            <returns>File name to be used for creation.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.IO.FileHelper.GetFileSizeInKB(System.String)">
+            <summary>Gets the size of the specified file in Kilobytes.</summary>
+            <param name="fileName">File to get size of.</param>
+            <returns>File size in kilobytes.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.IO.FileHelper.TryGetFileInfo(System.String,System.String,System.IO.FileInfo@)">
+            <summary>Gets a FileInfo object for the file.  A return value indicates if a FileInfo object was successfully created.</summary>
+            <param name="filename">Name of file.</param>
+            <param name="path">Directory of file.</param>
+            <param name="fileInfo">Out parameter for FileInfo object to be generated for the file.</param>
+            <returns>True if a FileInfo object was successfully created for the file and path.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.IO.FileHelper.TryGetFileInfo(System.String,System.IO.FileInfo@)">
+            <summary>Gets a FileInfo object for the file.  A return value indicates if a FileInfo object was successfully created.</summary>
+            <param name="file">Full path and name of file.</param>
+            <param name="fileInfo">Out parameter for the FileInfo object to be generated for the file.</param>
+            <returns>True if a FileInfo object was successfully created for the file.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.IO.FileHelper.ArchiveFile(System.String,System.String)">
+            <summary>
+            Archives the specified file to the specified directory.<para />
+            Creates a default LogArchive directory in the current domain's base directory if no archive directory is specified.
+            </summary>
+            <param name="fileToArchive">File to archive.</param>
+            <param name="archiveDirectory">Directory to archive to.</param>
+            <returns>Full path of the archived file or an empty string if no archiving was performed.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.IO.FileHelper.ArchiveFile(System.IO.FileInfo,System.String)">
+            <summary>
+            Archives the specified file to the specified directory.<para />
+            Creates a default LogArchive directory in the current domain's base directory if no archive directory is specified.
+            </summary>
+            <param name="fileToArchive">File to archive.</param>
+            <param name="archiveDirectory">Directory to archive to.</param>
+            <returns>Full path of the archived file or an empty string if no archiving was performed.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.IO.FileHelper.ArchiveFile(System.IO.FileInfo,System.IO.DirectoryInfo)">
+            <summary>
+            Archives the specified file to the specified directory.<para />
+            Creates a default LogArchive directory in the current domain's base directory if no archive directory is specified.
+            </summary>
+            <param name="fileToArchive">FileInfo for file to archive.</param>
+            <param name="archiveDirectory">DirectoryInfo for archive directory.</param>
+            <returns></returns>
+        </member>
+        <member name="T:GDCoreUtilities.IO.PeekableStreamReader">
+            <summary>Enables functionality for peeking a line using a StreamReader object.</summary>
+        </member>
+        <member name="M:GDCoreUtilities.IO.PeekableStreamReader.#ctor(System.IO.Stream)">
+            <summary>Instantiates a new instance of the PeekableStreamReader class.</summary>
+            <param name="stream">Stream to use to instantiate the underlying StreamReader.</param>
+        </member>
+        <member name="M:GDCoreUtilities.IO.PeekableStreamReader.#ctor(System.String)">
+            <summary>Instantiates a new instance of the PeekableStreamReader class.</summary>
+            <param name="path">Path to use to instantiate the underlying StreamReader.</param>
+        </member>
+        <member name="M:GDCoreUtilities.IO.PeekableStreamReader.#ctor(System.IO.StreamReader)">
+            <summary>Instantiates a new instance of the PeekableStreamReader class.</summary>
+            <param name="reader">StreamReader object to use as the underlying StreamReader.</param>
+        </member>
+        <member name="M:GDCoreUtilities.IO.PeekableStreamReader.PeekLine">
+            <summary>Reads and returns a line using the underlying reader and enqueues the read line in a buffer.</summary>
+            <returns>The line read.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.IO.PeekableStreamReader.ReadLine">
+            <summary>Reads and returns a line using the underlying reader.</summary>
+            <returns>The line read.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.IO.PeekableStreamReader.Dispose">
+            <summary>Disposes of the PeekableStreamReader object.</summary>
+        </member>
+        <member name="P:GDCoreUtilities.IO.PeekableStreamReader.UnderlyingReader">
+            <summary>Gets a reference to the underlying StreamReader object. Read-only field.</summary>
+        </member>
+        <member name="P:GDCoreUtilities.IO.PeekableStreamReader.Buffer">
+            <summary>Gets the queue for the lines read to the buffer.</summary>
+        </member>
+        <member name="T:GDCoreUtilities.IO.StreamHelper">
+            <summary>Class containing methods to assist with working with streams.</summary>
+        </member>
+        <member name="M:GDCoreUtilities.IO.StreamHelper.Copy(System.IO.Stream,System.Boolean)">
+            <summary>Copies a stream into a MemoryStream object that can be re-used multiple times.</summary>
+            <param name="streamToCopy">Stream to copy.</param>
+            <param name="closeInputStream">Whether or not to close the input stream.</param>
+            <returns>Stream copy of the input stream, internally represented as a MemoryStream.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.IO.StreamHelper.CopyAndClose(System.IO.Stream)">
+            <summary>
+            Copies a stream into a MemoryStream object that can be re-used multiple times. <para />
+            Closes the input stream.
+            </summary>
+            <param name="streamToCopy">Stream to copy.</param>
+            <returns>Stream copy of the input stream, internally represented as a MemoryStream.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.IO.StreamHelper.WriteToStream(System.IO.Stream,System.String)">
+            <summary>
+            Writes a string to the current position of a stream. <para />
+            Converts the string to an array of bytes using UTF8 encoding.
+            </summary>
+            <param name="stream">Stream to write to.</param>
+            <param name="msgToWrite">String to write.</param>
+        </member>
+        <member name="M:GDCoreUtilities.IO.StreamHelper.WriteToStream(System.IO.Stream,System.Byte[])">
+            <summary>Writes an array of bytes to the current position of a stream.</summary>
+            <param name="stream">Stream to write to.</param>
+            <param name="bytesToWrite">Bytes to write.</param>
+        </member>
+        <member name="M:GDCoreUtilities.IO.StreamHelper.ToString(System.IO.Stream)">
+            <summary>Reads the contents of a stream into a string.</summary>
+            <param name="stream">Stream to read.</param>
+            <returns>Contents of the stream.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.IO.StreamHelper.ToStringArray(System.IO.Stream)">
+            <summary>Reads the contents of each line of a stream into a string array.</summary>
+            <param name="stream">Stream to read.</param>
+            <returns>Contents of the stream.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.IO.StreamHelper.ToFile(System.String,System.IO.Stream,System.Int32)">
+            <summary>Writes the contents of a Stream object to disk.</summary>
+            <param name="fileToWrite">Full path of the file to write.</param>
+            <param name="inputStream">Stream to write to disk.</param>
+            <param name="bufferSize">Size of the buffer to use when reading the stream.</param>
+            <returns>True if the stream was successfully written to disk, false otherwise.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.IO.StreamHelper.ToFile(System.IO.FileInfo,System.IO.Stream,System.Int32)">
+            <summary>Writes the contents of a Stream object to disk.</summary>
+            <param name="fileInfo">Information about the file to write.</param>
+            <param name="inputStream">Stream to write to disk.</param>
+            <param name="bufferSize">Size of the buffer to use when reading the stream.</param>
+            <returns>True if the stream was successfully written to disk, false otherwise.</returns>
+        </member>
+        <member name="T:GDCoreUtilities.Logging.FileLogger">
+            <summary>Logger used for writing log entries to a text file.</summary>
+        </member>
+        <member name="T:GDCoreUtilities.Logging.ILogger">
+            <summary>Defines methods for log entries.</summary>
+        </member>
+        <member name="M:GDCoreUtilities.Logging.ILogger.Log(System.String,GDCoreUtilities.Logging.LogSeverity)">
+            <summary>Logs a message.</summary>
+            <param name="msg">Message to log.</param>
+            <param name="logType">Severity of the log message.</param>
+        </member>
+        <member name="M:GDCoreUtilities.Logging.ILogger.Trace(System.String)">
+            <summary>Logs a trace message to the log file.</summary>
+            <param name="msg">Message to log.</param>
+        </member>
+        <member name="M:GDCoreUtilities.Logging.ILogger.Trace(System.String,System.Object[])">
+            <summary>Logs a trace message to the log file.</summary>
+            <param name="msg">Message to log.</param>
+            <param name="args">Arguments to pass to the message string.</param>
+        </member>
+        <member name="M:GDCoreUtilities.Logging.ILogger.Debug(System.String)">
+            <summary>Logs a debug message to the log file.</summary>
+            <param name="msg">Message to log.</param>
+        </member>
+        <member name="M:GDCoreUtilities.Logging.ILogger.Debug(System.String,System.Object[])">
+            <summary>Logs a debug message to the log file.</summary>
+            <param name="msg">Message to log.</param>
+            <param name="args">Arguments to pass to the message string.</param>
+        </member>
+        <member name="M:GDCoreUtilities.Logging.ILogger.Info(System.String)">
+            <summary>Logs an information message to the log file.</summary>
+            <param name="msg">Message to log.</param>
+        </member>
+        <member name="M:GDCoreUtilities.Logging.ILogger.Info(System.String,System.Object[])">
+            <summary>Logs an information message to the log file.</summary>
+            <param name="msg">Message to log.</param>
+            <param name="args">Arguments to pass to the message string.</param>
+        </member>
+        <member name="M:GDCoreUtilities.Logging.ILogger.Warn(System.String)">
+            <summary>Logs a warn message to the log file.</summary>
+            <param name="msg">Message to log.</param>
+        </member>
+        <member name="M:GDCoreUtilities.Logging.ILogger.Warn(System.String,System.Object[])">
+            <summary>Logs a warn message to the log file.</summary>
+            <param name="msg">Message to log.</param>
+            <param name="args">Arguments to pass to the message string.</param>
+        </member>
+        <member name="M:GDCoreUtilities.Logging.ILogger.Error(System.String)">
+            <summary>Logs an error message to the log file.</summary>
+            <param name="msg">Message to log.</param>
+        </member>
+        <member name="M:GDCoreUtilities.Logging.ILogger.Error(System.String,System.Object[])">
+            <summary>Logs an error message to the log file.</summary>
+            <param name="msg">Message to log.</param>
+            <param name="args">Arguments to pass to the message string.</param>
+        </member>
+        <member name="M:GDCoreUtilities.Logging.FileLogger.Create(System.String)">
+            <summary>Creates a new FileLogger in the application's base directory.</summary>
+            <param name="filePrefix">File name prefix of the logger.</param>
+            <exception cref="T:System.IO.IOException">Does not handle the IOException thrown in FileLogger.Initialize() if the directory is not found.</exception>
+            <returns>FileLogger object.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.Logging.FileLogger.Create(System.String,System.String)">
+            <summary>Creates a new FileLogger in the application's base directory.</summary>
+            <param name="path">Path of the log file.</param>
+            <param name="filePrefix">File name prefix of the logger.</param>
+            <exception cref="T:System.IO.IOException">Does not handle the IOException thrown in FileLogger.Initialize() if the directory is not found.</exception>
+            <returns>FileLogger object.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.Logging.FileLogger.#ctor(System.String,System.String)">
+            <summary>Instantiates a new instance of the Logger class.</summary>
+            <param name="path">Path to write the log file to.</param>
+            <param name="filename">Name of the log file.</param>
+        </member>
+        <member name="M:GDCoreUtilities.Logging.FileLogger.Log(System.String,GDCoreUtilities.Logging.LogSeverity)">
+            <summary>Writes a message to the log file.</summary>
+            <param name="msg">Text to write.</param>
+            <param name="logType">Type of log being written.</param>
+        </member>
+        <member name="M:GDCoreUtilities.Logging.FileLogger.Trace(System.String)">
+            <summary>Logs a trace message to the log file.</summary>
+            <param name="msg">Message to log.</param>
+        </member>
+        <member name="M:GDCoreUtilities.Logging.FileLogger.Trace(System.String,System.Object[])">
+            <summary>Logs a trace message to the log file.</summary>
+            <param name="msg">Message to log.</param>
+            <param name="args">Arguments to pass to the message string.</param>
+        </member>
+        <member name="M:GDCoreUtilities.Logging.FileLogger.Debug(System.String)">
+            <summary>Logs a debug message to the log file.</summary>
+            <param name="msg">Message to log.</param>
+        </member>
+        <member name="M:GDCoreUtilities.Logging.FileLogger.Debug(System.String,System.Object[])">
+            <summary>Logs a debug message to the log file.</summary>
+            <param name="msg">Message to log.</param>
+            <param name="args">Arguments to pass to the message string.</param>
+        </member>
+        <member name="M:GDCoreUtilities.Logging.FileLogger.Info(System.String)">
+            <summary>Logs an information message to the log file.</summary>
+            <param name="msg">Message to log.</param>
+        </member>
+        <member name="M:GDCoreUtilities.Logging.FileLogger.Info(System.String,System.Object[])">
+            <summary>Logs an information message to the log file.</summary>
+            <param name="msg">Message to log.</param>
+            <param name="args">Arguments to pass to the message string.</param>
+        </member>
+        <member name="M:GDCoreUtilities.Logging.FileLogger.Warn(System.String)">
+            <summary>Logs a warn message to the log file.</summary>
+            <param name="msg">Message to log.</param>
+        </member>
+        <member name="M:GDCoreUtilities.Logging.FileLogger.Warn(System.String,System.Object[])">
+            <summary>Logs a warn message to the log file.</summary>
+            <param name="msg">Message to log.</param>
+            <param name="args">Arguments to pass to the message string.</param>
+        </member>
+        <member name="M:GDCoreUtilities.Logging.FileLogger.Error(System.String)">
+            <summary>Logs an error message to the log file.</summary>
+            <param name="msg">Message to log.</param>
+        </member>
+        <member name="M:GDCoreUtilities.Logging.FileLogger.Error(System.String,System.Object[])">
+            <summary>Logs an error message to the log file.</summary>
+            <param name="msg">Message to log.</param>
+            <param name="args">Arguments to pass to the message string.</param>
+        </member>
+        <member name="P:GDCoreUtilities.Logging.FileLogger.LogFile">
+            <summary>Gets the full path of the log file.</summary>
+        </member>
+        <member name="T:GDCoreUtilities.Logging.LogSeverity">
+            <summary>Defines a set of log entry severities.</summary>
+        </member>
+        <member name="F:GDCoreUtilities.Logging.LogSeverity.Trace">
+            <summary>Used for writing trace messages to the log.</summary>
+        </member>
+        <member name="F:GDCoreUtilities.Logging.LogSeverity.Debug">
+            <summary>Used for writing debug messages to the log.</summary>
+        </member>
+        <member name="F:GDCoreUtilities.Logging.LogSeverity.Information">
+            <summary>Used for writing informational messages to the log.</summary>
+        </member>
+        <member name="F:GDCoreUtilities.Logging.LogSeverity.Warning">
+            <summary>Used for writing a warning message to the log.</summary>
+        </member>
+        <member name="F:GDCoreUtilities.Logging.LogSeverity.Error">
+            <summary>Used for writing an error message to the log.</summary>
+        </member>
+        <member name="T:GDCoreUtilities.NullSafe">
+            <summary>Contains methods used to assist with converting values between different data types.</summary>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafe.ToString(System.Object)">
+            <summary>Converts the provided value to a string.</summary>
+            <param name="val">Value to convert.</param>
+            <returns>Value as a string.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafe.ToString(System.Object,System.String)">
+            <summary>Converts the provided value to a string.</summary>
+            <param name="val">Value to convert.</param>
+            <param name="replaceVal">Replacement value to return if the conversion fails.</param>
+            <returns>Value as a string.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafe.ToDecimal(System.Object)">
+            <summary>Converts the provided value to a decimal.</summary>
+            <param name="val">Value to convert.</param>
+            <returns>Value as a decimal.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafe.ToDecimal(System.Object,System.Decimal)">
+            <summary>Converts the provided value to a decimal.</summary>
+            <param name="val">Value to convert.</param>
+            <param name="replaceVal">Replacement value to return if the conversion fails.</param>
+            <returns>Value as a decimal.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafe.ToNullableDecimal(System.Object)">
+            <summary>Converts the provided value to a nullable decimal.</summary>
+            <param name="val">Value to convert.</param>
+            <returns>Null or value as a nullable decimal.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafe.ToNullableDecimal(System.Object,System.Decimal)">
+            <summary>Converts the provided value to a nullable decimal.</summary>
+            <param name="val">Value to convert.</param>
+            <param name="replaceVal">Replacement value to return if the conversion fails.</param>
+            <returns>Null or value as a nullable decimal.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafe.ToInt(System.Object)">
+            <summary>Converts the provided value to an integer.</summary>
+            <param name="val">Value to convert.</param>
+            <returns>Value as an integer.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafe.ToInt(System.Object,System.Int32)">
+            <summary>Converts the provided value to an integer.</summary>
+            <param name="val">Value to convert.</param>
+            <param name="replaceVal">Replacement value to return if the conversion fails.</param>
+            <returns>Value as an integer.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafe.ToNullableInt(System.Object)">
+            <summary>Converts the provided value to a nullable integer.</summary>
+            <param name="val">Value to convert.</param>
+            <returns>Null or value as a nullable integer.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafe.ToNullableInt(System.Object,System.Int32)">
+            <summary>Converts the provided value to a nullable integer.</summary>
+            <param name="val">Value to convert.</param>
+            <param name="replaceVal">Replacement value to return if the conversion fails.</param>
+            <returns>Null or value as a nullable integer.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafe.ToLong(System.Object)">
+            <summary>Converts the provided value to a long.</summary>
+            <param name="val">Value to convert.</param>
+            <returns>Value as a long.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafe.ToLong(System.Object,System.Int64)">
+            <summary>Converts the provided value to a long.</summary>
+            <param name="val">Value to convert.</param>
+            <param name="replaceVal">Replacement value to return if the conversion fails.</param>
+            <returns>Value as a long.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafe.ToNullableLong(System.Object)">
+            <summary>Converts the provided value to a nullable long.</summary>
+            <param name="val">Value to convert.</param>
+            <returns>Null or value as a nullable long.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafe.ToNullableLong(System.Object,System.Int64)">
+            <summary>Converts the provided value to a nullable long.</summary>
+            <param name="val">Value to convert.</param>
+            <param name="replaceVal">Replacement value to return if the conversion fails.</param>
+            <returns>Null or value as a nullable long.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafe.ToBoolean(System.Object)">
+            <summary>Converts the provided value to a boolean.</summary>
+            <param name="val">Value to convert.</param>
+            <returns>Value as a boolean.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafe.ToNullableBoolean(System.Object)">
+            <summary>Converts the provided value to a nullable boolean.</summary>
+            <param name="val">Value to convert.</param>
+            <returns>Null or value as a nullable boolean.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafe.ToDateTime(System.Object,System.DateTime)">
+            <summary>Converts the provided value to a date.</summary>
+            <param name="val">Value to convert.</param>
+            <param name="defaultVal">Default value to return if the conversion fails.</param>
+            <returns>Value as a date.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafe.ToDateTime(System.Object,System.String,System.DateTime)">
+            <summary>Converts the provided value to a date.</summary>
+            <param name="val">Value to convert.</param>
+            <param name="format">Format to use for parsing the value to a date.</param>
+            <param name="defaultVal">Default value to return if the conversion fails.</param>
+            <returns>Value as a date.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafe.ToNullableDate(System.Object)">
+            <summary>Converts the provided value to a nullable date.</summary>
+            <param name="val">Value to convert.</param>
+            <returns>Null or value as a nullable date.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafe.ToNullableDate(System.Object,System.String)">
+            <summary>Converts the provided value to a nullable date.</summary>
+            <param name="val">Value to convert.</param>
+            <param name="format">Format to use for parsing the value to a date.</param>
+            <returns>Null or value as a nullable date.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafe.ToGuid(System.Object,System.Guid)">
+            <summary>Converts the provided value to a Guid.</summary>
+            <param name="val">Value to convert.</param>
+            <param name="defaultVal">Default value to return if the conversion fails.</param>
+            <returns>Value as a Guid.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafe.ToNullableGuid(System.Object)">
+            <summary>Converts the provided value to a nullable Guid.</summary>
+            <param name="val">Value to convert.</param>
+            <returns>Null or value as a nullable Guid.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafe.ToShort(System.Object)">
+            <summary>Converts the provided value to a short.</summary>
+            <param name="val">Value to convert.</param>
+            <returns>Value as a short.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafe.ToShort(System.Object,System.Int16)">
+            <summary>Converts the provided value to a short.</summary>
+            <param name="val">Value to convert.</param>
+            <param name="replaceVal">Replacement value to return if the conversion fails.</param>
+            <returns>Value as a short.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafe.ToNullableShort(System.Object)">
+            <summary>Converts the provided value to a nullable short.</summary>
+            <param name="val">Value to convert.</param>
+            <returns>Null or value as a nullable short.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafe.ToNullableShort(System.Object,System.Int16)">
+            <summary>Converts the provided value to a nullable short.</summary>
+            <param name="val">Value to convert.</param>
+            <param name="replaceVal">Replacement value to return if the conversion fails.</param>
+            <returns>Null or value as a nullable short.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafe.ToSingle(System.Object)">
+            <summary>Converts the provided value to a Single.</summary>
+            <param name="val">Value to convert.</param>
+            <returns>Value as a Single.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafe.ToSingle(System.Object,System.Single)">
+            <summary>Converts the provided value to a Single.</summary>
+            <param name="val">Value to convert.</param>
+            <param name="replaceVal">Replacement value to return if the conversion fails.</param>
+            <returns>Value as a Single.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafe.ToNullableSingle(System.Object)">
+            <summary>Converts the provided value to a nullable Single.</summary>
+            <param name="val">Value to convert.</param>
+            <returns>Null or value as a nullable Single.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafe.ToNullableSingle(System.Object,System.Single)">
+            <summary>Converts the provided value to a nullable Single.</summary>
+            <param name="val">Value to convert.</param>
+            <param name="replaceVal">Replacement value to return if the conversion fails.</param>
+            <returns>Null or value as a nullable Single.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafe.ToDouble(System.Object)">
+            <summary>Converts the provided value to a double.</summary>
+            <param name="val">Value to convert.</param>
+            <returns>Value as a double.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafe.ToDouble(System.Object,System.Double)">
+            <summary>Converts the provided value to a double.</summary>
+            <param name="val">Value to convert.</param>
+            <param name="replaceVal">Replacement value to return if the conversion fails.</param>
+            <returns>Value as a double.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafe.ToNullableDouble(System.Object)">
+            <summary>Converts the provided value to a nullable double.</summary>
+            <param name="val">Value to convert.</param>
+            <returns>Null or value as a nullable double.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafe.ToNullableDouble(System.Object,System.Double)">
+            <summary>Converts the provided value to a nullable double.</summary>
+            <param name="val">Value to convert.</param>
+            <param name="replaceVal">Replacement value to return if the conversion fails.</param>
+            <returns>Null or value as a nullable double.</returns>
+        </member>
+        <member name="T:GDCoreUtilities.NullSafeRowWrapper">
+            <summary>Used for wrapping a DataRow object for ease of converting cell values via the NullSafe class.</summary>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafeRowWrapper.#ctor(System.Data.DataRow)">
+            <summary>Instantiates a new instance of the NullSafeRowWrapper class.</summary>
+            <param name="dataRow">DataRow to wrap.</param>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafeRowWrapper.ToString(System.String)">
+            <summary>Converts the value in the provided column to a string.</summary>
+            <param name="colName">Column name of the value to get.</param>
+            <returns>Value contained within the column as a string.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafeRowWrapper.ToString(System.String,System.String)">
+            <summary>Converts the value in the provided column to a string.</summary>
+            <param name="colName">Column name of the value to get.</param>
+            <param name="replacementVal">Replacement value to return if the conversion fails.</param>
+            <returns>Value contained within the column as a string.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafeRowWrapper.ToInt(System.String)">
+            <summary>Converts the value in the provided column to an integer.</summary>
+            <param name="colName">Column name of the value to get.</param>
+            <returns>Value contained within the column as an integer.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafeRowWrapper.ToInt(System.String,System.Int32)">
+            <summary>Converts the value in the provided column to an integer.</summary>
+            <param name="colName">Column name of the value to get.</param>
+            <param name="replacementVal">Replacement value to return if the conversion fails.</param>
+            <returns>Value contained within the column as an integer.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafeRowWrapper.ToLong(System.String)">
+            <summary>Converts the value in the provided column to a long.</summary>
+            <param name="colName">Column name of the value to get.</param>
+            <returns>Value contained within the column as a long.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafeRowWrapper.ToLong(System.String,System.Int64)">
+            <summary>Converts the value in the provided column to a long.</summary>
+            <param name="colName">Column name of the value to get.</param>
+            <param name="replacementVal">Replacement value to return if the conversion fails.</param>
+            <returns>Value contained within the column as a long.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafeRowWrapper.ToDecimal(System.String)">
+            <summary>Converts the value in the provided column to a decimal.</summary>
+            <param name="colName">Column name of the value to get.</param>
+            <returns>Value contained within the column as a decimal.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafeRowWrapper.ToDecimal(System.String,System.Decimal)">
+            <summary>Converts the value in the provided column to a decimal.</summary>
+            <param name="colName">Column name of the value to get.</param>
+            <param name="replacementVal">Replacement value to return if the conversion fails.</param>
+            <returns>Value contained within the column as a decimal.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafeRowWrapper.ToDateTime(System.String,System.DateTime)">
+            <summary>Converts the value in the provided column to a DateTime.</summary>
+            <param name="colName">Column name of the value to get.</param>
+            <param name="replacementVal">Replacement value to return if the conversion fails.</param>
+            <returns>Value contained within the column as a DateTime.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafeRowWrapper.ToGuid(System.String,System.Guid)">
+            <summary>Converts the value in the provided column to a guid.</summary>
+            <param name="colName">Column name of the value to get.</param>
+            <param name="replacementVal">Replacement value to return if the conversion fails.</param>
+            <returns>Value contained within the column as a guid.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafeRowWrapper.ToBoolean(System.String)">
+            <summary>Converts the value in the provided column to a boolean.</summary>
+            <param name="colName">Column name of the value to get.</param>
+            <returns>Value contained within the column as a boolean.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafeRowWrapper.ToNullableDate(System.String)">
+            <summary>Converts the value in the provided column to a nullable DateTime.</summary>
+            <param name="colName">Column name of the value to get.</param>
+            <returns>value contained within the column as a nullable DateTime.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafeRowWrapper.ToNullableInt(System.String)">
+            <summary>Converts the value in the provided column to a nullable integer.</summary>
+            <param name="colName">Column name of the value to get.</param>
+            <returns>Value contained within the column as a nullable integer.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafeRowWrapper.ToNullableDecimal(System.String)">
+            <summary>Converts the value in the provided column to a nullable decimal.</summary>
+            <param name="colName">Column name of the value to get.</param>
+            <returns>Vlue contained within the columna as a nullable decimal.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafeRowWrapper.ToNullableLong(System.String)">
+            <summary>Converts the value in the provided column to a nullable long.</summary>
+            <param name="colName">Column name of the value to get.</param>
+            <returns>Nullable long value contained within the column.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafeRowWrapper.ToNullableGuid(System.String)">
+            <summary>Converts the value in the provided column to a nullable guid.</summary>
+            <param name="colName">Column name of the value to get.</param>
+            <returns>Value contained within the column as a nullable guid.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafeRowWrapper.ToDouble(System.String)">
+            <summary>Converts the value in the provided column to a nullable double.</summary>
+            <param name="colName">Column name of the value to get.</param>
+            <returns>Value contained within the column as a nullable double.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafeRowWrapper.ToDouble(System.String,System.Double)">
+            <summary>Converts the value in the provided column to a nullable double.</summary>
+            <param name="colName">Column name of the value to get.</param>
+            <param name="replaceVal">Replacement value to return if the conversion fails.</param>
+            <returns>Value contained within the column as a nullable double.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafeRowWrapper.ToSingle(System.String)">
+            <summary>Converts the value in the provided column to a nullable single.</summary>
+            <param name="colName">Column name of the value to get.</param>
+            <returns>Value contained within the column as a nullable single.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafeRowWrapper.ToSingle(System.String,System.Single)">
+            <summary>Converts the value in the provided column to a nullable single.</summary>
+            <param name="colName">Column name of the value to get.</param>
+            <param name="replaceVal">Replacement value to return if the conversion fails.</param>
+            <returns>Value contained within the column as a nullable single.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafeRowWrapper.ToShort(System.String)">
+            <summary>Converts the value in the provided column to a nullable short.</summary>
+            <param name="colName">Column name of the value to get.</param>
+            <returns>Value contained within the column as a nullable short.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.NullSafeRowWrapper.ToShort(System.String,System.Int16)">
+            <summary>Converts the value in the provided column to a nullable short.</summary>
+            <param name="colName">Column name of the value to get.</param>
+            <param name="replaceVal">Replacement value to return if the conversion fails.</param>
+            <returns>Value contained within the column as a nullable short.</returns>
+        </member>
+        <member name="P:GDCoreUtilities.NullSafeRowWrapper.DataRow">
+            <summary>Gets the DataRow object. Read-only field.</summary>
+        </member>
+        <member name="T:GDCoreUtilities.NumberUtilities">
+            <summary>Utility class for assisting with numbers and number conversions.</summary>
+        </member>
+        <member name="M:GDCoreUtilities.NumberUtilities.ToNumber(System.String)">
+            <summary>Parses out a number from a string.</summary>
+            <param name="text">Text to parse the number from.</param>
+            <returns>The parsed number.</returns>
+        </member>
+        <member name="T:GDCoreUtilities.StringAttribute">
+            <summary>Represents an attribute used to store a string value.</summary>
+        </member>
+        <member name="M:GDCoreUtilities.StringAttribute.#ctor(System.String)">
+            <summary>Represents an attribute used for storing a string value.</summary>
+            <param name="stringVal">String value to store.</param>
+        </member>
+        <member name="P:GDCoreUtilities.StringAttribute.StringValue">
+            <summary>Gets the string value stored by the StringAttribute.</summary>
+        </member>
+        <member name="T:GDCoreUtilities.StringUtilities">
+            <summary>Class for storing utility methods for working with strings.</summary>
+        </member>
+        <member name="M:GDCoreUtilities.StringUtilities.#cctor">
+            <summary>Static constructor for the StringUtilities class.</summary>
+        </member>
+        <member name="M:GDCoreUtilities.StringUtilities.ToTitleCase(System.String)">
+            <summary>Converts a string with each word beginning with uppercase, with remaining letters being lowercase.</summary>
+            <param name="s">String to convert.</param>
+            <returns>The string's value as represented in title case.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.StringUtilities.AreEqual(System.String,System.String)">
+            <summary>
+            Gets whether two strings are equal.<para />
+            Calls String.Trim() on each value prior to comparing.<para />
+            Uses StringComparison.OrdinalIgnoreCase.
+            </summary>
+            <param name="a">First string to compare.</param>
+            <param name="b">Second string to compare.</param>
+            <returns>True if the strings are equal, false otherwise.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.StringUtilities.AreEqual(System.String,System.String,System.StringComparison)">
+            <summary>
+            Gets whether two strings are equal.<para />
+            Calls String.Trim() on each value prior to comparing.<para />
+            </summary>
+            <param name="a">First string to compare.</param>
+            <param name="b">Second string to compare.</param>
+            <param name="comparisonType">StringComparison option to use when comparing the strings.</param>
+            <returns>True if the strings are equal, false otherwise.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.StringUtilities.InCollection(System.Collections.Generic.ICollection{System.String},System.String)">
+            <summary>Gets whether or not a value is in a string collection.</summary>
+            <param name="collection">String collection.</param>
+            <param name="value">String to find.</param>
+            <returns>True if the string is in the collection, false otherwise.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.StringUtilities.ContainsAlpha(System.String)">
+            <summary>Gets whether or not the provided string contains at least one letter.</summary>
+            <param name="text">String to check.</param>
+            <returns>True if the string contains at least one letter, false otherwise.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.StringUtilities.ContainsUppercaseAlpha(System.String)">
+            <summary>Gets whether or not the provided string contains at least one uppercase letter.</summary>
+            <param name="text">String to check.</param>
+            <returns>True if the string contains at least one uppercase letter, false otherwise.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.StringUtilities.ContainsDigit(System.String)">
+            <summary>Gets whether or not the provided string contains at least one number.</summary>
+            <param name="text">String to check.</param>
+            <returns>True if the string contains at least one number, false otherwise.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.StringUtilities.ContainsDigitsOnly(System.String)">
+            <summary>Returns whether or not the provided string contains only digits.</summary>
+            <param name="text">String to check.</param>
+            <returns>True if the string contains only digits, false otherwise.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.StringUtilities.ParseDigits(System.String)">
+            <summary>Parses out and returns the digits in the provided string.</summary>
+            <param name="text">String to parse.</param>
+            <returns>The digits parsed from the provided text.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.StringUtilities.ParseLetters(System.String)">
+            <summary>Parses out and returns the letters in the provided string.</summary>
+            <param name="text">String to parse.</param>
+            <returns>The letters parsed from the provided text.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.StringUtilities.ToNumeric(System.String)">
+            <summary>Parses numeric characters from a string.</summary>
+            <param name="text">Text to parse.</param>
+            <returns>Numeric string.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.StringUtilities.ReplaceLeadingWhitespace(System.String,System.String)">
+            <summary>Replaces each leading whitespace character with the provided replacement string.</summary>
+            <param name="s">String to replace leading whitespace of.</param>
+            <param name="replaceVal">Replacement value for each whitespace character.</param>
+            <returns>String with each leading whitespace character replaced.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.StringUtilities.RemoveWhitespace(System.String)">
+            <summary>Removes whitespace from the provided string.</summary>
+            <param name="s">String to remove whitespace from.</param>
+            <returns>String with whitespace removed.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.StringUtilities.RemoveWhitespace(System.Char[])">
+            <summary>Converts a character array to a string and removes whitespace from the resultant string.</summary>
+            <param name="chs">Character array to remove whitespace from.</param>
+            <returns>String with whitespace removed.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.StringUtilities.TrimWhitespace(System.String)">
+            <summary>Trims leading and trailing whitespace characters from a string.</summary>
+            <param name="s">String to trim leading and trailing whitespace characters of.</param>
+            <returns>String with leading and trailing whitespace characters trimmed.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.StringUtilities.TrimWhitespace(System.Char[])">
+            <summary>Converts a character array to a string and trims leading and trailing whitespace characters from a character array.</summary>
+            <param name="chs">Character array to trim leading and trailing whitespace characters of.</param>
+            <returns>String with leading and trailing whitespace characters trimmed.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.StringUtilities.GetSubstring(System.String,System.Int32)">
+            <summary>
+            Returns a substring for the provided string. <para />
+            Checks that the start index will not cause an OutOfRangeException.</summary>
+            <param name="s">String to get a substring of.</param>
+            <param name="startIndex">Start index for the substring.</param>
+            <returns>Substring value, or an empty string if the safety checks fail.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.StringUtilities.GetSubstring(System.String,System.Int32,System.Int32)">
+            <summary>
+            Returns a substring for the provided string. <para />
+            Checks that the start index and length will not cause an OutOfRangeException.</summary>
+            <param name="s">String to get a substring of.</param>
+            <param name="startIndex">Start index for the substring.</param>
+            <param name="length">Length of the substring to get.</param>
+            <returns>Substring value, or an empty string if the safety checks fail.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.StringUtilities.GetSubstringBetween(System.String,System.Int32,System.Int32)">
+            <summary>Returns a substring between a start (inclusive) and end (exclusive) index.</summary>
+            <param name="s">String to get a substring of.</param>
+            <param name="startIndex">Start index for the substring.</param>
+            <param name="endIndex">End index for the substring.</param>
+            <returns>Substring value, or an empty string if the safety checks fail.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.StringUtilities.GetRandomCharString(System.Int32)">
+            <summary>Returns a random string of characters.</summary>
+            <param name="length">Length of the string to generate.</param>
+            <returns>Random string of characters of the provided length.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.StringUtilities.GetRandomNumberString(System.Int32)">
+            <summary>Returns a random string of digits.</summary>
+            <param name="length">Length of the string to generate.</param>
+            <returns>Random string of digits of the provided length.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.StringUtilities.GetRandomString(System.Int32,System.Boolean,System.Boolean)">
+            <summary>
+            Returns a random string of characters and digits.<para />
+            Defaults to a random string of characters if both boolean parameters are false.
+            </summary>
+            <param name="length">Length of the string to generate.</param>
+            <param name="inclChars">Whether or not to include characters in the returned string.</param>
+            <param name="inclDigits">Whether or not to include digits in the returned string.</param>
+            <returns>Random string of characters and digits of the provided length.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.StringUtilities.ReplaceEnd(System.String,System.String,System.String)">
+            <summary>Replaces the ending part of a string with a new value.</summary>
+            <param name="text">String to replace the end of.</param>
+            <param name="oldValue">Value to replace.</param>
+            <param name="newValue">Value to replace with.</param>
+            <returns>String with the ending value replaced, or the original text if the ending value was not matched.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.StringUtilities.ContainsMatchingTags(System.String)">
+            <summary>Returns whether the provided text contains matching tags.</summary>
+            <param name="text">Text to check.</param>
+            <returns>True if the string contains at matching tags, false otherwise.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.StringUtilities.ContainsSingleTags(System.String)">
+            <summary>Returns whether the provided text contains a single tag.</summary>
+            <param name="text">Text to check.</param>
+            <returns>True if the string contains at matching tags, false otherwise.</returns>
+        </member>
+        <member name="P:GDCoreUtilities.StringUtilities.Logger">
+            <summary>Gets the StringUtilities class logger.</summary>
+        </member>
+        <member name="T:GDCoreUtilities.XML.XmlReaderHelper">
+            <summary>Assists with reading an Xml file using an XmlReader object.</summary>
+        </member>
+        <member name="M:GDCoreUtilities.XML.XmlReaderHelper.#ctor(System.String)">
+            <summary>Instantiates a new instance of the XmlReaderHelper class.</summary>
+            <param name="xmlFile">Path of the Xml file to read.</param>
+            <exception cref="T:GDCoreUtilities.XML.XmlReaderHelperException"></exception>
+        </member>
+        <member name="M:GDCoreUtilities.XML.XmlReaderHelper.FindRoot(System.String)">
+            <summary>Reads an XML file until the root element is found.</summary>
+            <param name="rootElement">Name of the root element.</param>
+            <returns>True if the root element was found, false otherwise.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.XML.XmlReaderHelper.GetNext">
+            <summary>Gets the name of the next element in the XML file.</summary>
+            <returns>The name of the next element.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.XML.XmlReaderHelper.GetAttribute(System.String)">
+            <summary>Reads the value of an attribute.</summary>
+            <param name="attributeName">Name of the attribute to read.</param>
+            <returns>Attribute value, or an empty string if the attribute was not found.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.XML.XmlReaderHelper.GetInnerText">
+            <summary>Gets the inner text of the current element.</summary>
+            <returns>The inner text of the current element.</returns>
+        </member>
+        <member name="M:GDCoreUtilities.XML.XmlReaderHelper.Dispose">
+            <summary>Disposes of the helper and the underlying XmlReader object.</summary>
+        </member>
+        <member name="P:GDCoreUtilities.XML.XmlReaderHelper.Reader">
+            <summary>Gets a reference to the backing XmlReader object. Read-only field.</summary>
+        </member>
+        <member name="T:GDCoreUtilities.XML.XmlReaderHelperException">
+            <summary>The exception thrown when there is an error with the XmlReaderHelper.</summary>
+        </member>
+        <member name="M:GDCoreUtilities.XML.XmlReaderHelperException.#ctor(System.String)">
+            <summary>Instantiates a new instance of the XmlReaderHelperException class.</summary>
+            <param name="message">Message describing the error that occurred.</param>
+        </member>
+    </members>
+</doc>

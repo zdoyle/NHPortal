@@ -1,0 +1,2 @@
+﻿<%@ Page Title="Gordon-Darby OBD Results Reports" Language="C#" MasterPageFile="~/MasterPages/InspectionReportMaster.Master" AutoEventWireup="true" CodeBehind="InspectionOBDResults.aspx.cs" Inherits="NHPortal.InspectionOBDResults" %>
+<%@ MasterType VirtualPath="~/MasterPages/InspectionReportMaster.Master" %>

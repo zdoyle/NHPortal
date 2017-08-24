@@ -1,0 +1,181 @@
+﻿input[type=button], input[type=submit] {
+    border-radius: 5px;
+    background-color: #cacaca;
+    color: #000;
+    padding-top: 3px;
+    padding-right: 10px;
+    padding-bottom: 3px;
+    padding-left: 10px;
+    min-width: 150px;
+}
+
+input[type=text]::-ms-clear {
+    display: none;
+}
+
+select {
+    width: 115px;
+}
+
+.copywrite-text {
+    font-size: 10px;
+    font-weight: bold;
+}
+
+#imgBanner {
+    display: block;
+}
+
+.main-div {
+    min-width: 600px;
+    max-width: 1850px;
+    width: 95%;
+    margin: 0 auto;
+    background-color: #eee;
+}
+
+.page-header-container {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+    border-collapse: collapse;
+}
+
+.page-header-label {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.hidden {
+    display: none;
+}
+
+div.padded {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.centered-text {
+    text-align: center;
+}
+
+.centered {
+    margin: 0 auto;
+}
+
+.bold-font {
+    font-weight: bold;
+}
+
+.block-image {
+    display: block;
+}
+
+.error {
+    color: #CC0000;
+    font-weight: bold;
+}
+
+.small {
+    font-size: small;
+}
+
+.data-last-update {
+    font-size: .75em;
+    font-style: italic;
+    display: block;
+}
+
+.master-page-footer {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.txt-date-input {
+    width: 100px;
+    margin-right: 3px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba( 0, 0, 0, .2 ) url('../Images/ajax-loading.gif') 50% 50% no-repeat;
+}
+
+body.loading {
+    overflow: hidden;
+}
+
+    body.loading .modal {
+        display: block;
+    }
+
+/* syling for pop up tables*/
+.definition-body-outer {
+    border-radius: 10px;
+    padding: 4px 0px 4px 0px;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    width: 920px;
+    height: 800px;
+    background-color: #FFFFFF;
+    z-index: 12;
+}
+
+.definition {
+    text-align: left;
+    padding-left: 18px;
+    width: 900px;
+    height: 796px;
+    overflow-y: auto;
+    background-color: #FFFFFF;
+    position: relative;
+    border-radius: 8px;
+    z-index: 12;
+}
+
+.tbl-reason-key {
+    width: 800px;
+    padding-top: 30px;
+    padding-left:100px;
+}
+
+.div-close {
+    padding-bottom: 9px;
+    text-align: center;
+}
+
+.rejection-criteria {
+    width: 300px;
+    padding-bottom: 15px;
+    text-align:center;
+}
+
+.monthly-rejection-criteria {
+    width: 530px;
+    padding-bottom: 15px;
+    text-align:center;
+}
+
+.criteria-note {
+    padding-top: 6px;
+}

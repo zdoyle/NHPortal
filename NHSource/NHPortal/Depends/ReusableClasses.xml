@@ -1,0 +1,2662 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ReusableClasses</name>
+    </assembly>
+    <members>
+        <member name="T:ReusableClasses.DataMule.EmailAddress">
+            <summary>
+            Class used to store an email address.
+            </summary>
+        </member>
+        <member name="M:ReusableClasses.DataMule.EmailAddress.#ctor(System.String,ReusableClasses.DataMule.EmailSendTarget)">
+            <summary>
+            Instantiates a new instance of the GD.DataMule.Email.EmailAddress class.
+            </summary>
+            <param name="address">Email address.</param>
+            <param name="target">Target priority (To, Cc, Bcc) of the email address.</param>
+        </member>
+        <member name="P:ReusableClasses.DataMule.EmailAddress.Address">
+            <summary>
+            Gets the email address.
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.DataMule.EmailAddress.Target">
+            <summary>
+            Gets the specified send target of the email address.
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.DataMule.EmailAddress.IsValidEmail">
+            <summary>
+            Gets whether the specified email address is a valid email address.
+            </summary>
+        </member>
+        <member name="T:ReusableClasses.DataMule.EmailSendTarget">
+            <summary>
+            Defines the send target of an email.
+            </summary>
+        </member>
+        <member name="F:ReusableClasses.DataMule.EmailSendTarget.To">
+            <summary>
+            Email address should be included in the 'To' field.
+            </summary>
+        </member>
+        <member name="F:ReusableClasses.DataMule.EmailSendTarget.Cc">
+            <summary>
+            Email address should be included in the 'Cc' field.
+            </summary>
+        </member>
+        <member name="F:ReusableClasses.DataMule.EmailSendTarget.Bcc">
+            <summary>
+            Email address should be included in the 'Bcc' field.
+            </summary>
+        </member>
+        <member name="T:ReusableClasses.DataMule.EmailHelper">
+            <summary>
+            Class used for generating and sending emails.
+            </summary>
+        </member>
+        <member name="F:ReusableClasses.DataMule.EmailHelper.emailAddresses">
+            <summary>List to store email addresses to be used when sending emails.</summary>
+        </member>
+        <member name="M:ReusableClasses.DataMule.EmailHelper.#ctor">
+            <summary>Default constructor for the EmailHelper class.</summary>
+        </member>
+        <member name="M:ReusableClasses.DataMule.EmailHelper.#ctor(System.String,System.Int32,System.String,System.Boolean)">
+            <summary>Parameterized constructor for the EmailHelper class.</summary>
+            <param name="host">Host to use to send emails.</param>
+            <param name="port">Port to use to send emails.</param>
+            <param name="sender">Email address of the sender.</param>
+            <param name="useSSL">Whether or not to use Secure Sockets Layer for sending emails.</param>
+        </member>
+        <member name="M:ReusableClasses.DataMule.EmailHelper.Init(System.String,System.Int32,System.String,System.Boolean)">
+            <summary>
+            Initialization method for the EmailHelper class.
+            Used by the Constructor methods.
+            </summary>
+            <param name="host">Host to use to send emails.</param>
+            <param name="port">Port to use to send emails.</param>
+            <param name="sender">Email address of the sender.</param>
+            <param name="useSSL">Whether or not to use Secure Sockets Layer for sending emails.</param>
+        </member>
+        <member name="M:ReusableClasses.DataMule.EmailHelper.AddEmail(ReusableClasses.DataMule.EmailAddress)">
+            <summary>Adds the specified email address to the list of email addresses.</summary>
+            <param name="address">Email address to add.</param>
+        </member>
+        <member name="M:ReusableClasses.DataMule.EmailHelper.SendEmail(System.String,System.String)">
+            <summary>Sends an HTML-enabled email message to the addresses stored in the EmailAddresses property.</summary>
+            <param name="subject">Subject line of the email.</param>
+            <param name="message">Message text to send.</param>
+        </member>
+        <member name="M:ReusableClasses.DataMule.EmailHelper.GenerateMailMessage(System.String,System.String)">
+            <summary>Generates an email address for sending with the specified message body.</summary>
+            <param name="subject">Subject of the email.</param>
+            <param name="message">Body of the email.</param>
+            <returns>MailMessage for sending.</returns>
+        </member>
+        <member name="M:ReusableClasses.DataMule.EmailHelper.GetAddresses(ReusableClasses.DataMule.EmailSendTarget)">
+            <summary>Gets a collection of email addresses to send a MailMessage to.</summary>
+            <param name="addressType">Email address serverType to.</param>
+            <returns></returns>
+        </member>
+        <member name="M:ReusableClasses.DataMule.EmailHelper.SetToAddresses(System.Net.Mail.MailMessage)">
+            <summary>Sets the To addresses for the email.</summary>
+            <param name="emailToSend">Email to set To addresses of.</param>
+        </member>
+        <member name="M:ReusableClasses.DataMule.EmailHelper.SetCcAddresses(System.Net.Mail.MailMessage)">
+            <summary>Sets the Cc addresses for the email.</summary>
+            <param name="emailToSend">Email to set To addresses of.</param>
+        </member>
+        <member name="M:ReusableClasses.DataMule.EmailHelper.SetBccAddresses(System.Net.Mail.MailMessage)">
+            <summary>Sets the Bcc addresses for the email.</summary>
+            <param name="emailToSend">Email to set To addresses of.</param>
+        </member>
+        <member name="P:ReusableClasses.DataMule.EmailHelper.Host">
+            <summary>Gets the host used for sending emails.</summary>
+        </member>
+        <member name="P:ReusableClasses.DataMule.EmailHelper.Port">
+            <summary>Gets the port used for sending emails.</summary>
+        </member>
+        <member name="P:ReusableClasses.DataMule.EmailHelper.Sender">
+            <summary>Gets the email address of the sender.</summary>
+        </member>
+        <member name="P:ReusableClasses.DataMule.EmailHelper.UseSSL">
+            <summary>Gets whether or not to use SSL in sending emails.</summary>
+        </member>
+        <member name="P:ReusableClasses.DataMule.EmailHelper.EmailAddresses">
+            <summary>Array of email addresses used when sending emails.</summary>
+        </member>
+        <member name="T:ReusableClasses.DataMule.INIException">
+            <summary>Represents errors that occur during INI parsing.</summary>
+        </member>
+        <member name="M:ReusableClasses.DataMule.INIException.#ctor(System.String,System.String)">
+            <summary>Instantiates a new instance of the INIException class.</summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="iniLine">The line in the INI file that caused the error.</param>
+        </member>
+        <member name="P:ReusableClasses.DataMule.INIException.INILine">
+            <summary>Gets the line that caused an error in the INI file.</summary>
+        </member>
+        <member name="T:ReusableClasses.DataMule.ILoggable">
+            <summary>Defines a method for writing log file entries.</summary>
+        </member>
+        <member name="M:ReusableClasses.DataMule.ILoggable.WriteToLog(System.String)">
+            <summary>Writes a message to a log file.</summary>
+            <param name="msg">Message to log.</param>
+        </member>
+        <member name="M:ReusableClasses.DataMule.ILoggable.WriteToLog(System.Exception)">
+            <summary>Logs information about an exception to a log file.</summary>
+            <param name="ex">Exception to log.</param>
+        </member>
+        <member name="T:ReusableClasses.DataMule.DMLogger">
+            <summary>Class used for generating log files.</summary>
+        </member>
+        <member name="F:ReusableClasses.DataMule.DMLogger.logPadlock">
+            <summary>Used to lock the log stream while reading or writing.</summary>
+        </member>
+        <member name="M:ReusableClasses.DataMule.DMLogger.#ctor(ReusableClasses.DataMule.DMLoggerSettings)">
+            <summary>Instantiates a new instance of the DMLogger class</summary>
+            <param name="settings">Settings to be used for logging.</param>
+        </member>
+        <member name="M:ReusableClasses.DataMule.DMLogger.LoadSettings(ReusableClasses.DataMule.DMLoggerSettings)">
+            <summary>Loads settings to be used for logging. Overwrites any current settings.</summary>
+            <param name="settings">Settings to be used for logging.</param>
+        </member>
+        <member name="M:ReusableClasses.DataMule.DMLogger.WriteToLog(System.String)">
+            <summary>Writes a message to the log file.</summary>
+            <param name="msg">Message to write.</param>
+        </member>
+        <member name="M:ReusableClasses.DataMule.DMLogger.WriteToLog(System.Exception)">
+            <summary>Writes an exception to the log file.</summary>
+            <param name="ex">Exception to write.</param>
+        </member>
+        <member name="M:ReusableClasses.DataMule.DMLogger.WriteToLog(System.String,System.Boolean)">
+            <summary>Writes a message to the log file.</summary>
+            <param name="msg">Message to write.</param>
+            <param name="echoToDebug">Whether or not to echo the log message to System.Diagnostics.Debug.</param>
+        </member>
+        <member name="M:ReusableClasses.DataMule.DMLogger.ReadFromLog">
+            <summary>Reads contents from the log file.</summary>
+            <returns>Byte array containing file contents.</returns>
+        </member>
+        <member name="M:ReusableClasses.DataMule.DMLogger.ReadFromLog(System.Int32)">
+            <summary>Reads contents from the log file.</summary>
+            <param name="startingPos">Starting position to read from.</param>
+            <returns>Byte array containing file contents.</returns>
+        </member>
+        <member name="M:ReusableClasses.DataMule.DMLogger.ReadFromLog(System.Int32,System.Int32)">
+            <summary>Reads contents from the log file.</summary>
+            <param name="startingPos">Starting position to read from.</param>
+            <param name="bufferSize">Size of the buffer to use when reading from file.</param>
+            <returns>Byte array containing file contents.</returns>
+        </member>
+        <member name="M:ReusableClasses.DataMule.DMLogger.ReadFromArchivedFile(System.String)">
+            <summary>Reads the entire contents of an archived file located in the Settings archive directory.</summary>
+            <param name="fileName">Name of file to read.</param>
+            <returns>Byte array of file contents.</returns>
+        </member>
+        <member name="M:ReusableClasses.DataMule.DMLogger.Dispose">
+            <summary>Disposes of the Logger object.</summary>
+        </member>
+        <member name="P:ReusableClasses.DataMule.DMLogger.Settings">
+            <summary>Gets the settings for the logger.</summary>
+        </member>
+        <member name="P:ReusableClasses.DataMule.DMLogger.LogFile">
+            <summary>Gets file info for the current log file for ease of access for writing and reading.</summary>
+        </member>
+        <member name="P:ReusableClasses.DataMule.DMLogger.LoggerGuid">
+            <summary>Gets the logger's identifying Guid.</summary>
+        </member>
+        <member name="T:ReusableClasses.DataMule.DMLoggerSettings">
+            <summary>Class used to store settings used for logging.</summary>
+        </member>
+        <member name="M:ReusableClasses.DataMule.DMLoggerSettings.#ctor(System.String)">
+            <summary>Instantiates a new instance of the DMLoggerSettings class.</summary>
+            <param name="defaultFilename"></param>
+        </member>
+        <member name="M:ReusableClasses.DataMule.DMLoggerSettings.LoadFromIniFile(System.String,System.String)">
+            <summary>Loads log setting information from an .ini file.</summary>
+            <param name="path">Path of file to load.</param>
+            <param name="filename">Name of file to load settings from.</param>
+        </member>
+        <member name="M:ReusableClasses.DataMule.DMLoggerSettings.LoadFromIniFile(System.String)">
+            <summary>Loads log setting information from an .ini file.</summary>
+            <param name="iniFile">Path and name of ini file to load.</param>
+            <exception cref="T:ReusableClasses.DataMule.INIException"></exception>
+        </member>
+        <member name="P:ReusableClasses.DataMule.DMLoggerSettings.FileName">
+            <summary>Gets or sets the name of the log file.</summary>
+        </member>
+        <member name="P:ReusableClasses.DataMule.DMLoggerSettings.LogDirectory">
+            <summary>Gets or sets the directory where the log files are written.</summary>
+        </member>
+        <member name="P:ReusableClasses.DataMule.DMLoggerSettings.LogArchiveDirectory">
+            <summary>Gets or sets the directory where log files are to be archived.</summary>
+        </member>
+        <member name="P:ReusableClasses.DataMule.DMLoggerSettings.FullPath">
+            <summary>Gets the full path of the log file.</summary>
+        </member>
+        <member name="T:ReusableClasses.DataMule.SingletonLoggerSettings">
+            <summary>
+            Class used to store settings for a SingletonLogger object.
+            Inherits from class LoggerSettings.
+            </summary>
+        </member>
+        <member name="F:ReusableClasses.DataMule.SingletonLoggerSettings.LOG_INI_FILE">
+            <summary>File name of the ini file to load from.</summary>
+        </member>
+        <member name="M:ReusableClasses.DataMule.SingletonLoggerSettings.#ctor(System.String)">
+            <summary>Instantiates an instance of the SingletonLoggerSettings class.</summary>
+        </member>
+        <member name="P:ReusableClasses.DataMule.SingletonLoggerSettings.QueueSize">
+            <summary>Gets the maximum number of log entries that can be stored in the queue before the queue is written to disk.</summary>
+        </member>
+        <member name="P:ReusableClasses.DataMule.SingletonLoggerSettings.SecondsBetweenWrites">
+            <summary>Gets the maximum number of seconds between writes to disk.</summary>
+        </member>
+        <member name="P:ReusableClasses.DataMule.SingletonLoggerSettings.MaximumFileSize">
+            <summary>Gets the maximum size of the log file in Kilobytes.</summary>
+        </member>
+        <member name="P:ReusableClasses.DataMule.SingletonLoggerSettings.LogLevel">
+            <summary>Gets or sets the minimum log level of log entries to write.</summary>
+        </member>
+        <member name="T:ReusableClasses.DataMule.SingletonLogger">
+            <summary>
+            Singleton class used for writing log entries to file.
+            Instance of the class is accessed by the SingletonLogger.Instance property.
+            </summary>
+        </member>
+        <member name="F:ReusableClasses.DataMule.SingletonLogger.loggerLock">
+            <summary>Used for locking the SingletonLogger while performing actions.</summary>
+        </member>
+        <member name="F:ReusableClasses.DataMule.SingletonLogger.logHeartbeat">
+            <summary>Timer used to check if the log queue needs to be flushed based on number of seconds since last flush.</summary>
+        </member>
+        <member name="F:ReusableClasses.DataMule.SingletonLogger.stopWatch">
+            <summary>Stopwatch used to evaluate the number of seconds since last log queue flush.</summary>
+        </member>
+        <member name="F:ReusableClasses.DataMule.SingletonLogger.logQueue">
+            <summary>
+            Stores log messages in a queue to be written to disk.
+            Queue is flushed when the maximum number of records is queued or a specified amount of time has passed
+            between flushes.  Both settings are defined in the GD.DataMule.UtilityClasses.LoggerSettings class.
+            </summary>
+        </member>
+        <member name="F:ReusableClasses.DataMule.SingletonLogger.instance">
+            <summary>
+            Backing field for the Instance property.
+            Stores the single instance of the SingletonLogger class.
+            </summary>
+        </member>
+        <member name="M:ReusableClasses.DataMule.SingletonLogger.#cctor">
+            <summary>Static constructor for the GD.DataMule.UtilityClasses.SingletonLogger class.</summary>
+        </member>
+        <member name="M:ReusableClasses.DataMule.SingletonLogger.#ctor">
+            <summary>Initializes a new instance of the GD.DataMule.UtilityClasses.SingletonLogger class.</summary>
+        </member>
+        <member name="M:ReusableClasses.DataMule.SingletonLogger.Initialize(System.String)">
+            <summary>
+            Initializes the SingletonLogger
+            </summary>
+            <param name="logFilename">Name of the log file to be used.</param>
+        </member>
+        <member name="M:ReusableClasses.DataMule.SingletonLogger.Dispose">
+            <summary>Disposes the SingletonLoggerClass.</summary>
+        </member>
+        <member name="M:ReusableClasses.DataMule.SingletonLogger.AddLog(ReusableClasses.DataMule.LogEntry)">
+            <summary>Adds a LogEntry object to the log queue.</summary>
+            <param name="log">LogEntry object containing log information.</param>
+        </member>
+        <member name="M:ReusableClasses.DataMule.SingletonLogger.AddLog(System.String,ReusableClasses.DataMule.LogLevel)">
+            <summary>Adds a LogEntry object to the log queue.</summary>
+            <param name="msg">Message to log.</param>
+            <param name="lvl">Type of log to queue.</param>
+        </member>
+        <member name="M:ReusableClasses.DataMule.SingletonLogger.AddDebugLog(System.String)">
+            <summary>Adds a log entry of type 'Debug' to the log queue.</summary>
+            <param name="msg">Message to log.</param>
+        </member>
+        <member name="M:ReusableClasses.DataMule.SingletonLogger.AddInfoLog(System.String)">
+            <summary>Adds a log entry of type 'Info' to the log queue.</summary>
+            <param name="msg">Message to log.</param>
+        </member>
+        <member name="M:ReusableClasses.DataMule.SingletonLogger.AddWarningLog(System.String)">
+            <summary>Adds a log entry of type 'Warning' to the log queue.</summary>
+            <param name="msg">Message to log.</param>
+        </member>
+        <member name="M:ReusableClasses.DataMule.SingletonLogger.AddErrorLog(System.String)">
+            <summary>Adds a log entry of type 'Error' to the log queue.</summary>
+            <param name="msg">Message to log.</param>
+        </member>
+        <member name="M:ReusableClasses.DataMule.SingletonLogger.WriteToLog(System.String)">
+            <summary>Adds an informational log entry to the log queue.</summary>
+            <param name="msg">Message to log.</param>
+        </member>
+        <member name="M:ReusableClasses.DataMule.SingletonLogger.WriteToLog(System.Exception)">
+            <summary>Writes an error log entry to the log queue.</summary>
+            <param name="ex">Exception to log.</param>
+        </member>
+        <member name="M:ReusableClasses.DataMule.SingletonLogger.StartLoggerHeartbeat">
+            <summary>
+            Creates a timer that ticks every second to check that the log queue is flushed
+            at a minimum of the interval defined by LoggerSettings.SecondsBetweenWrites.
+            </summary>
+        </member>
+        <member name="M:ReusableClasses.DataMule.SingletonLogger.FlushQueue">
+            <summary>Writes all logs in the queue to file.</summary>
+        </member>
+        <member name="M:ReusableClasses.DataMule.SingletonLogger.CheckLastLogWriteTime(System.Object)">
+            <summary>Timer callback function to check if the log queue needs to be flushed to disk based on number of seconds since the last queue flush.</summary>
+            <param name="state">State of the timer.</param>
+        </member>
+        <member name="M:ReusableClasses.DataMule.SingletonLogger.OpenLogFile(System.String,System.Boolean)">
+            <summary>Opens a file to write log entries to.</summary>
+            <param name="logFile">Path and name of file to write to.</param>
+            <param name="openForAppending">True if open the file for appending, false if opening to overwrite.</param>
+            <remarks>If an exception is encountered, the exception will be caught and thrown in a new Exception's InnerException property.</remarks>
+            <returns>StreamWriter object for the specified logFile, or null if an exception was encountered.</returns>
+        </member>
+        <member name="M:ReusableClasses.DataMule.SingletonLogger.ArchiveLogFile(System.String,System.String)">
+            <summary>
+            Moves the specified log file into a specified archive directory.
+            Appends a time stamp to the name of the archived file indicating when the file was archived.
+            Throws an Exception if an error is encountered while archiving the file.
+            </summary>
+            <param name="fileName">File to archive.</param>
+            <param name="archiveDirectory">Archive directory for the file.</param>
+        </member>
+        <member name="P:ReusableClasses.DataMule.SingletonLogger.Instance">
+            <summary>Gets the singleton instance of the SingletonLogger class.</summary>
+        </member>
+        <member name="P:ReusableClasses.DataMule.SingletonLogger.LogFile">
+            <summary>Returns the path and name of the log file.</summary>
+        </member>
+        <member name="P:ReusableClasses.DataMule.SingletonLogger.MaximumFileSizeReached">
+            <summary>Gets the result of checking if the current size of the log file has reached the specified maximum file size.</summary>
+        </member>
+        <member name="P:ReusableClasses.DataMule.SingletonLogger.Settings">
+            <summary>Gets the settings for the logger.</summary>
+        </member>
+        <member name="T:ReusableClasses.DataMule.LogEntry">
+            <summary>
+            Class representing an entry to write to a log file.
+            </summary>
+        </member>
+        <member name="M:ReusableClasses.DataMule.LogEntry.#ctor(System.String,ReusableClasses.DataMule.LogLevel)">
+            <summary>
+            Initializes a new instance of the GD.DataMule.UtilityClasses.LogEntry class.
+            </summary>
+            <param name="msg">Log message to write.</param>
+            <param name="lvl">Type of log entry to write.</param>
+        </member>
+        <member name="P:ReusableClasses.DataMule.LogEntry.Message">
+            <summary>
+            Gets the text to write to the log file.
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.DataMule.LogEntry.DateTimeOfLog">
+            <summary>
+            Gets the string representation of the date and time the log entry was created.
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.DataMule.LogEntry.Level">
+            <summary>
+            Gets the severity of the log entry.
+            </summary>
+        </member>
+        <member name="T:ReusableClasses.DataMule.LogLevel">
+            <summary>
+            Represents the level of the log entry.
+            </summary>
+        </member>
+        <member name="T:ReusableClasses.Email.IEmailSettings">
+            <summary>
+            Email settings interface
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.Email.IEmailSettings.SMTPServer">
+            <summary>
+            SMTP server URL.
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.Email.IEmailSettings.SMTPPort">
+            <summary>
+            SMTP server port.
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.Email.IEmailSettings.SMTPEmailAddresses">
+            <summary>
+            CSV list of email addresses to be emailed to.
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.Email.IEmailSettings.SMTPFromAddress">
+            <summary>
+            From address that should appear in the email.
+            </summary>
+        </member>
+        <member name="T:ReusableClasses.Email.EmailSettings">
+            <summary>
+            Convience class that implements the IEmailSettings interface.
+            </summary>
+        </member>
+        <member name="T:ReusableClasses.Email.Email">
+            <summary>
+            Email class.
+            </summary>
+        </member>
+        <member name="M:ReusableClasses.Email.Email.#ctor(ReusableClasses.Email.IEmailSettings)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="settings">Settings</param>
+        </member>
+        <member name="M:ReusableClasses.Email.Email.#ctor(ReusableClasses.Email.IEmailSettings,System.String,System.String)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="settings">Settings</param>
+            <param name="subject">Email subject line</param>
+            <param name="body">Email body</param>        
+        </member>
+        <member name="M:ReusableClasses.Email.Email.SendEmails">
+            <summary>
+            Send emails.
+            </summary>
+        </member>
+        <member name="T:ReusableClasses.Encryption.Encryptor">
+            <summary>Class used to encrypt and decrypt </summary>
+        </member>
+        <member name="M:ReusableClasses.Encryption.Encryptor.#ctor(System.String,System.String)">
+            <summary>Instantiates a new instance of the Encryptor class.</summary>
+            <param name="pass">Passphrase to use as the key for encryption and decryption.</param>
+            <param name="salt">Salt value.</param>
+        </member>
+        <member name="M:ReusableClasses.Encryption.Encryptor.EncryptString(System.String)">
+            <summary>Encrypts the provided string.</summary>
+            <param name="data">String to encrypt.</param>
+            <returns>Encrypted string.</returns>
+        </member>
+        <member name="M:ReusableClasses.Encryption.Encryptor.DecryptString(System.String)">
+            <summary>Decrypts the provided string.</summary>
+            <param name="data">Encrypted string to decrypt.</param>
+            <returns>Decrypted string.</returns>
+        </member>
+        <member name="P:ReusableClasses.Encryption.Encryptor.PassPhrase">
+            <summary>Gets or sets the pass phrase.</summary>
+        </member>
+        <member name="P:ReusableClasses.Encryption.Encryptor.SaltValue">
+            <summary>Gets or sets the salt value.</summary>
+        </member>
+        <member name="P:ReusableClasses.Encryption.Encryptor.HashAlgorithm">
+            <summary>Gets or sets the hash algorithm to use.</summary>
+        </member>
+        <member name="P:ReusableClasses.Encryption.Encryptor.PasswordIterations">
+            <summary>Gets or sets the number of password iterations.</summary>
+        </member>
+        <member name="P:ReusableClasses.Encryption.Encryptor.InitialVector">
+            <summary>Gets or sets the initialization vector.  Must be 16 bytes.</summary>
+        </member>
+        <member name="P:ReusableClasses.Encryption.Encryptor.KeySize">
+            <summary>Gets or sets the size of the key.  Can be 128, 192, or 256.</summary>
+        </member>
+        <member name="T:ReusableClasses.Encryption.HashAlgorithm">
+            <summary>Enum for the type of has to use.</summary>
+        </member>
+        <member name="F:ReusableClasses.Encryption.HashAlgorithm.MD5">
+            <summary>Use the MD5 hash algorithm.</summary>
+        </member>
+        <member name="F:ReusableClasses.Encryption.HashAlgorithm.SHA1">
+            <summary>Use the SHA1 hash algorithm.</summary>
+        </member>
+        <member name="T:ReusableClasses.Extensions.EnumExtensions">
+            <summary>
+            Class containing extension methods 
+            </summary>
+        </member>
+        <member name="M:ReusableClasses.Extensions.EnumExtensions.GetStringValue(System.Enum)">
+            <summary>Returns the value set in the StringAttribute attribute of the enum.</summary>
+            <param name="e">Enum to get the StringAttribute value of.</param>
+            <returns>The string value specified in the StringAttribute if it exists, or an empty string.</returns>
+        </member>
+        <member name="T:ReusableClasses.Extensions.PropertyExtensions">
+            <summary>Class for providing extension methods for working with object Properties.</summary>
+        </member>
+        <member name="M:ReusableClasses.Extensions.PropertyExtensions.TryGetSerializeTag(System.Reflection.PropertyInfo,System.String@)">
+            <summary>Gets the value stored in the property's SerializeTag attribute.</summary>
+            <param name="property">Property to get the attribute value of.</param>
+            <param name="tag">Out parameter with the value of the attribute.</param>
+            <returns>True if a SerializeTag attribute was found on the property, false otherwise.</returns>
+        </member>
+        <member name="M:ReusableClasses.Extensions.PropertyExtensions.IsCollection(System.Reflection.PropertyInfo)">
+            <summary>Gets whether or not the property's type is a collection.</summary>
+            <param name="property">Property to check.</param>
+            <returns>True if the property is a collection, false otherwise.</returns>
+        </member>
+        <member name="T:ReusableClasses.Extensions.SerializeTag">
+            <summary>Defines an attribute used for the identifier when serializing chart properties.</summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:ReusableClasses.Extensions.SerializeTag.#ctor(System.String)" -->
+        <member name="P:ReusableClasses.Extensions.SerializeTag.Value">
+            <summary>Gets the attribute's value.</summary>
+        </member>
+        <member name="T:ReusableClasses.Extensions.StringAttribute">
+            <summary>Represents an attribute used to store a string value.</summary>
+        </member>
+        <member name="M:ReusableClasses.Extensions.StringAttribute.#ctor(System.String)">
+            <summary>Represents an attribute used for storing a string value.</summary>
+            <param name="stringVal">String value to store.</param>
+        </member>
+        <member name="P:ReusableClasses.Extensions.StringAttribute.StringValue">
+            <summary>Gets the string value stored by the StringAttribute.</summary>
+        </member>
+        <member name="T:ReusableClasses.HeartBeat.HeartBeatException">
+            <summary>
+            Exception for the HeartBeat classes.
+            </summary>
+        </member>
+        <member name="T:ReusableClasses.HeartBeat.HeartBeatGeneratorExceptionHandler">
+            <summary>
+             Event delegate for heartbeat generator exceptions.
+            </summary>
+            <param name="sender">The sender of the callback.</param>
+            <param name="e">The exeption that occurred.</param>
+        </member>
+        <member name="T:ReusableClasses.HeartBeat.HeartBeatGeneratorMessageHandler">
+            <summary>
+             Event delegate for heartbeat message.
+            </summary>
+            <param name="sender">The sender of the callback.</param>
+            <param name="e">The meesage from the heartbeat generator. </param>
+        </member>
+        <member name="T:ReusableClasses.HeartBeat.HeartBeatGenerator">
+            <summary>
+            Generates a heartbeat to be monitored by the heartbeat monitor.
+            </summary>
+        </member>
+        <member name="M:ReusableClasses.HeartBeat.HeartBeatGenerator.#ctor(System.String,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="ipAddress">IPaddress to send the heartbeat to. </param>
+            <param name="port">Port to send the heartbeat to.</param>
+            <param name="timeout">Amount of time to wait for a server connection before a heart failure is assumed.</param>
+            <param name="pulse">Number of heartbeat timouts to allow on start up before a missed heartbeat is considered
+            an error.</param>
+            <param name="startupAllowedBeatMisses">Number of heartbeat timouts to allow on start up before a missed heartbeat is considered
+            an error.</param>
+        </member>
+        <member name="M:ReusableClasses.HeartBeat.HeartBeatGenerator.StartHeartBeat">
+            <summary>
+            Start sending heartbeats.
+            </summary>
+        </member>
+        <member name="M:ReusableClasses.HeartBeat.HeartBeatGenerator.StopHeartBeat">
+            <summary>
+            Stop sending heartbeats.
+            </summary>
+        </member>
+        <member name="M:ReusableClasses.HeartBeat.HeartBeatGenerator.DoHeartbeatMessage(System.String)">
+            <summary>
+            Called when a heartbeat is received.
+            </summary>
+            <param name="message">The message from the heartbeat monitor.</param>
+        </member>
+        <member name="M:ReusableClasses.HeartBeat.HeartBeatGenerator.doHeartBeat">
+            <summary>
+            Worker method for heartbeat thread.
+            </summary>
+        </member>
+        <member name="M:ReusableClasses.HeartBeat.HeartBeatGenerator.DoConnectClientCallback(System.IAsyncResult)">
+            <summary>
+            Call back for async client connect method.
+            </summary>
+            <param name="ar">IAsyncResult</param>
+        </member>
+        <member name="P:ReusableClasses.HeartBeat.HeartBeatGenerator.IPAddress">
+            <summary>
+            IPaddress to send the heartbeat to.
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.HeartBeat.HeartBeatGenerator.Port">
+            <summary>
+            Port to send the heartbeat to.
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.HeartBeat.HeartBeatGenerator.HeartBeatGeneratorException">
+            <summary>
+            Event to call when an exception occurs. Typically, this will be caused by either 
+            a timeout or communications failure. Either way, when this callback method is called,
+            it should be interpreted as a heart failure.
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.HeartBeat.HeartBeatGenerator.HeartBeatGeneratorMessage">
+            <summary>
+            Event to call when a heartbeat is generated.
+            Typically, the message is the heartbeat message.
+            However, this can be ovridden to provide other information.
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.HeartBeat.HeartBeatGenerator.Timeout">
+            <summary>
+            Amount of time to wait for a server connection before a heart failure is assumed.
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.HeartBeat.HeartBeatGenerator.Pulse">
+            <summary>
+            Amount of time to wait between connection attempts.
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.HeartBeat.HeartBeatGenerator.StartupAllowedBeatMisses">
+            <summary>
+            Number of heartbeat timouts to allow on start up before a missed heartbeat is considered
+            an error.
+            </summary>
+        </member>
+        <member name="T:ReusableClasses.HeartBeat.HeartBeatMonitorExceptionHandler">
+            <summary>
+             Event delegate for heartbeat monitor exceptions.
+            </summary>
+            <param name="sender">The sender of the callback.</param>
+            <param name="e">The exeption that occurred.</param>
+        </member>
+        <member name="T:ReusableClasses.HeartBeat.HeartBeatMonitorMessageHandler">
+            <summary>
+             Event delegate for heartbeat message.
+            </summary>
+            <param name="sender">The sender of the callback.</param>
+            <param name="e">The meesage from the heartbeat monitor. </param>
+        </member>
+        <member name="T:ReusableClasses.HeartBeat.HeartBeatMonitor">
+            <summary>
+            Monitors the heartbeat generated by the heartbeat generator class.
+            </summary>
+        </member>
+        <member name="F:ReusableClasses.HeartBeat.HeartBeatMonitor.HEART_BEAT">
+            <summary>
+            Default heartbeat message.
+            </summary>
+        </member>
+        <member name="M:ReusableClasses.HeartBeat.HeartBeatMonitor.#ctor(System.Net.IPAddress,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="ipAdress">Ipaddress to monitor</param>
+            <param name="port">Port to monitor</param>
+            <param name="timeout">Amount of time to wait until a heart failure is assumed.</param>
+            <param name="startupAllowedBeatMisses">Number of heartbeat timouts to allow on start up before a missed heartbeat is considered
+            an error.</param>
+        </member>
+        <member name="M:ReusableClasses.HeartBeat.HeartBeatMonitor.Finalize">
+            <summary>
+            Destructor.
+            </summary>
+        </member>
+        <member name="M:ReusableClasses.HeartBeat.HeartBeatMonitor.StopListeningForHeartBeat">
+            <summary>
+            Stops the heartbeat monitor.
+            </summary>
+        </member>
+        <member name="M:ReusableClasses.HeartBeat.HeartBeatMonitor.StartListeningForHeartBeat">
+            <summary>
+            Starts the heartbeat monitor.
+            </summary>
+        </member>
+        <member name="M:ReusableClasses.HeartBeat.HeartBeatMonitor.doListenThread">
+            <summary>
+            Work method for the listener thread.
+            </summary>
+        </member>
+        <member name="M:ReusableClasses.HeartBeat.HeartBeatMonitor.DoHeartbeatMessage(System.String)">
+            <summary>
+            Called when a heartbeat is received.
+            </summary>
+            <param name="message">The message from the heartbeat monitor.</param>
+        </member>
+        <member name="M:ReusableClasses.HeartBeat.HeartBeatMonitor.DoAcceptTcpClientCallback(System.IAsyncResult)">
+            <summary>
+            Call back for async client accept method.
+            </summary>
+            <param name="ar">IAsyncResult</param>
+        </member>
+        <member name="P:ReusableClasses.HeartBeat.HeartBeatMonitor.HeartBeatMonitorException">
+            <summary>
+            Event to call when an exception occurs. Typically, this will be caused by either 
+            a timeout or communications failure. Either way, when this callback method is called,
+            it should be interpreted as a heart failure.
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.HeartBeat.HeartBeatMonitor.HeartBeatMonitorMessage">
+            <summary>
+            Event to call when a heartbeat is received.
+            Typically, the message is the heartbeat message.
+            However, this can be ovridden to provide other information.
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.HeartBeat.HeartBeatMonitor.Timeout">
+            <summary>
+            Amount of time to wait for a client connection before a heart failure is assumed.
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.HeartBeat.HeartBeatMonitor.StartupAllowedBeatMisses">
+            <summary>
+            Number of heartbeat timouts to allow on start up before a missed heartbeat is considered
+            an error.
+            </summary>
+        </member>
+        <member name="T:ReusableClasses.HelperClasses.DirectoryHelper">
+            <summary>
+            Static class containing methods used to assist when working with directories.
+            </summary>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.DirectoryHelper.TryGetDirectoryInfo(System.String,System.IO.DirectoryInfo@)">
+            <summary>Gets a DirectoryInfo object for the directory.  A return value indicates if a DirectoryInfo object was successfully created.</summary>
+            <param name="directory">Directory to get information for.</param>
+            <param name="di">Out parameter for the DirectoryInfo object to be generated for the directory.</param>
+            <returns>True if a DirectoryInfo object was successfully created for the directory.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.DirectoryHelper.TryCreateDirectory(System.String)">
+            <summary>Creates a directory.  A return value indicates if the directory was successfully created.</summary>
+            <param name="directory">Path of the directory to create.</param>
+            <returns>True if the directory was successfully created.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.DirectoryHelper.TryCreateDirectory(System.String,System.IO.DirectoryInfo@)">
+            <summary>Creates a directory.  A return value indicates if the directory was successfully created.</summary>
+            <param name="directory">Path of the directory to create.</param>
+            <param name="directoryInfo">Out parameter for the DirectoryInfo object to be generated for the directory.</param>
+            <returns>True if the directory was successfully created.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.DirectoryHelper.GetAllFiles(System.String)">
+            <summary>Gets all files in the provided directory and any subdirectories.</summary>
+            <param name="directory">Directory to get all files from.</param>
+            <returns>Array of FileInfo objects representing all files found.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.DirectoryHelper.GetAllFiles(System.IO.DirectoryInfo)">
+            <summary>Gets all files in the provided directory and any subdirectories.</summary>
+            <param name="directory">Directory to get all files from.</param>
+            <returns>Array of FileInfo objects representing all files found.</returns>
+            <remarks>
+            TODO: Error handling for inaccessible files/directories needs to be added.
+            Used in lieu of DirectoryInfo.GetFiles("*.*", SearchOption.AllDirectories) (has issues with inaccessible directories?)
+            </remarks>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.DirectoryHelper.FindFile(System.String,System.String)">
+            <summary>Finds all files matching the provided file name in the provided directory.  Searches in subdirectories.</summary>
+            <param name="directory">Name of the directory to search in.</param>
+            <param name="fileName">Name of the file to find.</param>
+            <returns>Array of all files found matching the file name provided.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.DirectoryHelper.FindFile(System.IO.DirectoryInfo,System.String)">
+            <summary>Finds all files matching the provided file name in the provided directory.  Searches in subdirectories.</summary>
+            <param name="directory">Name of the directory to search in.</param>
+            <param name="fileName">Name of the file to find.</param>
+            <returns>Array of all files found matching the file name provided.</returns>
+        </member>
+        <member name="T:ReusableClasses.HelperClasses.ExceptionHelper">
+            <summary>
+            Helper class for the CommException class. 
+            </summary>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.ExceptionHelper.getErrorList(System.Exception,System.Collections.Generic.List{System.String})">
+            <summary>
+            Get the exception error message chain and put it into a string list.
+            </summary>
+            <param name="e">The exception chain.</param>
+            <param name="s">The string list that the exception messages should be added to.
+            If this list is null, a new list will be created.</param>
+            <returns>A string list with the exception chain messages added to it.</returns>
+        </member>
+        <member name="T:ReusableClasses.HelperClasses.FileHelper">
+            <summary>Static helper class containing methods used to assist with working with files.</summary>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.FileHelper.WriteToFile(System.IO.FileInfo,System.String,System.Boolean)">
+            <summary>Writes to the specified file.</summary>
+            <param name="fileToWriteTo">File to write to.</param>
+            <param name="contentToWrite">Contents to write to the file.</param>
+            <param name="debugEnabled">True to display debugging output.</param>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.FileHelper.WriteToFile(System.IO.FileInfo,System.String[],System.Boolean)">
+            <summary>Writes to the specified file.</summary>
+            <param name="fileToWriteTo">File to write to.</param>
+            <param name="contentToWrite">Contents to write to the file.</param>
+            <param name="debugEnabled">True to display debugging output.</param>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.FileHelper.ReadFileContents(System.String)">
+            <summary>Reads contents from a file.</summary>
+            <param name="fileToRead">Full path of file to read.</param>
+            <returns>Byte array containing file contents.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.FileHelper.ReadFileContents(System.IO.FileInfo)">
+            <summary>Reads contents from a file.</summary>
+            <param name="fileToRead">File to read.</param>
+            <returns>Byte array containing file contents.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.FileHelper.ReadFileContents(System.IO.FileInfo,System.Int32)">
+            <summary>Reads contents from a file.</summary>
+            <param name="fileToRead">File to read.</param>
+            <param name="startingPos">Starting position to read from.</param>
+            <returns>Byte array containing file contents.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.FileHelper.ReadFileContents(System.IO.FileInfo,System.Int32,System.Int32)">
+            <summary>Reads contents from a file.</summary>
+            <param name="fileToRead">File to read.</param>
+            <param name="startingPos">Starting position to read from.</param>
+            <param name="bufferSize">Size of the buffer to use when reading from file.</param>
+            <returns>Byte array containing file contents.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.FileHelper.ReadAllLines(System.String)">
+            <summary>Reads all lines in a file.</summary>
+            <param name="fileToRead">Full path of the file to read.</param>
+            <returns>String array of all lines in the file.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.FileHelper.ReadAllLines(System.IO.FileInfo)">
+            <summary>Reads all lines in a file.</summary>
+            <param name="fileToRead">FileInfo object representing the file to read.</param>
+            <returns>String array of all lines in the file.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.FileHelper.GetAvailableFileNameForCreation(System.String)">
+            <summary>
+            Gets an available file name for creation for the specified file name, in the event file name collisions occur.
+            </summary>
+            <param name="fileName">File to get a writable filename for.</param>
+            <returns>File name to be used for creation.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.FileHelper.GetFileSizeInKB(System.String)">
+            <summary>Gets the size of the specified file in Kilobytes.</summary>
+            <param name="fileName">File to get size of.</param>
+            <returns>File size in kilobytes.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.FileHelper.TryGetFileInfo(System.String,System.String,System.IO.FileInfo@)">
+            <summary>Gets a FileInfo object for the file.  A return value indicates if a FileInfo object was successfully created.</summary>
+            <param name="filename">Name of file.</param>
+            <param name="path">Directory of file.</param>
+            <param name="fileInfo">Out parameter for FileInfo object to be generated for the file.</param>
+            <returns>True if a FileInfo object was successfully created for the file and path.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.FileHelper.TryGetFileInfo(System.String,System.IO.FileInfo@)">
+            <summary>Gets a FileInfo object for the file.  A return value indicates if a FileInfo object was successfully created.</summary>
+            <param name="file">Full path and name of file.</param>
+            <param name="fileInfo">Out parameter for the FileInfo object to be generated for the file.</param>
+            <returns>True if a FileInfo object was successfully created for the file.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.FileHelper.ArchiveFile(System.String,System.String)">
+            <summary>
+            Archives the specified file to the specified directory.
+            Creates a default LogArchive directory in the current domain's base directory if no archive directory is specified.
+            </summary>
+            <param name="fileToArchive">File to archive.</param>
+            <param name="archiveDirectory">Directory to archive to.</param>
+            <returns>Full path of the archived file or an empty string if no archiving was performed.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.FileHelper.ArchiveFile(System.IO.FileInfo,System.String)">
+            <summary>
+            Archives the specified file to the specified directory.
+            Creates a default LogArchive directory in the current domain's base directory if no archive directory is specified.
+            </summary>
+            <param name="fileToArchive">File to archive.</param>
+            <param name="archiveDirectory">Directory to archive to.</param>
+            <returns>Full path of the archived file or an empty string if no archiving was performed.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.FileHelper.ArchiveFile(System.IO.FileInfo,System.IO.DirectoryInfo)">
+            <summary>
+            
+            </summary>
+            <param name="fileToArchive">FileInfo for file to archive.</param>
+            <param name="archiveDirectory">DirectoryInfo for archive directory.</param>
+            <returns></returns>
+        </member>
+        <member name="T:ReusableClasses.HelperClasses.NullSafe">
+            <summary>Contains method used to assist with safely converting values between different data types.</summary>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.NullSafe.ToString(System.Object)">
+            <summary>Converts the provided value to a string.</summary>
+            <param name="val">Value to convert.</param>
+            <returns>Value as a string.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.NullSafe.ToString(System.Object,System.String)">
+            <summary>Converts the provided value to a string.</summary>
+            <param name="val">Value to convert.</param>
+            <param name="replaceVal">Replacement value to return if the conversion fails.</param>
+            <returns>Value as a string.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.NullSafe.ToDecimal(System.Object)">
+            <summary>Converts the provided value to a decimal.</summary>
+            <param name="val">Value to convert.</param>
+            <returns>Value as a decimal.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.NullSafe.ToDecimal(System.Object,System.Decimal)">
+            <summary>Converts the provided value to a decimal.</summary>
+            <param name="val">Value to convert.</param>
+            <param name="replaceVal">Replacement value to return if the conversion fails.</param>
+            <returns>Value as a decimal.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.NullSafe.ToNullableDecimal(System.Object)">
+            <summary>Converts the provided value to a nullable decimal.</summary>
+            <param name="val">Value to convert.</param>
+            <returns>Null or value as a nullable decimal.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.NullSafe.ToNullableDecimal(System.Object,System.Decimal)">
+            <summary>Converts the provided value to a nullable decimal.</summary>
+            <param name="val">Value to convert.</param>
+            <param name="replaceVal">Replacement value to return if the conversion fails.</param>
+            <returns>Null or value as a nullable decimal.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.NullSafe.ToInt(System.Object)">
+            <summary>Converts the provided value to an integer.</summary>
+            <param name="val">Value to convert.</param>
+            <returns>Value as an integer.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.NullSafe.ToInt(System.Object,System.Int32)">
+            <summary>Converts the provided value to an integer.</summary>
+            <param name="val">Value to convert.</param>
+            <param name="replaceVal">Replacement value to return if the conversion fails.</param>
+            <returns>Value as an integer.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.NullSafe.ToNullableInt(System.Object)">
+            <summary>Converts the provided value to a nullable integer.</summary>
+            <param name="val">Value to convert.</param>
+            <returns>Null or value as a nullable integer.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.NullSafe.ToNullableInt(System.Object,System.Int32)">
+            <summary>Converts the provided value to a nullable integer.</summary>
+            <param name="val">Value to convert.</param>
+            <param name="replaceVal">Replacement value to return if the conversion fails.</param>
+            <returns>Null or value as a nullable integer.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.NullSafe.ToLong(System.Object)">
+            <summary>Converts the provided value to a long.</summary>
+            <param name="val">Value to convert.</param>
+            <returns>Value as a long.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.NullSafe.ToLong(System.Object,System.Int64)">
+            <summary>Converts the provided value to a long.</summary>
+            <param name="val">Value to convert.</param>
+            <param name="replaceVal">Replacement value to return if the conversion fails.</param>
+            <returns>Value as a long.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.NullSafe.ToNullableLong(System.Object)">
+            <summary>Converts the provided value to a nullable long.</summary>
+            <param name="val">Value to convert.</param>
+            <returns>Null or value as a nullable long.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.NullSafe.ToNullableLong(System.Object,System.Int64)">
+            <summary>Converts the provided value to a nullable long.</summary>
+            <param name="val">Value to convert.</param>
+            <param name="replaceVal">Replacement value to return if the conversion fails.</param>
+            <returns>Null or value as a nullable long.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.NullSafe.ToBoolean(System.Object)">
+            <summary>Converts the provided value to a boolean.</summary>
+            <param name="val">Value to convert.</param>
+            <returns>Value as a boolean.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.NullSafe.ToNullableBoolean(System.Object)">
+            <summary>Converts the provided value to a nullable boolean.</summary>
+            <param name="val">Value to convert.</param>
+            <returns>Null or value as a nullable boolean.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.NullSafe.ToDateTime(System.Object,System.DateTime)">
+            <summary>Converts the provided value to a date.</summary>
+            <param name="val">Value to convert.</param>
+            <param name="replaceVal">Default value to return if the conversion fails.</param>
+            <returns>Value as a date.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.NullSafe.ToNullableDate(System.Object)">
+            <summary>Converts the provided value to a nullable date.</summary>
+            <param name="val">Value to convert.</param>
+            <returns>Null or value as a nullable date.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.NullSafe.ToGuid(System.Object,System.Guid)">
+            <summary>Converts the provided value to a Guid.</summary>
+            <param name="val">Value to convert.</param>
+            <param name="replaceVal">Default value to return if the conversion fails.</param>
+            <returns>Value as a Guid.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.NullSafe.ToNullableGuid(System.Object)">
+            <summary>Converts the provided value to a nullable Guid.</summary>
+            <param name="val">Value to convert.</param>
+            <returns>Null or value as a nullable Guid.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.NullSafe.ToShort(System.Object)">
+            <summary>Converts the provided value to a short.</summary>
+            <param name="val">Value to convert.</param>
+            <returns>Value as a short.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.NullSafe.ToShort(System.Object,System.Int16)">
+            <summary>Converts the provided value to a short.</summary>
+            <param name="val">Value to convert.</param>
+            <param name="replaceVal">Replacement value to return if the conversion fails.</param>
+            <returns>Value as a short.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.NullSafe.ToNullableShort(System.Object)">
+            <summary>Converts the provided value to a nullable short.</summary>
+            <param name="val">Value to convert.</param>
+            <returns>Null or value as a nullable short.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.NullSafe.ToNullableShort(System.Object,System.Int16)">
+            <summary>Converts the provided value to a nullable short.</summary>
+            <param name="val">Value to convert.</param>
+            <param name="replaceVal">Replacement value to return if the conversion fails.</param>
+            <returns>Null or value as a nullable short.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.NullSafe.ToSingle(System.Object)">
+            <summary>Converts the provided value to a Single.</summary>
+            <param name="val">Value to convert.</param>
+            <returns>Value as a Single.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.NullSafe.ToSingle(System.Object,System.Single)">
+            <summary>Converts the provided value to a Single.</summary>
+            <param name="val">Value to convert.</param>
+            <param name="replaceVal">Replacement value to return if the conversion fails.</param>
+            <returns>Value as a Single.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.NullSafe.ToNullableSingle(System.Object)">
+            <summary>Converts the provided value to a nullable Single.</summary>
+            <param name="val">Value to convert.</param>
+            <returns>Null or value as a nullable Single.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.NullSafe.ToNullableSingle(System.Object,System.Single)">
+            <summary>Converts the provided value to a nullable Single.</summary>
+            <param name="val">Value to convert.</param>
+            <param name="replaceVal">Replacement value to return if the conversion fails.</param>
+            <returns>Null or value as a nullable Single.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.NullSafe.ToDouble(System.Object)">
+            <summary>Converts the provided value to a double.</summary>
+            <param name="val">Value to convert.</param>
+            <returns>Value as a double.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.NullSafe.ToDouble(System.Object,System.Double)">
+            <summary>Converts the provided value to a double.</summary>
+            <param name="val">Value to convert.</param>
+            <param name="replaceVal">Replacement value to return if the conversion fails.</param>
+            <returns>Value as a double.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.NullSafe.ToNullableDouble(System.Object)">
+            <summary>Converts the provided value to a nullable double.</summary>
+            <param name="val">Value to convert.</param>
+            <returns>Null or value as a nullable double.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.NullSafe.ToNullableDouble(System.Object,System.Double)">
+            <summary>Converts the provided value to a nullable double.</summary>
+            <param name="val">Value to convert.</param>
+            <param name="replaceVal">Replacement value to return if the conversion fails.</param>
+            <returns>Null or value as a nullable double.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.NumberFunctions.EnsureBounds(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Ensures that an integer is between the provided min and max values.<para />
+            If not, sets the integer's value to the min or max value.
+            </summary>
+            <param name="value">Integer to check.</param>
+            <param name="min">Minimum value allowed for the integer.</param>
+            <param name="max">Maximium value allowed for the integer.</param>
+            <returns>Value passed to the method, or the minimum or maximum value if value is outside the bounds.</returns>
+        </member>
+        <member name="T:ReusableClasses.HelperClasses.PingHelper">
+            <summary>
+            Static class defining methods for pinging target servers.
+            </summary>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.PingHelper.PingServer(System.String,System.Int32,System.Int32)">
+            <summary>
+            Pings a user-specified server and returns the success of the call.
+            </summary>
+            <exception cref="T:System.Net.NetworkInformation.PingException"></exception>
+            <exception cref="T:System.ObjectDisposedException"></exception>
+            <exception cref="T:System.InvalidOperationException"></exception>
+            <param name="host">IP Address or site to ping.</param>
+            <param name="timeout">Specifies the timeout when pinging, in milliseconds.</param>
+            <param name="retryCount">Number of attempts to ping the server.</param>
+            <returns>True if successfully pinged, false otherwise.</returns>
+        </member>
+        <member name="T:ReusableClasses.HelperClasses.PropertyHelper">
+            <summary>Helper class to assist with working with properties.</summary>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.PropertyHelper.TrySetProperty(System.Object,System.String,System.Object)">
+            <summary>
+            Attempts to set a property of the provided object to the provided value.
+            Defaults to checking the "GD.DataMule.UtilityClasses" namespace for parsing Enums.
+            Throws exceptions that occur when parsing the value if the property is an Enum.
+            </summary>
+            <param name="obj">Object containing the property to set.</param>
+            <param name="propertyName">Name of the property to assign a value to.</param>
+            <param name="propertyValue">Value to assign to the property.</param>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.PropertyHelper.TrySetProperty(System.Object,System.String,System.Object,System.Type)">
+            <summary>
+            Attempts to set a property of the provided object to the provided value.
+            Checks the provided namespace for parsing Enums.
+            Throws exceptions that occur when parsing the value if the property is an Enum.
+            </summary>
+            <param name="obj">Object containing the property to set.</param>
+            <param name="propertyName">Name of the property to assign a value to.</param>
+            <param name="propertyValue">Value to assign to the property.</param>
+            <param name="type">Type of object the property exists on.</param>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.PropertyHelper.TrySetProperty(System.Object,System.String,System.Object,System.String)">
+            <summary>
+            Attempts to set a property of the provided object to the provided value.
+            Checks the provided namespace if the property is an Enum.
+            Throws exceptions that occur when parsing the value if the property is an Enum.
+            </summary>
+            <param name="obj">Object containing the property to set.</param>
+            <param name="propertyName">Name of the property to assign a value to.</param>
+            <param name="propertyValue">Value to assign to the property.</param>
+            <param name="typeNamespace">Namespace to check for potential Enum properties.</param>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.PropertyHelper.TrySetProperty(System.Object,System.String,System.Object,System.String,System.Type)">
+            <summary>
+            Attempts to set a property of the provided object to the provided value.
+            Checks the provided namespace if the property is an Enum.
+            Throws exceptions that occur when parsing the value if the property is an Enum.
+            </summary>
+            <param name="obj">Object containing the property to set.</param>
+            <param name="propertyName">Name of the property to assign a value to.</param>
+            <param name="propertyValue">Value to assign to the property.</param>
+            <param name="typeNamespace">Namespace to check for potential Enum properties.</param>
+            <param name="type">Type of object the property exists on.</param>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.PropertyHelper.IsType(System.String,System.String)">
+            <summary>Checks if a Type exists for the given namespace and name.</summary>
+            <param name="typeNamespace">Namespace to check within.</param>
+            <param name="typeName">Name of the object type to check for.</param>
+            <returns>True if a type matching the provided name exists in the namespace.  False otherwise.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.PropertyHelper.IsEnum(System.String,System.String)">
+            <summary>Checks if an Enum exists for the given namespace and name.</summary>
+            <param name="typeNamespace">Namespace to check within.</param>
+            <param name="typeName">Name of the Enum to check for.</param>
+            <returns>True if an Enum matching the provided name exists in the namespace.  False otherwise.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.PropertyHelper.SetPropertyValue(System.Object,System.Type)">
+            <summary>Sets the value of the property based on the property type and returns the value back as an object.</summary>
+            <param name="propertyValue">Value to set.</param>
+            <param name="propertyType">Property being set.</param>
+            <returns>Value of the property as an object.</returns>
+        </member>
+        <member name="T:ReusableClasses.HelperClasses.StreamHelper">
+            <summary>Class containing methods to assist with working with streams.</summary>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.StreamHelper.Copy(System.IO.Stream,System.Boolean)">
+            <summary>Copies a stream into a MemoryStream object that can be re-used multiple times.</summary>
+            <param name="streamToCopy">Stream to copy.</param>
+            <param name="closeInputStream">Whether or not to close the input stream.</param>
+            <returns>Stream copy of the input stream, internally represented as a MemoryStream.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.StreamHelper.CopyAndClose(System.IO.Stream)">
+            <summary>
+            Copies a stream into a MemoryStream object that can be re-used multiple times.
+            Closes the input stream.
+            </summary>
+            <param name="streamToCopy">Stream to copy.</param>
+            <returns>Stream copy of the input stream, internally represented as a MemoryStream.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.StreamHelper.WriteToStream(System.IO.Stream,System.String)">
+            <summary>
+            Writes a string to the current position of a stream.
+            Converts the string to an array of bytes using UTF8 encoding.
+            </summary>
+            <param name="stream">Stream to write to.</param>
+            <param name="msgToWrite">String to write.</param>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.StreamHelper.WriteToStream(System.IO.Stream,System.Byte[])">
+            <summary>Writes an array of bytes to the current position of a stream.</summary>
+            <param name="stream">Stream to write to.</param>
+            <param name="bytesToWrite">Bytes to write.</param>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.StreamHelper.ToString(System.IO.Stream)">
+            <summary>Reads the contents of a stream into a string.</summary>
+            <param name="stream">Stream to read.</param>
+            <returns>Contents of the stream.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.StreamHelper.ToStringArray(System.IO.Stream)">
+            <summary>Reads the contents of each line of a stream into a string array.</summary>
+            <param name="stream">Stream to read.</param>
+            <returns>Contents of the stream.</returns>
+        </member>
+        <member name="T:ReusableClasses.HelperClasses.StringFunctions">
+            <summary>Static class containing functions for working with String objects.</summary>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.StringFunctions.IsINICommentLine(System.String)">
+            <summary>Returns whether the current line read from the ini file is a comment line.</summary>
+            <param name="line">Line from the ini file to check.</param>
+            <returns>True if a comment line, false otherwise.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.StringFunctions.ConcatenateStrings(System.String[])">
+            <summary>Concatenates an array of strings into a single string. Adds a single whitespace between strings.</summary>
+            <param name="valsToConcat">Array of strings to combine.</param>
+            <returns>Single concatenated string.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.StringFunctions.ConcatenateStrings(System.String[],System.Boolean)">
+            <summary>Concatenates an array of strings into a single string, adding an optional whitespace between strings.</summary>
+            <param name="valsToConcat">Array of strings to combine.</param>
+            <param name="addSpacers">True to add a single whitespace between strings.</param>
+            <returns>Single concatenated string.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.StringFunctions.StringListToString(System.Collections.Generic.List{System.String})">
+            <summary>Converts a string list to a single string with the default line terminator appended between each list entry.</summary>
+            <param name="stringList">String list to convert.</param>
+            <returns>Single string of the entire string list contents.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.StringFunctions.ConvertToString(System.Collections.Generic.List{System.String})">
+            <summary>Converts a string list to a single string with the default line terminator appended between each list entry.</summary>
+            <param name="stringList">String list to convert.</param>
+            <returns>Single string of the entire string list contents.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.StringFunctions.StringArrayToString(System.String[])">
+            <summary>Converts a string array to a single string with the default line terminator appended between each array value.</summary>
+            <param name="stringArray">String array to convert.</param>
+            <returns>Single string of the entire string array contents.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.StringFunctions.ConvertToString(System.String[])">
+            <summary>Converts a string array to a single string with the default line terminator appended between each array value.</summary>
+            <param name="stringArray">String array to convert.</param>
+            <returns>Single string of the entire string array contents.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.StringFunctions.AreEqual(System.String,System.String,System.Boolean)">
+            <summary>Gets whether two strings are equal after trimming whitespace.</summary>
+            <param name="a">First string to compare.</param>
+            <param name="b">Second string to compare.</param>
+            <param name="caseSensative">Whether or not to consider upper and lower case when comparing the strings.</param>
+            <returns>True if the strings are equal, false otherwise.</returns>
+        </member>
+        <member name="T:ReusableClasses.HelperClasses.XMLHelper">
+            <summary>Static class containing methods for working with XML files and XML elements.</summary>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.XMLHelper.TryLoadXMLDocument(System.String,System.String,System.Xml.XmlDocument@)">
+            <summary>Attempts to load an XML file.</summary>
+            <param name="file">Name of XML file to load.</param>
+            <param name="directory">Directory the XML file is located in.</param>
+            <param name="xmlDocument">Out parameter of the XmlDocument object representing the contents of the XML file loaded.</param>
+            <returns>True if the document was successfully loaded, false otherwise.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.XMLHelper.TryLoadXMLDocument(System.String,System.Xml.XmlDocument@)">
+            <summary>Attempts to load an XML file.</summary>
+            <param name="documentToLoad">Full directory and name of file to load.</param>
+            <param name="xmlDocument">Out parameter containing the loaded XmlDocument object.</param>
+            <returns>True if the document was successfully loaded, false otherwise.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.XMLHelper.LoadXMLDocumentFailedAction(System.Exception,System.String)">
+            <summary>Generic method for printing exceptions caught to System.Diagnostics.Debug when loading an XML document.</summary>
+            <param name="ex">Exception to print.</param>
+            <param name="message">Message to print.</param>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.XMLHelper.GetXmlNodeAttributeValue(System.Xml.XmlNode,System.String)">
+            <summary>Gets the value of an attribute of an XmlNode.</summary>
+            <param name="node">XmlNode to get the attribute value of.</param>
+            <param name="attributeName">Attribute to get the value of.</param>
+            <returns>Value of the XmlNode attribute or empty string if the attribute does not exist.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.XMLHelper.GetAttributeValue(System.Xml.XmlNode,System.String)">
+            <summary>Gets the value of an attribute of an XmlNode.</summary>
+            <param name="node">XmlNode to get the attribute value of.</param>
+            <param name="attributeName">Attribute to get the value of.</param>
+            <returns>Value of the XmlNode attribute or empty string if the attribute does not exist.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.XMLHelper.GetXmlNodeChildInnerText(System.Xml.XmlNode,System.String)">
+            <summary>
+            Gets the inner text of the child node of am xml node.
+            Only checks all immediate child nodes of the xml node.
+            </summary>
+            <param name="node">XmlNode to get the child's inner text of.</param>
+            <param name="childNodeName">Name of the child node.</param>
+            <returns>Child node's inner text or an empty string if the child node was not found.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.XMLHelper.GetChildInnerText(System.Xml.XmlNode,System.String)">
+            <summary>
+            Gets the inner text of the child node of am xml node.
+            Only checks all immediate child nodes of the xml node.
+            </summary>
+            <param name="node">XmlNode to get the child's inner text of.</param>
+            <param name="childNodeName">Name of the child node.</param>
+            <returns>Child node's inner text or an empty string if the child node was not found.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.XMLHelper.IsXmlFile(System.String)">
+            <summary>Checks that the provided file is an xml file.</summary>
+            <param name="file">Full path of file to check.</param>
+            <returns>True if the file is an xml file.</returns>
+        </member>
+        <member name="M:ReusableClasses.HelperClasses.XMLHelper.IsXmlFile(System.IO.FileInfo)">
+            <summary>Checks that the provided file is an xml file.</summary>
+            <param name="fi">File to check.</param>
+            <returns>True if the file is an xml file.</returns>        
+        </member>
+        <member name="T:ReusableClasses.Logging.Logger">
+            <summary>
+            Logging object that attempts to write to standard output console, 
+            the debug console if DEBUG defined, and a log file if settings are supplied.
+            Appends the current date/time in the format "yyyyMMddhhmmss" and a .log extention
+            to the log file prefix when setting the log file name (assuming the settings are supplied).
+            </summary>
+        </member>
+        <member name="M:ReusableClasses.Logging.Logger.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:ReusableClasses.Logging.Logger.#ctor(ReusableClasses.Logging.ILoggerSettings)">
+            <summary>
+            Construct a logger using the supplied settings.
+            </summary>
+            <param name="settings">Settings interface object.</param>
+        </member>
+        <member name="M:ReusableClasses.Logging.Logger.WriteLog(System.String)">
+            <summary>
+            Attempt to write to standard output console, 
+            the debug console if DEBUG defined, and a log file if settings are supplied.
+            </summary>
+            <param name="toWrite">String to write.</param>
+        </member>
+        <member name="M:ReusableClasses.Logging.Logger.WriteLog(System.String[])">
+            <summary>
+            Attempt to write to standard output console, 
+            the debug console if DEBUG defined, and a log file if settings are supplied.
+            </summary>
+            <param name="toWrite">Array of strings to write.</param>
+        </member>
+        <member name="M:ReusableClasses.Logging.Logger.WriteLog(System.Collections.Generic.List{System.String})">
+            <summary>
+            Attempt to write to standard output console, 
+            the debug console if DEBUG defined, and a log file if settings are supplied.
+            </summary>
+            <param name="toWrite">List of strings to write.</param>
+        </member>
+        <member name="M:ReusableClasses.Logging.Logger.WriteLog">
+            <summary>
+            Attempt to write new line to standard output console, 
+            the debug console if DEBUG defined, and a log file if settings are supplied.
+            </summary>
+        </member>
+        <member name="M:ReusableClasses.Logging.TextLogger.#ctor(ReusableClasses.Logging.ILoggerSettings,System.Windows.Forms.TextBox,System.Boolean)">
+            <summary>
+            Construct a logger using the supplied settings.
+            </summary>
+            <param name="settings">Settings interface object.</param>
+        </member>
+        <member name="M:ReusableClasses.Logging.TextLogger.#ctor(System.Windows.Forms.TextBox,System.Boolean)">
+            <summary>
+            Construct a logger.
+            </summary>
+        </member>
+        <member name="T:ReusableClasses.Logging.ILoggerSettings">
+            <summary>
+            Logger settings interface.
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.Logging.ILoggerSettings.LogFolderPath">
+            <summary>
+            Path to the log folder.
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.Logging.ILoggerSettings.LogFilePrefix">
+            <summary>
+            Log file prefix.
+            </summary>
+        </member>
+        <member name="T:ReusableClasses.Logging.LoggerSettings">
+            <summary>
+            Generic LoggerSettings convenience class that implements ILoggerSettings.
+            </summary>
+        </member>
+        <member name="T:ReusableClasses.Processes.OuputRedirectedProcess">
+            <summary>
+            A process with the output redirected. 
+            The ouptut is asynchronously redirected to the properties, "Output" and "Error".
+            While these properties can be checked at any time, they are not guaranteed to have complete data
+            until the blocking method WaitForSQLLoaderExit() is called and returns, or the HasExited property is true.
+            </summary>
+        </member>
+        <member name="M:ReusableClasses.Processes.OuputRedirectedProcess.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:ReusableClasses.Processes.OuputRedirectedProcess.SetUpProcess">
+            <summary>
+            Abstract method.
+            Set up the process. Set file name, arguments, and any other desired options here.
+            </summary>
+        </member>
+        <member name="M:ReusableClasses.Processes.OuputRedirectedProcess.StartProcess">
+            <summary>
+            Start the process.
+            </summary>
+        </member>
+        <member name="M:ReusableClasses.Processes.OuputRedirectedProcess.WaitForProcessExit">
+            <summary>
+            Block until process exits or times out.
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.Processes.OuputRedirectedProcess.Output">
+            <summary>
+            A string containing the redirected output stream.
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.Processes.OuputRedirectedProcess.Error">
+            <summary>
+            A string containing the redirected error stream.
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.Processes.OuputRedirectedProcess.Timeout">
+            <summary>
+            Timeout for SQL loader process. Defaults to -1 (infinity).
+            </summary>
+        </member>
+        <member name="T:ReusableClasses.Query.FailoverQueryException">
+            <summary>
+            Exception for the FailoverQuery class class.
+            </summary>
+        </member>
+        <member name="M:ReusableClasses.Query.FailoverQuery.GetQuery">
+            <summary>
+            Get the text of the query.
+            </summary>
+            <returns>A string that contains the text of the query.</returns>
+        </member>
+        <member name="M:ReusableClasses.Query.FailoverQuery.#ctor(ReusableClasses.Query.IConnectionSettings,ReusableClasses.Query.IConnectionSettings)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="connectionSettings">The database connection settings.</param>
+        </member>
+        <member name="M:ReusableClasses.Query.FailoverQuery.DoFailoverQuery">
+            <summary>
+            Execute the query and return the dataTable.
+            </summary>
+            <returns>The filled DataTable.</returns>
+        </member>
+        <member name="M:ReusableClasses.Query.FailoverQuery.CheckDataTable(System.Data.DataTable)">
+            <summary>
+            Check for the presence of data and the validity of a data table.
+            </summary>
+            <param name="dt">The data table to be checked.</param>
+            <returns>True if the data table is valid and contains data.</returns>
+        </member>
+        <member name="M:ReusableClasses.Query.FailoverQuery.buildConnectionString(ReusableClasses.Query.IConnectionSettings)">
+            <summary>
+            Build a Oracle connection string using the settings.
+            </summary>
+            <returns>A Oracle connection string.</returns>
+        </member>
+        <member name="T:ReusableClasses.Query.OracleCommandInfo">
+            <summary>Class for holding information for an OracleCommand.</summary>
+        </member>
+        <member name="M:ReusableClasses.Query.OracleCommandInfo.#ctor">
+            <summary>Instantiates a new instance of the OracleQueryInfo class. Defaults to a CommandType of text.</summary>
+        </member>
+        <member name="M:ReusableClasses.Query.OracleCommandInfo.#ctor(System.String,System.String)">
+            <summary>Instantiates a new instance of the OracleQueryInfo class. Defaults to a CommandType of text.</summary>
+            <param name="cmdText">Command text.</param>
+            <param name="connString">Connection string of the Oracle database.</param>
+        </member>
+        <member name="M:ReusableClasses.Query.OracleCommandInfo.#ctor(System.String,System.String,Oracle.DataAccess.Client.OracleParameter[])">
+            <summary>Instantiates a new instance of the OracleQueryInfo class. Defaults to a CommandType of text.</summary>
+            <param name="cmdText">Command text.</param>
+            <param name="connString">Connection string of the Oracle database.</param>
+            <param name="param">Oracle parameters to use for the command.</param>
+        </member>
+        <member name="M:ReusableClasses.Query.OracleCommandInfo.AddParameter(Oracle.DataAccess.Client.OracleParameter)">
+            <summary>Adds an Oracle parameter for use with the OracleCommand.</summary>
+            <param name="parameter">Oracle parameter to add.</param>
+        </member>
+        <member name="M:ReusableClasses.Query.OracleCommandInfo.AddParameter(System.Object,Oracle.DataAccess.Client.OracleDbType,System.Data.ParameterDirection)">
+            <summary>Adds an Oracle Parameter for use with the OracleCommand.</summary>
+            <param name="value">Value of the parameter.</param>
+            <param name="type">Type of the parameter.</param>
+            <param name="direction">Direction of the parameter.</param>
+        </member>
+        <member name="P:ReusableClasses.Query.OracleCommandInfo.Text">
+            <summary>Gets or sets the text for the Oracle command.</summary>
+        </member>
+        <member name="P:ReusableClasses.Query.OracleCommandInfo.ConnectionString">
+            <summary>Gets or sets the connection string for the Oracle command.</summary>
+        </member>
+        <member name="P:ReusableClasses.Query.OracleCommandInfo.CommandType">
+            <summary>Gets or sets the CommandType of the Oracle command.</summary>
+        </member>
+        <member name="P:ReusableClasses.Query.OracleCommandInfo.TableName">
+            <summary>Gets or sets the name to assign to the DataTable.</summary>
+        </member>
+        <member name="P:ReusableClasses.Query.OracleCommandInfo.Parameters">
+            <summary>Gets an array of Oracle parameters to use with the Oracle command.</summary>
+        </member>
+        <member name="T:ReusableClasses.Query.OracleWorker">
+            <summary>Contains methods for interacting with an Oracle database.</summary>
+        </member>
+        <member name="M:ReusableClasses.Query.OracleWorker.QueryDataRow(System.String,System.String)">
+            <summary>Executes an Oracle query and returns the first row from the results.</summary>
+            <param name="queryString">Query string to execute.</param>
+            <param name="connectionString">Connection string of the Oracle database.</param>
+            <returns>DataRow containing data from the first row returned.</returns>
+        </member>
+        <member name="M:ReusableClasses.Query.OracleWorker.QueryDataRow(System.String,System.String,Oracle.DataAccess.Client.OracleParameter)">
+            <summary>Executes an Oracle query and returns the first row from the results.</summary>
+            <param name="queryString">Query string to execute.</param>
+            <param name="connectionString">Connection string of the Oracle database.</param>
+            <param name="bindParameter">Oracle parameter to pass to the query.</param>
+            <returns>DataRow containing data from the first row returned.</returns>
+        </member>
+        <member name="M:ReusableClasses.Query.OracleWorker.QueryDataRow(System.String,System.String,Oracle.DataAccess.Client.OracleParameter[])">
+            <summary>Executes an Oracle query and returns the first row from the results.</summary>
+            <param name="queryString">Query string to execute.</param>
+            <param name="connectionString">Connection string of the Oracle database.</param>
+            <param name="binds">Oracle parameters to pass to the query.</param>
+            <returns>DataRow containing data from the first row returned.</returns>
+        </member>
+        <member name="M:ReusableClasses.Query.OracleWorker.QueryDataRow(ReusableClasses.Query.OracleCommandInfo)">
+            <summary>Executes an Oracle query and returns the first row from the results.</summary>
+            <param name="cmdInfo">Information about the Oracle query and connection.</param>
+            <returns>DataRow containing data from the first row returned.</returns>
+        </member>
+        <member name="M:ReusableClasses.Query.OracleWorker.QueryDataTable(System.String,System.String)">
+            <summary>Executes an Oracle query and returns the resulting DataTable.</summary>
+            <param name="queryString">Query string to execute.</param>
+            <param name="connectionString">Connection string of the Oracle database.</param>
+            <returns>DataTable containing the query results.</returns>
+        </member>
+        <member name="M:ReusableClasses.Query.OracleWorker.QueryDataTable(System.String,System.String,System.Int32)">
+            <summary>Executes an Oracle query and returns the resulting DataTable.</summary>
+            <param name="queryString">Query string to execute.</param>
+            <param name="connectionString">Connection string of the Oracle database.</param>
+            <param name="maxRecords">Maximum records to return.  Pass a non-positive integer to return all results.</param>
+            <returns>DataTable containing the query results.</returns>
+        </member>
+        <member name="M:ReusableClasses.Query.OracleWorker.QueryDataTable(System.String,System.String,Oracle.DataAccess.Client.OracleParameter[])">
+            <summary>Executes an Oracle query and returns the resulting DataTable.</summary>
+            <param name="queryString">Query string to execute.</param>
+            <param name="connectionString">Connection string of the Oracle database.</param>
+            <param name="binds">Oracle parameters to pass to the query.</param>
+            <returns>DataTable containing the query results.</returns>
+        </member>
+        <member name="M:ReusableClasses.Query.OracleWorker.QueryDataTable(System.String,System.String,Oracle.DataAccess.Client.OracleParameter[],System.Int32)">
+            <summary>Executes an Oracle query and returns the resulting DataTable.</summary>
+            <param name="queryString">Query string to execute.</param>
+            <param name="connectionString">Connection string of the Oracle database.</param>
+            <param name="binds">Oracle parameters to pass to the query.</param>
+            <param name="maxRecords">Maximum records to return.  Pass a non-positive integer to return all results.</param>
+            <returns>DataTable containing the query results.</returns>
+        </member>
+        <member name="M:ReusableClasses.Query.OracleWorker.QueryDataTable(ReusableClasses.Query.OracleCommandInfo)">
+            <summary>Executes an Oracle query and returns the resulting DataTable.</summary>
+            <param name="cmdInfo">Information about the Oracle query and connection.</param>
+            <returns>DataTable containing the query results.</returns>
+        </member>
+        <member name="M:ReusableClasses.Query.OracleWorker.QueryDataTable(ReusableClasses.Query.OracleCommandInfo,System.Int32)">
+            <summary>Executes an Oracle query and returns the resulting DataTable.</summary>
+            <param name="cmdInfo">Information about the Oracle query and connection.</param>
+            <param name="maxRecords">Maximum number of records to return.</param>
+            <returns>DataTable containing the query results.</returns>
+        </member>
+        <member name="M:ReusableClasses.Query.OracleWorker.QueryDataSet(ReusableClasses.Query.OracleCommandInfo[])">
+            <summary>Executes Oracle queries and returns all resulting DataTables in a single DataSet.</summary>
+            <param name="commandInfo">Array of commands to execute.</param>
+            <returns>DataSet containing query results.</returns>
+        </member>
+        <member name="M:ReusableClasses.Query.OracleWorker.QueryEnumerable(System.String,System.String,Oracle.DataAccess.Client.OracleParameter[])">
+            <summary>Executes an Oracle query and iterates over the resulting DataTable.</summary>
+            <param name="queryString">Query text to send to Oracle.</param>
+            <param name="connectionString">Connection string of the database to query.</param>
+            <param name="binds">Values to assign to the bind variables of the query string.</param>
+            <returns>DataRow iterator.</returns>
+        </member>
+        <member name="M:ReusableClasses.Query.OracleWorker.QueryEnumerable(ReusableClasses.Query.OracleCommandInfo)">
+            <summary>Executes an Oracle query and iterates over the resulting DataTable.</summary>
+            <param name="cmdInfo">Information about the Oracle query and connection.</param>
+            <returns>DataRow iterator.</returns>
+        </member>
+        <member name="M:ReusableClasses.Query.OracleWorker.BuildDataTable(System.Data.DataTable)">
+            <summary>Builds a DataTable object representing the results of an Oracle query.</summary>
+            <param name="schemaInfo">DataTable containing schema information about the data returned.</param>
+            <returns>DataTable object representing the structure of the results of an Oracle query.</returns>
+        </member>
+        <member name="M:ReusableClasses.Query.OracleWorker.SetParameters(Oracle.DataAccess.Client.OracleCommand,Oracle.DataAccess.Client.OracleParameter[])">
+            <summary>Sets the parameters on an OracleCommand.</summary>
+            <param name="cmd">OracleCommand to set parameters on.</param>
+            <param name="binds">Oracle parameters to assign to the command.</param>
+        </member>
+        <member name="M:ReusableClasses.Query.OracleWorker.BuildParameter(System.Object,Oracle.DataAccess.Client.OracleDbType,System.Data.ParameterDirection)">
+            <summary>Builds an Oracle Parameter to pass in an OracleCommand.</summary>
+            <param name="value">Value of the parameter.</param>
+            <param name="type">Type of the parameter.</param>
+            <param name="direction">Direction of the parameter.</param>
+            <returns>Oracle Parameter generated with the provided settings.</returns>
+        </member>
+        <member name="T:ReusableClasses.Query.SimpleQuery">
+            <summary>
+            Abstract base object that represents a simple text query that requires a DataTable to be returned.
+            </summary>
+        </member>
+        <member name="M:ReusableClasses.Query.SimpleQuery.GetQuery">
+            <summary>
+            Get the text of the query.
+            </summary>
+            <returns>A string that contains the text of the query.</returns>
+        </member>
+        <member name="M:ReusableClasses.Query.SimpleQuery.#ctor(ReusableClasses.Query.IConnectionSettings)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="connectionSettings">The database connection settings.</param>
+        </member>
+        <member name="M:ReusableClasses.Query.SimpleQuery.DoSimpleQuery">
+            <summary>
+            Execute the query and return the dataTable.
+            </summary>
+            <returns>The filled DataTable.</returns>
+        </member>
+        <member name="M:ReusableClasses.Query.SimpleQuery.CheckDataTable(System.Data.DataTable)">
+            <summary>
+            Check for the presence of data and the validity of a data table.
+            </summary>
+            <param name="dt">The data table to be checked.</param>
+            <returns>True if the data table is valid and contains data.</returns>
+        </member>
+        <member name="M:ReusableClasses.Query.SimpleQuery.buildConnectionString">
+            <summary>
+            Build a Oracle connection string using the settings.
+            </summary>
+            <returns>A Oracle connection string.</returns>
+        </member>
+        <member name="M:ReusableClasses.Query.ParameterizedQuery.#ctor(ReusableClasses.Query.IConnectionSettings)">
+            <summary>
+            Constuctor.
+            </summary>
+            <param name="connectionSettings">Connection settings.</param>
+        </member>
+        <member name="F:ReusableClasses.Query.ParameterizedQuery.command">
+            <summary>
+            Oracle command.
+            </summary>
+        </member>
+        <member name="M:ReusableClasses.Query.ParameterizedQuery.DoParameterizedQuery">
+            <summary>
+            Run the query.
+            </summary>
+            <returns>The datatable with the results.</returns>
+        </member>
+        <member name="P:ReusableClasses.Query.ParameterizedQuery.Parameters">
+            <summary>
+            Gets the parameters collection.
+            </summary>
+        </member>
+        <member name="T:ReusableClasses.Query.IConnectionSettings">
+            <summary>
+            Settings used to connect to the database.
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.Query.IConnectionSettings.DataSource">
+            <summary>
+            Oracle TNS names connection definition as defined in the TNSnames file.
+            </summary> 
+        </member>
+        <member name="P:ReusableClasses.Query.IConnectionSettings.UserID">
+            <summary>
+            Oracle schema user ID.
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.Query.IConnectionSettings.Password">
+            <summary>
+            Oracle password.
+            </summary>
+        </member>
+        <member name="T:ReusableClasses.Query.ConnectionSettings">
+            <summary>
+            Generic ConnectionSettings convenience class that implements IConnectionSettings.
+            </summary>
+        </member>
+        <member name="T:ReusableClasses.Query.SimpleQueryException">
+            <summary>
+            Exception for the SimpleQuery class.
+            </summary>
+        </member>
+        <member name="T:ReusableClasses.SQLLoad.ControlFile">
+            <summary>
+            Object that represents a SQL loader control file.
+            </summary>
+        </member>
+        <member name="M:ReusableClasses.SQLLoad.ControlFile.#ctor">
+            <summary>
+            Constructor.
+            </summary>
+        </member>
+        <member name="M:ReusableClasses.SQLLoad.ControlFile.AddField(System.String)">
+            <summary>
+            Add a field to the control file.
+            </summary>
+            <param name="field">The name of the field to add.</param>
+        </member>
+        <member name="M:ReusableClasses.SQLLoad.ControlFile.AddFields(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Add a range of fields to the control file.
+            </summary>
+            <param name="fields">IEnumerable that contains the range of fields to add.</param>
+        </member>
+        <member name="M:ReusableClasses.SQLLoad.ControlFile.ClearFields">
+            <summary>
+            Clear the control file fields.
+            </summary>
+        </member>
+        <member name="M:ReusableClasses.SQLLoad.ControlFile.DeriveFieldsFromDataBase(ReusableClasses.Query.IConnectionSettings)">
+            <summary>
+            Get the control file fields from the database.
+            </summary>
+            <param name="settings">Database connections settings.</param>
+            <returns>True if fields are returned.</returns>
+        </member>
+        <member name="M:ReusableClasses.SQLLoad.ControlFile.ToString">
+            <summary>
+            Return a string that represents the control file.
+            </summary>
+            <returns>A string that represents the control file.</returns>
+        </member>
+        <member name="M:ReusableClasses.SQLLoad.ControlFile.SaveToDisk">
+            <summary>
+            Save this control file to disk at the path specified by ControlFilePath.
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.SQLLoad.ControlFile.Mode">
+            <summary>
+            SQL loader write mode.
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.SQLLoad.ControlFile.DataFilePath">
+            <summary>
+            SQL loader data file.
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.SQLLoad.ControlFile.TableName">
+            <summary>
+            Table name to SQL load into.
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.SQLLoad.ControlFile.FieldTerminator">
+            <summary>
+            The character that the fields are enclosed by. e.g. '"'
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.SQLLoad.ControlFile.FieldEnclosure">
+            <summary>
+            The write mode that SQL loader should use (Truncate, Replace, Insert, Append, etc.).
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.SQLLoad.ControlFile.Fields">
+            <summary>
+            Array of fields or columns in the control file.
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.SQLLoad.ControlFile.ControlFilePath">
+            <summary>
+            Path to the SQL loader control file.
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.SQLLoad.ControlFile.WhenCriteria">
+            <summary>
+            Row selection criteria (comes after the word WHEN in 
+            the control file).
+            </summary>
+        </member>
+        <member name="T:ReusableClasses.SQLLoad.ControlFile.SQLLoaderColumnNameQuery">
+            <summary>
+            Query to get the columns required to build the control file.
+            </summary>
+        </member>
+        <member name="M:ReusableClasses.SQLLoad.ControlFile.SQLLoaderColumnNameQuery.#ctor(ReusableClasses.Query.IConnectionSettings,System.String)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="settings">DB connection settings.</param>
+            <param name="tableName">Name of the table to be SQL loaded into.</param>
+        </member>
+        <member name="M:ReusableClasses.SQLLoad.ControlFile.SQLLoaderColumnNameQuery.GetQuery">
+            <summary>
+            Get the column query.
+            </summary>
+            <returns>The column query string.</returns>
+        </member>
+        <member name="M:ReusableClasses.SQLLoad.ControlFile.SQLLoaderColumnNameQuery.GetColumns">
+            <summary>
+            Return a list of all of the columns in the SQL loader table.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ReusableClasses.SQLLoad.ControlFile.WriteMode">
+            <summary>
+            Object that represents the SQL loader write modes.
+            </summary>
+        </member>
+        <member name="T:ReusableClasses.SQLLoad.ISQLLoaderSettings">
+            <summary>
+            SQLLoader settings interface.
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.SQLLoad.ISQLLoaderSettings.SQLLoaderPath">
+            <summary>
+            The path to the Oracle SQL loader executable file.
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.SQLLoad.ISQLLoaderSettings.UserID">
+            <summary>
+            Oracle schema user ID.
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.SQLLoad.ISQLLoaderSettings.DataSource">
+            <summary>
+            Oracle TNS names connection definition as defined in the TNSnames file.
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.SQLLoad.ISQLLoaderSettings.Password">
+            <summary>
+            Oracle password.
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.SQLLoad.ISQLLoaderSettings.ControlFile">
+            <summary>
+            Path to the SQL loader control file.
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.SQLLoad.ISQLLoaderSettings.NumRows">
+            <summary>
+            Number of rows to process before SQL loade performs a commit.
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.SQLLoad.ISQLLoaderSettings.IsParallel">
+            <summary>
+            Specify "true" for parallel mode.
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.SQLLoad.ISQLLoaderSettings.NumErrors">
+            <summary>
+            Allowable number of errors before SQL loader halts.
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.SQLLoad.ISQLLoaderSettings.DataFileName">
+            <summary>
+            Path to the SQL loader data file.
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.SQLLoad.ISQLLoaderSettings.Skip">
+            <summary>
+            Nunmber of rows to skip in the data file before the data starts.
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.SQLLoad.ISQLLoaderSettings.TableName">
+            <summary>
+            Table name to SQL load into.
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.SQLLoad.ISQLLoaderSettings.FieldTerminator">
+            <summary>
+            The character that SQL loader should use to terminate a columns with. e.g. ','
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.SQLLoad.ISQLLoaderSettings.FieldEnclosure">
+            <summary>
+            The character that the fields are enclosed by. e.g. '"'
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.SQLLoad.ISQLLoaderSettings.WriteMode">
+            <summary>
+            The write mode that SQL loader should use (Truncate, Replace, Insert, Append, etc.).
+            </summary>
+        </member>
+        <member name="T:ReusableClasses.SQLLoad.SQLLoaderSettings">
+            <summary>
+            Generic SQLLoaderSettings convenience class that implements ISQLLoaderSettings.
+            </summary>
+        </member>
+        <member name="T:ReusableClasses.SQLLoad.SQLLoaderException">
+            <summary>
+            SQL loader specific exception.
+            </summary>
+        </member>
+        <member name="M:ReusableClasses.SQLLoad.SQLLoaderException.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="M:ReusableClasses.SQLLoad.SQLLoaderException.#ctor(System.String)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="errorMessage">Text description of the error.</param>
+        </member>
+        <member name="M:ReusableClasses.SQLLoad.SQLLoaderException.#ctor(System.String,System.Exception)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="errorMessage">Text description of the error.</param>
+            <param name="e">Inner exception.</param>
+        </member>
+        <member name="T:ReusableClasses.SQLLoad.SQLLoaderExitCodes">
+            <summary>
+            SQL loader exit codes.
+            </summary>
+        </member>
+        <member name="F:ReusableClasses.SQLLoad.SQLLoaderExitCodes.EX_SUCC">
+            <summary>
+            All rows loaded successfully.
+            </summary>
+        </member>
+        <member name="F:ReusableClasses.SQLLoad.SQLLoaderExitCodes.EX_FAIL">
+            <summary>        
+            Fail. 
+            Command-line or syntax errors.
+            Oracle errors nonrecoverable for SQL*Loader.
+            Operating system errors (such as file open/close and malloc).
+            </summary>
+        </member>
+        <member name="F:ReusableClasses.SQLLoad.SQLLoaderExitCodes.EX_WARN">
+            <summary>
+            Warning.
+            All or some rows rejected.
+            All or some rows discarded.
+            Discontinued load.
+            </summary>
+        </member>
+        <member name="F:ReusableClasses.SQLLoad.SQLLoaderExitCodes.EX_FTL">
+            <summary>
+            Fatal error.
+            </summary>
+        </member>
+        <member name="T:ReusableClasses.SQLLoad.SQLLoader">
+            <summary>
+            SQL loader process. Inherits OuputRedirectedProcess
+            </summary>    
+        </member>
+        <member name="M:ReusableClasses.SQLLoad.SQLLoader.#ctor(ReusableClasses.SQLLoad.ISQLLoaderSettings)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="settings">SQL loader settings.</param>
+        </member>
+        <member name="M:ReusableClasses.SQLLoad.SQLLoader.#ctor(ReusableClasses.SQLLoad.ISQLLoaderSettings,System.Int32)">
+            <summary>
+            /// Constructor.
+            </summary>
+            <param name="settings">SQL loader settings.</param>
+            <param name="timeout">Timeout for SQL loader process. Defaults to -1 (infinity).</param>
+        </member>
+        <member name="M:ReusableClasses.SQLLoad.SQLLoader.Load">
+            <summary>
+            SQL load the data.
+            </summary>
+        </member>
+        <member name="M:ReusableClasses.SQLLoad.SQLLoader.SetUpProcess">
+            <summary>
+            Set up the process. Set file name, arguments, and any other desired options here.
+            </summary>
+        </member>
+        <member name="M:ReusableClasses.SQLLoad.SQLLoader.BuildControlFile">
+            <summary>
+            Build a control file using the SQLloader settings.
+            </summary>
+            <returns>The built control file.</returns>
+        </member>
+        <member name="P:ReusableClasses.SQLLoad.SQLLoader.HasWarnings">
+            <summary>
+            If true, the SQL loader process exited with warnings. Check the log file.
+            </summary>
+        </member>
+        <member name="M:ReusableClasses.Query.NonQuery.#ctor(ReusableClasses.Query.IConnectionSettings)">
+            <summary>
+            Constructor 
+            </summary>
+            <param name="settings">Connection settings.</param>
+        </member>
+        <member name="M:ReusableClasses.Query.NonQuery.DoNonQuery">
+            <summary>
+            Run the non-query. 
+            </summary>
+        </member>
+        <member name="T:ReusableClasses.Query.IDatabaseSemaphoreSettings">
+            <summary>
+            Database semaphore settings.
+            </summary>
+        </member>
+        <member name="T:ReusableClasses.Query.DatabaseSemaphoreSettings">
+            <summary>
+            Genaric settings class
+            </summary>
+        </member>
+        <member name="T:ReusableClasses.Query.DatabaseSemaphore">
+            <summary>
+            Database semaphore.
+            This object assumes that one ore more other processes will set and release 
+            the semaphore.
+            </summary>
+        </member>
+        <member name="M:ReusableClasses.Query.DatabaseSemaphore.#ctor(ReusableClasses.Query.IConnectionSettings,System.Int32,System.Int32)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="settings">Database connection settings.</param>
+            <param name="pollingDelayMS">Delay between polling.</param>
+            <param name="pollingTimeOutMS"></param>
+        </member>
+        <member name="M:ReusableClasses.Query.DatabaseSemaphore.#ctor(ReusableClasses.Query.IConnectionSettings,ReusableClasses.Query.IDatabaseSemaphoreSettings)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="connectionSettings">Database connection settings.</param>
+            <param name="semaphoreSettings">Semaphore settings</param>
+        </member>
+        <member name="M:ReusableClasses.Query.DatabaseSemaphore.WaitForSemaphore">
+            <summary>
+            Poll the semaphore on PollingDelayMS intervals until either the PollingTimeOut
+            is reached or the semaphore is in a set state.
+            </summary>
+        </member>
+        <member name="M:ReusableClasses.Query.DatabaseSemaphore.CheckSemaphoreState">
+            <summary>
+            Query the database and return the state of the semaphore.
+            Override to do more specific checks.
+            </summary>
+            <returns>True if there are rows in the returned datatable.</returns>
+        </member>
+        <member name="P:ReusableClasses.Query.DatabaseSemaphore.PollingDelayMS">
+            <summary>
+            Value in milliseconds that specifies how long the thread should wait in between 
+            checking to see if the semaphore is released.        
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.Query.DatabaseSemaphore.PollingTimeOut">
+            <summary>
+            Total time that the semaphore should wait before timeing out in milliseconds.
+            Set to 0 or less for infinite.
+            </summary>
+        </member>
+        <member name="T:ReusableClasses.Settings.SettingsFactoryException">
+            <summary>
+            Exception for the SettingsFactory class.
+            </summary>
+        </member>
+        <member name="T:ReusableClasses.Settings.SettingsFactory">
+            <summary>
+            If an appSettings section is supplied in any .config file, and the variable names in the settings.config.template are used,
+            this factory fill any common settings object.
+            </summary>
+        </member>
+        <member name="M:ReusableClasses.Settings.SettingsFactory.FillSettingsObject(System.Configuration.Configuration,ReusableClasses.Settings.ISettingsBase)">
+            <summary>
+            Fill a settings object.
+            </summary>
+            <param name="config">Configuration object.</param>
+            <param name="settingsObject">The settings object to fill.</param>
+            <returns>Filled settings object.</returns>
+        </member>
+        <member name="M:ReusableClasses.Settings.SettingsFactory.GetLoggerSettings(System.Configuration.Configuration)">
+            <summary>
+            Get the logger settings interface.
+            </summary>
+            <param name="config">Configuration object.</param>
+            <returns>Logger settings object.</returns>
+        </member>
+        <member name="M:ReusableClasses.Settings.SettingsFactory.GetSQLLoaderSettings(System.Configuration.Configuration)">
+            <summary>
+            Get the SQLLoader settings interface.
+            </summary>
+            <param name="config">Configuration object.</param>
+            <returns>SQLLoader settings object.</returns>
+        </member>
+        <member name="M:ReusableClasses.Settings.SettingsFactory.GetConnectionSettings(System.Configuration.Configuration)">
+            <summary>
+            Get the connection settings intface.
+            </summary>
+            <param name="config">Configuration object.</param>
+            <returns>Connection settings object.</returns>
+        </member>
+        <member name="M:ReusableClasses.Settings.SettingsFactory.GetEmailSettings(System.Configuration.Configuration)">
+            <summary>
+            Get the email settings interface.
+            </summary>
+            <param name="config">Configuration object.</param>
+            <returns>Email settings object.</returns>
+        </member>
+        <member name="P:ReusableClasses.Scheduler.Schedule.StartTime">
+            <summary>
+            The time where the event will first fire and begin the schedule.
+            </summary>
+        </member>
+        <member name="M:ReusableClasses.Scheduler.TaskScheduler.#ctor(ReusableClasses.Scheduler.Schedule)">
+            <summary>
+            Constructor.
+            </summary>
+            <param name="schedule">Timer schedule to use.</param>
+        </member>
+        <member name="M:ReusableClasses.Scheduler.TaskScheduler.Start">
+            <summary>
+            Start the timer. Hides inherited method.
+            </summary>
+        </member>
+        <member name="M:ReusableClasses.Scheduler.TaskScheduler.Restart">
+            <summary>
+            Reset the timer.
+            </summary>
+        </member>
+        <member name="M:ReusableClasses.Scheduler.TaskScheduler.OnElapsed(System.Object,System.Timers.ElapsedEventArgs)">
+            <summary>
+            Timer elapsed event for start delay. Time to start real timer.
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="P:ReusableClasses.Scheduler.TaskScheduler.AutoReset">
+            <summary>
+            Gets the autoreset property.
+            Always false;
+            Hides inherited property.
+            </summary>
+        </member>
+        <member name="P:ReusableClasses.Scheduler.TaskScheduler.Interval">
+            <summary>
+            Get the total interval including start delay.
+            Not set until the timer is started.
+            Hides inherited property.
+            </summary>
+        </member>
+        <member name="T:ReusableClasses.Web.HtmlBuilder">
+            <summary>Class used for building text HTML output.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlBuilder.DOUBLE_QUOTE">
+            <summary>Encoded HTML value for a double quote.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlBuilder.SINGLE_QUOTE">
+            <summary>Encoded HTML value for a single quote.</summary>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlBuilder.#ctor">
+            <summary>Instantiates an instance of the HtmlBuilder class.</summary>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlBuilder.#ctor(System.IO.Stream)">
+            <summary>Instantiates an instance of the HtmlBuilder class using the specified stream.</summary>
+            <param name="stream">Backing stream to use to write the rendered output to.</param>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlBuilder.Initialize">
+            <summary>Initializes the instance of the HtmlBuilder class.</summary>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlBuilder.ResetStream">
+            <summary>Resets the stream used for writing rendered output.</summary>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlBuilder.ToString">
+            <summary>Renders the output of the HTML Builder.</summary>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlBuilder.RenderBuilder">
+            <summary>Renders the output of the HTML Builder.</summary>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlBuilder.RenderCurrentElementToStream">
+            <summary>Renders the current HTML element to the output stream.</summary>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlBuilder.BuildIdentation(ReusableClasses.Web.HtmlElement)">
+            <summary>Determines the current indentation required for the HTML element to be rendered.</summary>
+            <param name="element">Element to determine the indentation of.</param>
+            <returns>Indentation of the element.</returns>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlBuilder.AddElement(ReusableClasses.Web.HtmlElement)">
+            <summary>Adds a new HTML element to the builder.</summary>
+            <param name="element">Element to add.</param>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlBuilder.AddElement(ReusableClasses.Web.HtmlTag,ReusableClasses.Web.RenderOptions)">
+            <summary>Adds a new HTML element to the builder.</summary>
+            <param name="tag">HTML tag of the element to add.</param>
+            <param name="renderOption">How to render the element.</param>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlBuilder.AddElement(System.String,ReusableClasses.Web.RenderOptions)">
+            <summary>Adds a new HTML element to the builder.</summary>
+            <param name="tag">HTML tag of the element to add.</param>
+            <param name="renderOption">How to render the element.</param>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlBuilder.AddElement(ReusableClasses.Web.HtmlTag,ReusableClasses.Web.RenderOptions,System.String)">
+            <summary>Adds a new HTML element to the builder.</summary>
+            <param name="tag">HTML tag of the element to add.</param>
+            <param name="renderOption">How to render the element.</param>
+            <param name="innerHtml">Inner HTML to add to the element.</param>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlBuilder.AddElement(System.String,ReusableClasses.Web.RenderOptions,System.String)">
+            <summary>Adds a new HTML element to the builder.</summary>
+            <param name="tag">HTML tag of the element to add.</param>
+            <param name="renderOption">How to render the element.</param>
+            <param name="innerHtml">Inner HTML to add to the element.</param>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlBuilder.AddOpeningTag(ReusableClasses.Web.HtmlTag)">
+            <summary>Adds an opening HTML tag to the builder.</summary>
+            <param name="tag">HTML tag to open.</param>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlBuilder.AddOpeningTag(System.String)">
+            <summary>Adds an opening HTML tag to the builder.</summary>
+            <param name="tag">HTML tag to open.</param>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlBuilder.AddClosingTag(ReusableClasses.Web.HtmlTag)">
+            <summary>Adds a closing HTML tag to the builder.</summary>
+            <param name="tag">HTML tag to close.</param>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlBuilder.AddClosingTag(System.String)">
+            <summary>Adds a closing HTML tag to the builder.</summary>
+            <param name="tag">HTML tag to close.</param>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlBuilder.CloseElement">
+            <summary>Closes the current element in the stream.</summary>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlBuilder.AddButton(System.String,System.String)">
+            <summary>Adds an element containing an input tag with a type of button to the builder.</summary>
+            <param name="btnText">Text to display on the button.</param>
+            <param name="btnOnclick">Action to take when the button is clicked.</param>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlBuilder.AddButton(System.String,System.String,System.String)">
+            <summary>Adds an element containing an input tag with a type of button to the builder.</summary>
+            <param name="btnText">Text to display on the button.</param>
+            <param name="btnOnclick">Action to take when the button is clicked.</param>
+            <param name="btnId">Id of the button.</param>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlBuilder.AddCheckbox(System.String,System.String,System.String)">
+            <summary>Adds an input with a type of checkbox and a label to the builder.</summary>
+            <param name="chkText">Text to display on the label.</param>
+            <param name="chkOnclick">Action to take when the checkbox is clicked.</param>
+            <param name="chkIdAndName">Id and name of the checkbox.</param>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlBuilder.AddImage(System.String,System.String)">
+            <summary>Adds an element containing an img tag linking to the provided source to the builder.</summary>
+            <param name="imgSource">Location of the image to use.</param>
+            <param name="imgId">Id to assign to the image element.</param>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlBuilder.AddAttribute(ReusableClasses.Web.HtmlAttribute,System.String)">
+            <summary>Adds an attribute to the current element.</summary>
+            <param name="attr">Attribute to add.</param>
+            <param name="value">Value of the attribute.</param>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlBuilder.AddAttribute(System.String,System.String)">
+            <summary>Adds an attribute to the current element.</summary>
+            <param name="attr">Attribute to add.</param>
+            <param name="value">Value of the attribute.</param>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlBuilder.AddAttribute(ReusableClasses.Web.HtmlElementAttribute)">
+            <summary>Adds an attribute to the current element.</summary>
+            <param name="attr">Attribute to add.</param>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlBuilder.AddStyle(ReusableClasses.Web.HtmlStyle,System.String)">
+            <summary>Adds a style to the current element.</summary>
+            <param name="style">Style to add.</param>
+            <param name="value">Value of the style.</param>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlBuilder.AddStyle(System.String,System.String)">
+            <summary>Adds a style to the current element.</summary>
+            <param name="style">Style to add.</param>
+            <param name="value">Value of the style.</param>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlBuilder.AddStyle(ReusableClasses.Web.HtmlElementStyle)">
+            <summary>Adds a style to the current element.</summary>
+            <param name="style">Style to add.</param>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlBuilder.AddInnerHtml(System.String)">
+            <summary>Appends the provided inner HTML text to the InnerHTML property of the current HTML element added to the builder.</summary>
+            <param name="innerHtml">Inner HTML to append.</param>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlBuilder.AddInnerHtml(System.String,System.Boolean)">
+            <summary>Appends the provided inner HTML text to the InnerHTML property of the current HTML element added to the builder.</summary>
+            <param name="innerHtml">Inner HTML to append or set.</param>
+            <param name="overwrite">True to overwrite the existing inner HTML, false to append the text.</param>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlBuilder.AppendText(System.String)">
+            <summary>Appends the provided text to the builder.</summary>
+            <param name="text">Text to append.</param>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlBuilder.AddBreakTag">
+            <summary>Adds a break tag to the HTML Builder.</summary>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlBuilder.AddHrTag">
+            <summary>Adds an hr tag to the HTML Builder.</summary>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlBuilder.Dispose">
+            <summary>Disposes of the HTML builder and its underlying stream.</summary>
+        </member>
+        <member name="T:ReusableClasses.Web.HtmlElement">
+            <summary>Represents an HTML element used by the HTML builder.</summary>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlElement.#ctor(ReusableClasses.Web.HtmlTag,ReusableClasses.Web.RenderOptions)">
+            <summary>Instantiates an instance of the HtmlElement with the specified HTML tag.</summary>
+            <param name="tag">HTML tag to create.</param>
+            <param name="renderOption">How to render the element.</param>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlElement.#ctor(System.String,ReusableClasses.Web.RenderOptions)">
+            <summary>Instantiates an instance of the HtmlElement with the specified custom tag.</summary>
+            <param name="customTag">Custom tag to create.</param>
+            <param name="renderOption">How to render the element.</param>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlElement.RenderElement(System.String)">
+            <summary>Renders the element to the HTML builder.</summary>
+            <param name="indentation">The level of indentation of the element.</param>
+            <returns>Rendered HTML output of the element.</returns>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlElement.RenderOpeningTag">
+            <summary>Renders the opening HTML tag and the inner text of the element.</summary>
+            <returns>Opening HTML tag and the inner text.</returns>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlElement.RenderClosingTag(System.Boolean)">
+            <summary>Renders the closing HTML tag of the element.</summary>
+            <param name="includeIndentation">Whether or not to include leading indentation for the closing tag.</param>
+            <returns>Closing HTML tag.</returns>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlElement.RenderSingleTag">
+            <summary>Renders a single HTML tag containing the closing slash.</summary>
+            <returns>Single HTML tag.</returns>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlElement.RenderCompleteElement">
+            <summary>Renders the opening HTML tag, the inner HTML text, and the closing HTML tag.</summary>
+            <returns>Complete HTML element.</returns>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlElement.AddAttribute(ReusableClasses.Web.HtmlElementAttribute)">
+            <summary>Adds an attribute to the HTML element.</summary>
+            <param name="attributeToAdd">Attribute to add.</param>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlElement.AddAttribute(ReusableClasses.Web.HtmlAttribute,System.String)">
+            <summary>Adds an attribute to the HTML element.</summary>
+            <param name="attribute">Attribute to add.</param>
+            <param name="value">Value of the attribute.</param>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlElement.AddAttribute(System.String,System.String)">
+            <summary>Adds an attribute to the HTML element.</summary>
+            <param name="attribute">Attribute to add.</param>
+            <param name="value">Value of the attribute.</param>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlElement.RenderAttributes">
+            <summary>Generates a string for all attributes of the element.</summary>
+            <returns>String of all attributes for the element.</returns>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlElement.AddStyle(ReusableClasses.Web.HtmlElementStyle)">
+            <summary>Adds a style to the HTML element.</summary>
+            <param name="styleToAdd">Style to add.</param>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlElement.AddStyle(ReusableClasses.Web.HtmlStyle,System.String)">
+            <summary>Adds a style to the HTML element.</summary>
+            <param name="style">Style to add.</param>
+            <param name="value">Value of the style.</param>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlElement.AddStyle(System.String,System.String)">
+            <summary>Adds a style to the HTML element.</summary>
+            <param name="style">Style to add.</param>
+            <param name="value">Value of the style.</param>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlElement.RenderStyles">
+            <summary>Generates a string for the style attribute of the element.</summary>
+            <returns>String containing all styles for the element.</returns>
+        </member>
+        <member name="P:ReusableClasses.Web.HtmlElement.Tag">
+            <summary>Gets the element's HTML tag.</summary>
+        </member>
+        <member name="P:ReusableClasses.Web.HtmlElement.CustomTagName">
+            <summary>Gets the name of the custom HTML tag.</summary>
+        </member>
+        <member name="P:ReusableClasses.Web.HtmlElement.RenderOption">
+            <summary>Gets the render option of the element.</summary>
+        </member>
+        <member name="P:ReusableClasses.Web.HtmlElement.TagName">
+            <summary>Gets the name of the element's tag.</summary>
+        </member>
+        <member name="P:ReusableClasses.Web.HtmlElement.InnerHtml">
+            <summary>Gets or sets the inner HTML tag value of the element.</summary>
+        </member>
+        <member name="P:ReusableClasses.Web.HtmlElement.Attributes">
+            <summary>Gets an array of the attributes for the element.</summary>
+        </member>
+        <member name="P:ReusableClasses.Web.HtmlElement.Styles">
+            <summary>Gets an array of the styles for the element.</summary>
+        </member>
+        <member name="P:ReusableClasses.Web.HtmlElement.Indentation">
+            <summary>Gets the indentation level of the element.</summary>
+        </member>
+        <member name="T:ReusableClasses.Web.RenderOptions">
+            <summary>Species options for how the GDHtmlBuilder renders a HtmlElement.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.RenderOptions.SingleTag">
+            <summary>Renders a single tag, opening and closing an HTML element.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.RenderOptions.Complete">
+            <summary>Renders the open tag, the inner HTML, and the closing tag of an element.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.RenderOptions.Open">
+            <summary>Render the opening tag of an element.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.RenderOptions.Close">
+            <summary>Render the closing tag of an element.</summary>
+        </member>
+        <member name="T:ReusableClasses.Web.HtmlTag">
+            <summary>Represents an HTML tag.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlTag.Div">
+            <summary>Represents a "div" element.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlTag.Break">
+            <summary>Represents a "br" element.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlTag.Hr">
+            <summary>Represents a "div" element.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlTag.Table">
+            <summary>Represents a "table" element.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlTag.TableHead">
+            <summary>Represents a "thead" element.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlTag.TableBody">
+            <summary>Represents a "tbody" element.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlTag.TableHeader">
+            <summary>Represents a "th" element.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlTag.TableRow">
+            <summary>Represents a "tr" element.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlTag.TableData">
+            <summary>Represents a "td" element.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlTag.Column">
+            <summary>Represents a "col" element.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlTag.Input">
+            <summary>Represents an "input" element.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlTag.TextArea">
+            <summary>Represents a "textarea" element.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlTag.Label">
+            <summary>Represents a "label" element.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlTag.Span">
+            <summary>Represents a "span" element.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlTag.Anchor">
+            <summary>Represents an "a" element.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlTag.Paragraph">
+            <summary>Represents a "p" element.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlTag.H1">
+            <summary>Represents a "h1" element.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlTag.H2">
+            <summary>Represents a "h2" element.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlTag.H3">
+            <summary>Represents a "h3" element.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlTag.H4">
+            <summary>Represents a "h4" element.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlTag.H5">
+            <summary>Represents a "h5" element.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlTag.H6">
+            <summary>Represents a "h6" element.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlTag.Img">
+            <summary>Represents an "img" element.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlTag.Strong">
+            <summary>Represents a "strong" element.</summary>
+        </member>
+        <member name="T:ReusableClasses.Web.HtmlElementAttribute">
+            <summary>Class used to store an attribute on an HTML element.</summary>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlElementAttribute.#ctor(ReusableClasses.Web.HtmlAttribute,System.String)">
+            <summary>Instantiates an instance of the HtmlElementAttribute class with the specified attribute.</summary>
+            <param name="attribute">Attribute to create.</param>
+            <param name="value">Value of the attribute.</param>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlElementAttribute.#ctor(System.String,System.String)">
+            <summary>Instantiates an instance of the HtmlElementAttribute class with the specified custom tag.</summary>
+            <param name="customAttribute">Custom attribute tag to create.</param>
+            <param name="value">Value of the attribute.</param>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlElementAttribute.RenderAttribute">
+            <summary>Renders and returns the text of the attribute.</summary>
+            <returns>Attribute tag.</returns>
+        </member>
+        <member name="P:ReusableClasses.Web.HtmlElementAttribute.Attribute">
+            <summary>Gets the backing HTML attribute.</summary>
+        </member>
+        <member name="P:ReusableClasses.Web.HtmlElementAttribute.CustomAttribute">
+            <summary>Gets the name of the custom HTML attribute.</summary>
+        </member>
+        <member name="P:ReusableClasses.Web.HtmlElementAttribute.Name">
+            <summary>Gets the name of the attribute.</summary>
+        </member>
+        <member name="P:ReusableClasses.Web.HtmlElementAttribute.Value">
+            <summary>Gets the value of the attribute.</summary>
+        </member>
+        <member name="P:ReusableClasses.Web.HtmlElementAttribute.IsValid">
+            <summary>Gets whether the attribute has a valid tag and value and should be rendered out.</summary>
+        </member>
+        <member name="T:ReusableClasses.Web.HtmlAttribute">
+            <summary>Represents an HTML attribute.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlAttribute.Id">
+            <summary>Represents an "id" attribute.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlAttribute.Value">
+            <summary>Represents a "value" attribute.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlAttribute.Type">
+            <summary>Represents a "type" attribute.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlAttribute.Title">
+            <summary>Represents a "title" attribute.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlAttribute.Name">
+            <summary>Represents a "name" attribute.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlAttribute.OnBlur">
+            <summary>Represents an "onblur" attribute.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlAttribute.OnChange">
+            <summary>Represents an "onchange" attribute.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlAttribute.OnClick">
+            <summary>Represents an "onclick" attribute.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlAttribute.OnFocus">
+            <summary>Represents an "onfocus" attribute.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlAttribute.OnKeyDown">
+            <summary>Represents an "onkeydown" attribute.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlAttribute.OnKeyPress">
+            <summary>Represents an "onkeypress" attribute.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlAttribute.OnKeyUp">
+            <summary>Represents an "onkeyup" attribute.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlAttribute.OnMouseDown">
+            <summary>Represents an "onmousedown" attribute.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlAttribute.OnMouseMove">
+            <summary>Represents an "onmousemove" attribute.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlAttribute.OnMouseOut">
+            <summary>Represents an "onmouseout" attribute.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlAttribute.OnMouseOver">
+            <summary>Represents an "onmouseover" attribute.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlAttribute.OnMouseUp">
+            <summary>Represents an "onmouseup" attribute.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlAttribute.OnSelect">
+            <summary>Represents an "onselect" attribute.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlAttribute.ColumnSpan">
+            <summary>Represents a "colspan" attribute.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlAttribute.RowSpan">
+            <summary>Represents a "rowspan" attribute.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlAttribute.Width">
+            <summary>Represents a "width" attribute.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlAttribute.Height">
+            <summary>Represents a "height" attribute.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlAttribute.CellSpacing">
+            <summary>Represents a "cellspacing" attribute.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlAttribute.CellPadding">
+            <summary>Represents a "cellpadding" attribute.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlAttribute.Border">
+            <summary>Represents a "border" attribute.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlAttribute.Href">
+            <summary>Represents a "href" attribute.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlAttribute.Align">
+            <summary>Represents a "align" attribute.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlAttribute.VerticalAlign">
+            <summary>Represents a "valign" attribute.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlAttribute.MaxLength">
+            <summary>Represents a "maxlength" attribute.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlAttribute.Rows">
+            <summary>Represents a "rows" attribute.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlAttribute.Alt">
+            <summary>Represents an "alt" attribute.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlAttribute.Source">
+            <summary>Represents a "src" attribute.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlAttribute.For">
+            <summary>Represents a "for" attribute.</summary>
+        </member>
+        <member name="F:ReusableClasses.Web.HtmlAttribute.DataLabel">
+            <summary>Represents a "data-label" attribute.</summary>
+        </member>
+        <member name="T:ReusableClasses.Web.HtmlElementStyle">
+            <summary>Class used to store a style on an HTML element.</summary>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlElementStyle.#ctor(ReusableClasses.Web.HtmlStyle,System.String)">
+            <summary>Instantiates an instance of the HtmlElementStyle with the specified style tag.</summary>
+            <param name="style">Style tag to create.</param>
+            <param name="value">Value of the style.</param>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlElementStyle.#ctor(System.String,System.String)">
+            <summary>Instantiates an instance of the HtmlElementStyle with the specified custom tag.</summary>
+            <param name="customStyle">Custom style tag to create.</param>
+            <param name="value">Value of the style.</param>
+        </member>
+        <member name="M:ReusableClasses.Web.HtmlElementStyle.RenderStyle">
+            <summary>Renders and returns the style tag.</summary>
+            <returns>Style tag.</returns>
+        </member>
+        <member name="P:ReusableClasses.Web.HtmlElementStyle.Style">
+            <summary>Gets the backing HTML style.</summary>
+        </member>
+        <member name="P:ReusableClasses.Web.HtmlElementStyle.Name">
+            <summary>Gets the name of the style.</summary>
+        </member>
+        <member name="P:ReusableClasses.Web.HtmlElementStyle.Value">
+            <summary>Gets or sets the value of the style.</summary>
+        </member>
+        <member name="T:ReusableClasses.Web.HtmlStyle">
+            <summary>Represents an HTML style.</summary>
+        </member>
+    </members>
+</doc>

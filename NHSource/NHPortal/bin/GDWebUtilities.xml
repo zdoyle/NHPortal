@@ -1,0 +1,832 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GDWebUtilities</name>
+    </assembly>
+    <members>
+        <member name="T:GDWebUtilities.CSS.Rules.NthChildRule">
+            <summary>Stores information about a selector rule of "nth-child".</summary>
+        </member>
+        <member name="T:GDWebUtilities.CSS.Rules.NthRule">
+            <summary>Abstract class for storing information about an "nth" rule.</summary>
+        </member>
+        <member name="T:GDWebUtilities.CSS.Rules.SelectorRule">
+            <summary>Class for storing information about a selector rule.</summary>
+        </member>
+        <member name="M:GDWebUtilities.CSS.Rules.SelectorRule.ToString">
+            <summary>Returns the value stored in the Element property.</summary>
+            <returns>Element property.</returns>
+        </member>
+        <member name="P:GDWebUtilities.CSS.Rules.SelectorRule.Element">
+            <summary>Gets the element the rule is applied to.</summary>
+        </member>
+        <member name="M:GDWebUtilities.CSS.Rules.NthRule.#ctor">
+            <summary>Base constructor for the NthRule class.</summary>
+        </member>
+        <member name="M:GDWebUtilities.CSS.Rules.NthRule.EvaluateFrom(System.String)">
+            <summary>Evaluates and instantiates the NthOfTypeRule from the provided selector string.</summary>
+        </member>
+        <member name="M:GDWebUtilities.CSS.Rules.NthRule.ToString">
+            <summary>Returns a string representation of the NthRule.</summary>
+            <returns>String value for the NthRule.</returns>
+        </member>
+        <member name="P:GDWebUtilities.CSS.Rules.NthRule.Cycle">
+            <summary>Gets the cycle (N) value of the rule.</summary>
+        </member>
+        <member name="P:GDWebUtilities.CSS.Rules.NthRule.Offset">
+            <summary>Gets the offset value of the rule.</summary>
+        </member>
+        <member name="P:GDWebUtilities.CSS.Rules.NthRule.Number">
+            <summary>Gets the N value of the child to apply the rule to.</summary>
+        </member>
+        <member name="P:GDWebUtilities.CSS.Rules.NthRule.FormulaBased">
+            <summary>Gets whether the rule is based on a formula.</summary>
+        </member>
+        <member name="M:GDWebUtilities.CSS.Rules.NthChildRule.#ctor">
+            <summary>Instantiates a new instance of the NthChildRule class.</summary>
+        </member>
+        <member name="T:GDWebUtilities.CSS.Rules.NthOfTypeRule">
+            <summary>Stores information about a selector rule of "nth-of-type".</summary>
+        </member>
+        <member name="M:GDWebUtilities.CSS.Rules.NthOfTypeRule.#ctor">
+            <summary>Instantiates a new instance of the NthOfTypeRule.</summary>
+        </member>
+        <member name="T:GDWebUtilities.CSS.Selector">
+            <summary>Stores information about a selector parsed from a style sheet.</summary>
+        </member>
+        <member name="F:GDWebUtilities.CSS.Selector.EMPTY_CHILDREN">
+            <summary>Static empty Selector object array.</summary>
+        </member>
+        <member name="F:GDWebUtilities.CSS.Selector.EMPTY_RULES">
+            <summary>Static empty Rules object array.</summary>
+        </member>
+        <member name="F:GDWebUtilities.CSS.Selector.SPLIT_ARR">
+            <summary>Static character array for splitting on a comma.</summary>
+        </member>
+        <member name="M:GDWebUtilities.CSS.Selector.#ctor">
+            <summary>Instantiates a new instance of the Selector class.</summary>
+        </member>
+        <member name="M:GDWebUtilities.CSS.Selector.AddAttribute(System.String,System.String)">
+            <summary>Adds an attribute to the Attributes collection.</summary>
+            <param name="property">Property of the attribute.</param>
+            <param name="value">Value of the attribute.</param>
+        </member>
+        <member name="M:GDWebUtilities.CSS.Selector.AddChild(GDWebUtilities.CSS.Selector)">
+            <summary>Adds a child to the Selector.</summary>
+            <param name="child">Selector object to add as a child.</param>
+        </member>
+        <member name="M:GDWebUtilities.CSS.Selector.AddRule(GDWebUtilities.CSS.Rules.SelectorRule)">
+            <summary>Adds a rule to the selector.</summary>
+            <param name="rule">Rule to add.</param>
+        </member>
+        <member name="M:GDWebUtilities.CSS.Selector.ForElement(System.String)">
+            <summary>Checks whether the selector is for the provided element.</summary>
+            <param name="element">DOM element to check.</param>
+            <returns>True if the selector is for the provided element.</returns>
+        </member>
+        <member name="F:GDWebUtilities.CSS.Selector.m_rules">
+            <summary>Gets or sets the additional rules to apply for the style.</summary>
+        </member>
+        <member name="P:GDWebUtilities.CSS.Selector.Name">
+            <summary>Gets or sets the name associated with the selector.</summary>
+        </member>
+        <member name="P:GDWebUtilities.CSS.Selector.Type">
+            <summary>Gets or sets the type of the selector.</summary>
+        </member>
+        <member name="P:GDWebUtilities.CSS.Selector.Attributes">
+            <summary>Gets a list of attributes for the selector.</summary>
+        </member>
+        <member name="P:GDWebUtilities.CSS.Selector.DomElement">
+            <summary>Gets or sets the dom element the selector is for.</summary>
+        </member>
+        <member name="P:GDWebUtilities.CSS.Selector.Rules">
+            <summary>Gets an array of rules the selector contains.</summary>
+        </member>
+        <member name="P:GDWebUtilities.CSS.Selector.Parent">
+            <summary>Gets a reference to the parent selector.</summary>
+        </member>
+        <member name="P:GDWebUtilities.CSS.Selector.IsParent">
+            <summary>Gets whether or not the selector is the parent selector.</summary>
+        </member>
+        <member name="P:GDWebUtilities.CSS.Selector.Children">
+            <summary>Gets an array of children selectors.</summary>
+        </member>
+        <member name="T:GDWebUtilities.CSS.SelectorType">
+            <summary>Defines the selector type for a selector.</summary>
+        </member>
+        <member name="F:GDWebUtilities.CSS.SelectorType.Global">
+            <summary>Indicates the selector is a global selector.</summary>
+        </member>
+        <member name="F:GDWebUtilities.CSS.SelectorType.Class">
+            <summary>Indicates the selector is a class (dot) selector.</summary>
+        </member>
+        <member name="F:GDWebUtilities.CSS.SelectorType.ID">
+            <summary>Indicates the selector is an ID (#) selector.</summary>
+        </member>
+        <member name="T:GDWebUtilities.CSS.SelectorAttribute">
+            <summary>Represents a property/value for a selector in a stylesheet.</summary>
+        </member>
+        <member name="M:GDWebUtilities.CSS.SelectorAttribute.#ctor(System.String,System.String)">
+            <summary>Instantiates a new instance of the CSSAttribute class.</summary>
+            <param name="property">Property of the attribute.</param>
+            <param name="value">Value of the attribute.</param>
+        </member>
+        <member name="M:GDWebUtilities.CSS.SelectorAttribute.ToString">
+            <summary>Returns the property/value pair.</summary>
+            <returns>Property/value pair.</returns>
+        </member>
+        <member name="P:GDWebUtilities.CSS.SelectorAttribute.Property">
+            <summary>Gets the property of the attribute.</summary>
+        </member>
+        <member name="P:GDWebUtilities.CSS.SelectorAttribute.Value">
+            <summary>Gets the value for the attribute.</summary>
+        </member>
+        <member name="T:GDWebUtilities.CSS.SelectorCollection">
+            <summary>Stores a collection of CSSSelector objects.</summary>
+        </member>
+        <member name="M:GDWebUtilities.CSS.SelectorCollection.#ctor">
+            <summary>Instantiates a new instance of the CSSSelectorCollection class.</summary>
+        </member>
+        <member name="M:GDWebUtilities.CSS.SelectorCollection.Add(GDWebUtilities.CSS.Selector)">
+            <summary>Adds a CSS selector to the collection.</summary>
+            <param name="selector">CSS selector to add.</param>
+        </member>
+        <member name="M:GDWebUtilities.CSS.SelectorCollection.Find(System.String,GDWebUtilities.CSS.SelectorType)">
+            <summary>Finds a CSS selector in the collection.</summary>
+            <param name="id">Id of the CSS selector to find.</param>
+            <param name="type">Type of the CSS selector to find.</param>
+            <returns>CSS selector matching the ID, or null if no match found.</returns>
+        </member>
+        <member name="M:GDWebUtilities.CSS.SelectorCollection.Contains(GDWebUtilities.CSS.Selector)">
+            <summary>Determines whether the collection contains a selector with the same id and type.</summary>
+            <param name="selector">The selector to check.</param>
+            <returns>True if the type and id exists in the collection, false otherwise.</returns>
+        </member>
+        <member name="M:GDWebUtilities.CSS.SelectorCollection.GetEnumerator">
+            <summary>Gets an enumerator for the selectors in the collection.</summary>
+            <returns>Selector enumerator.</returns>
+        </member>
+        <member name="M:GDWebUtilities.CSS.SelectorCollection.System#Collections#IEnumerable#GetEnumerator">
+            <summary>Gets an enumerator for the selectors in the collection.</summary>
+            <returns>Selector enumerator.</returns>
+        </member>
+        <member name="P:GDWebUtilities.CSS.SelectorCollection.Selectors">
+            <summary>Gets an array of CSS selectors in the collection.</summary>
+        </member>
+        <member name="P:GDWebUtilities.CSS.SelectorCollection.Item(System.Int32)">
+            <summary>Gets a reference to a Selector object contained in the collection at the provided index.</summary>
+            <param name="index">Index of the Selector to get.</param>
+            <returns>Selector at the provided index, or null if the index is invalid.</returns>
+        </member>
+        <member name="T:GDWebUtilities.CSS.Stylesheet">
+            <summary>Stores information about a CSS file and any Selectors parsed from the file.</summary>
+        </member>
+        <member name="M:GDWebUtilities.CSS.Stylesheet.#ctor(System.String)">
+            <summary>Instantiates a new instance of the Stylesheet class.</summary>
+            <param name="file">Path of the stylesheet.</param>
+        </member>
+        <member name="P:GDWebUtilities.CSS.Stylesheet.StylesheetName">
+            <summary>Gets the path of the style sheet file.</summary>
+        </member>
+        <member name="P:GDWebUtilities.CSS.Stylesheet.Selectors">
+            <summary>Gets a collection of selectors contained in the worksheet.</summary>
+        </member>
+        <member name="T:GDWebUtilities.CSS.StylesheetCollection">
+            <summary>Stores a collection of stylesheets.</summary>
+        </member>
+        <member name="M:GDWebUtilities.CSS.StylesheetCollection.#ctor">
+            <summary>Instantiates a new instance of the StylesheetCollection class.</summary>
+        </member>
+        <member name="M:GDWebUtilities.CSS.StylesheetCollection.Generate(System.String)">
+            <summary>
+            Generates a Stylesheet object for each css file located in the directory.<para />
+            Searches subdirectories.
+            </summary>
+            <param name="directory">Directory to search in.</param>
+        </member>
+        <member name="M:GDWebUtilities.CSS.StylesheetCollection.ForClassList(System.String)">
+            <summary>Gets an array of selectors matching a css class list.</summary>
+            <param name="classList">Css class name to get the selectors for.</param>
+            <returns>Array of matching class selectors.</returns>
+        </member>
+        <member name="M:GDWebUtilities.CSS.StylesheetCollection.ForClassList(System.String,System.String)">
+            <summary>
+            Gets an array of selectors matching a css class list.<para />
+            Matches the provided element or selectors with no element specified.
+            </summary>
+            <param name="classList">CSS class list,</param>
+            <param name="element">Dom element to match on the selector.</param>
+            <returns>Array of matching class selectors.</returns>
+        </member>
+        <member name="M:GDWebUtilities.CSS.StylesheetCollection.Clear">
+            <summary>Clears all stylesheets from the collection.</summary>
+        </member>
+        <member name="M:GDWebUtilities.CSS.StylesheetCollection.GetEnumerator">
+            <summary>Returns an enumerator for each stylesheet in the collection.</summary>
+            <returns>Enumerator for the stylesheet.</returns>
+        </member>
+        <member name="M:GDWebUtilities.CSS.StylesheetCollection.System#Collections#IEnumerable#GetEnumerator">
+            <summary>Returns an enumerator for each stylesheet in the collection.</summary>
+            <returns>Enumerator for the stylesheet.</returns>
+        </member>
+        <member name="P:GDWebUtilities.CSS.StylesheetCollection.Stylesheets">
+            <summary>Gets a list of stylesheets contained in the collection.</summary>
+        </member>
+        <member name="P:GDWebUtilities.CSS.StylesheetCollection.Item(System.String)">
+            <summary>Gets a reference to a stylesheet matching the provided path.</summary>
+            <param name="path">Path of the stylesheet to find in the collection.</param>
+            <returns>Reference to the stylesheet in the path, or null if no match found.</returns>
+        </member>
+        <member name="T:GDWebUtilities.HtmlAttributes">
+            <summary>Stores string constants for HTML attributes.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlAttributes.Id">
+            <summary>Stores the string for an id attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlAttributes.Value">
+            <summary>Stores the string for a value attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlAttributes.Type">
+            <summary>Stores the string for a type attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlAttributes.Class">
+            <summary>Stores the string for a class attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlAttributes.Title">
+            <summary>Stores the string for a title attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlAttributes.Name">
+            <summary>Stores the string for a name attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlAttributes.OnBlur">
+            <summary>Stores the string for an onblur attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlAttributes.OnChange">
+            <summary>Stores the string for an onchange attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlAttributes.OnClick">
+            <summary>Stores the string for an onclick attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlAttributes.OnFocus">
+            <summary>Stores the string for an onfocus attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlAttributes.OnKeyDown">
+            <summary>Stores the string for an onkeydown attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlAttributes.OnKeyPress">
+            <summary>Stores the string for an onkeypress attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlAttributes.OnKeyUp">
+            <summary>Stores the string for an onkeyup attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlAttributes.OnMouseDown">
+            <summary>Stores the string for an onmousedown attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlAttributes.OnMouseMove">
+            <summary>Stores the string for an onmousemove attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlAttributes.OnMouseOut">
+            <summary>Stores the string for an onmouseout attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlAttributes.OnMouseOver">
+            <summary>Stores the string for an onmouseover attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlAttributes.OnMouseUp">
+            <summary>Stores the string for an onmouseup attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlAttributes.OnSelect">
+            <summary>Stores the string for an onselect attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlAttributes.ColumnSpan">
+            <summary>Stores the string for a columnspan attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlAttributes.RowSpan">
+            <summary>Stores the string for a rowspan attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlAttributes.Width">
+            <summary>Stores the string for a width attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlAttributes.Height">
+            <summary>Stores the string for a height attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlAttributes.CellSpacing">
+            <summary>Stores the string for a cellspacing attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlAttributes.CellPadding">
+            <summary>Stores the string for a cellpadding attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlAttributes.Border">
+            <summary>Stores the string for a border attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlAttributes.Href">
+            <summary>Stores the string for a href attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlAttributes.Align">
+            <summary>Stores the string for an align attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlAttributes.VerticalAlign">
+            <summary>Stores the string for a vertical align attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlAttributes.MaxLength">
+            <summary>Stores the string for a max length attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlAttributes.Rows">
+            <summary>Stores the string for a rows attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlAttributes.Alt">
+            <summary>Stores the string for an alt attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlAttributes.Source">
+            <summary>Stores the string for a source attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlAttributes.For">
+            <summary>Stores the string for a for attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlAttributes.DataLabel">
+            <summary>Stores the string for a data label attribute.</summary>
+        </member>
+        <member name="T:GDWebUtilities.HtmlBuilder">
+            <summary>Class used for building text HTML output.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlBuilder.DOUBLE_QUOTE">
+            <summary>Encoded HTML value for a double quote.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlBuilder.SINGLE_QUOTE">
+            <summary>Encoded HTML value for a single quote.</summary>
+        </member>
+        <member name="M:GDWebUtilities.HtmlBuilder.#ctor">
+            <summary>Instantiates an instance of the HtmlBuilder class.</summary>
+        </member>
+        <member name="M:GDWebUtilities.HtmlBuilder.#ctor(System.IO.Stream)">
+            <summary>Instantiates an instance of the HtmlBuilder class using the specified stream.</summary>
+            <param name="stream">Backing stream to use to write the rendered output to.</param>
+        </member>
+        <member name="M:GDWebUtilities.HtmlBuilder.Initialize">
+            <summary>Initializes the instance of the HtmlBuilder class.</summary>
+        </member>
+        <member name="M:GDWebUtilities.HtmlBuilder.ResetStream">
+            <summary>Resets the stream used for writing rendered output.</summary>
+        </member>
+        <member name="M:GDWebUtilities.HtmlBuilder.ToString">
+            <summary>Renders the output of the HTML Builder.</summary>
+        </member>
+        <member name="M:GDWebUtilities.HtmlBuilder.RenderBuilder">
+            <summary>Renders the output of the HTML Builder.</summary>
+        </member>
+        <member name="M:GDWebUtilities.HtmlBuilder.RenderCurrentElementToStream">
+            <summary>Renders the current HTML element to the output stream.</summary>
+        </member>
+        <member name="M:GDWebUtilities.HtmlBuilder.BuildIdentation(GDWebUtilities.HtmlElement)">
+            <summary>Determines the current indentation required for the HTML element to be rendered.</summary>
+            <param name="element">Element to determine the indentation of.</param>
+            <returns>Indentation of the element.</returns>
+        </member>
+        <member name="M:GDWebUtilities.HtmlBuilder.AddElement(GDWebUtilities.HtmlElement)">
+            <summary>Adds a new HTML element to the builder.</summary>
+            <param name="element">Element to add.</param>
+        </member>
+        <member name="M:GDWebUtilities.HtmlBuilder.AddElement(System.String,GDWebUtilities.RenderOptions)">
+            <summary>Adds a new HTML element to the builder.</summary>
+            <param name="tag">HTML tag of the element to add.</param>
+            <param name="renderOption">How to render the element.</param>
+        </member>
+        <member name="M:GDWebUtilities.HtmlBuilder.AddElement(System.String,GDWebUtilities.RenderOptions,System.String)">
+            <summary>Adds a new HTML element to the builder.</summary>
+            <param name="tag">HTML tag of the element to add.</param>
+            <param name="renderOption">How to render the element.</param>
+            <param name="innerHtml">Inner HTML to add to the element.</param>
+        </member>
+        <member name="M:GDWebUtilities.HtmlBuilder.AddOpeningTag(System.String)">
+            <summary>Adds an opening HTML tag to the builder.</summary>
+            <param name="tag">HTML tag to open.</param>
+        </member>
+        <member name="M:GDWebUtilities.HtmlBuilder.AddClosingTag(System.String)">
+            <summary>Adds a closing HTML tag to the builder.</summary>
+            <param name="tag">HTML tag to close.</param>
+        </member>
+        <member name="M:GDWebUtilities.HtmlBuilder.CloseElement">
+            <summary>Closes the current element in the stream.</summary>
+        </member>
+        <member name="M:GDWebUtilities.HtmlBuilder.AddClass(System.String)">
+            <summary>Adds the class attribute to the current element.</summary>
+            <param name="className">Class name(s) to add.</param>
+        </member>
+        <member name="M:GDWebUtilities.HtmlBuilder.AddButton(System.String,System.String)">
+            <summary>Adds an element containing an input tag with a type of button to the builder.</summary>
+            <param name="btnText">Text to display on the button.</param>
+            <param name="btnOnclick">Action to take when the button is clicked.</param>
+        </member>
+        <member name="M:GDWebUtilities.HtmlBuilder.AddButton(System.String,System.String,System.String)">
+            <summary>Adds an element containing an input tag with a type of button to the builder.</summary>
+            <param name="btnText">Text to display on the button.</param>
+            <param name="btnOnclick">Action to take when the button is clicked.</param>
+            <param name="btnId">Id of the button.</param>
+        </member>
+        <member name="M:GDWebUtilities.HtmlBuilder.AddCheckbox(System.String,System.String,System.String)">
+            <summary>Adds an input with a type of checkbox and a label to the builder.</summary>
+            <param name="chkText">Text to display on the label.</param>
+            <param name="chkOnclick">Action to take when the checkbox is clicked.</param>
+            <param name="chkIdAndName">Id and name of the checkbox.</param>
+        </member>
+        <member name="M:GDWebUtilities.HtmlBuilder.AddImage(System.String,System.String)">
+            <summary>Adds an element containing an img tag linking to the provided source to the builder.</summary>
+            <param name="imgSource">Location of the image to use.</param>
+            <param name="imgId">Id to assign to the image element.</param>
+        </member>
+        <member name="M:GDWebUtilities.HtmlBuilder.AddOption(System.String,System.Object)">
+            <summary>Adds an option element to the builder.</summary>
+            <param name="text">Display text of the option.</param>
+            <param name="value">Value of the option.</param>
+        </member>
+        <member name="M:GDWebUtilities.HtmlBuilder.AddAttribute(System.String,System.String)">
+            <summary>Adds an attribute to the current element.</summary>
+            <param name="attr">Attribute to add.</param>
+            <param name="value">Value of the attribute.</param>
+        </member>
+        <member name="M:GDWebUtilities.HtmlBuilder.AddAttribute(GDWebUtilities.HtmlElementAttribute)">
+            <summary>Adds an attribute to the current element.</summary>
+            <param name="attr">Attribute to add.</param>
+        </member>
+        <member name="M:GDWebUtilities.HtmlBuilder.AddStyle(System.String,System.String)">
+            <summary>Adds a style to the current element.</summary>
+            <param name="style">Style to add.</param>
+            <param name="value">Value of the style.</param>
+        </member>
+        <member name="M:GDWebUtilities.HtmlBuilder.AddStyle(GDWebUtilities.HtmlElementStyle)">
+            <summary>Adds a style to the current element.</summary>
+            <param name="style">Style to add.</param>
+        </member>
+        <member name="M:GDWebUtilities.HtmlBuilder.AddInnerHtml(System.String)">
+            <summary>Appends the provided inner HTML text to the InnerHTML property of the current HTML element added to the builder.</summary>
+            <param name="innerHtml">Inner HTML to append.</param>
+        </member>
+        <member name="M:GDWebUtilities.HtmlBuilder.AddInnerHtml(System.String,System.Boolean)">
+            <summary>Appends the provided inner HTML text to the InnerHTML property of the current HTML element added to the builder.</summary>
+            <param name="innerHtml">Inner HTML to append or set.</param>
+            <param name="overwrite">True to overwrite the existing inner HTML, false to append the text.</param>
+        </member>
+        <member name="M:GDWebUtilities.HtmlBuilder.AppendText(System.String)">
+            <summary>Appends the provided text to the builder.</summary>
+            <param name="text">Text to append.</param>
+        </member>
+        <member name="M:GDWebUtilities.HtmlBuilder.AddBreakTag">
+            <summary>Adds a break tag to the HTML Builder.</summary>
+        </member>
+        <member name="M:GDWebUtilities.HtmlBuilder.AddHrTag">
+            <summary>Adds an hr tag to the HTML Builder.</summary>
+        </member>
+        <member name="M:GDWebUtilities.HtmlBuilder.Dispose">
+            <summary>Disposes of the HTML builder and its underlying stream.</summary>
+        </member>
+        <member name="T:GDWebUtilities.RenderOptions">
+            <summary>Species options for how the GDHtmlBuilder renders a HtmlElement.</summary>
+        </member>
+        <member name="F:GDWebUtilities.RenderOptions.SingleTag">
+            <summary>Renders a single tag, opening and closing an HTML element.</summary>
+        </member>
+        <member name="F:GDWebUtilities.RenderOptions.Complete">
+            <summary>Renders the open tag, the inner HTML, and the closing tag of an element.</summary>
+        </member>
+        <member name="F:GDWebUtilities.RenderOptions.Open">
+            <summary>Render the opening tag of an element.</summary>
+        </member>
+        <member name="F:GDWebUtilities.RenderOptions.Close">
+            <summary>Render the closing tag of an element.</summary>
+        </member>
+        <member name="T:GDWebUtilities.HtmlElement">
+            <summary>Represents an HTML element used by the HTML builder.</summary>
+        </member>
+        <member name="M:GDWebUtilities.HtmlElement.#ctor(System.String,GDWebUtilities.RenderOptions)">
+            <summary>Instantiates an instance of the HtmlElement with the specified custom tag.</summary>
+            <param name="tag">Tag to create.</param>
+            <param name="renderOption">How to render the element.</param>
+        </member>
+        <member name="M:GDWebUtilities.HtmlElement.RenderElement(System.String)">
+            <summary>Renders the element to the HTML builder.</summary>
+            <param name="indentation">The level of indentation of the element.</param>
+            <returns>Rendered HTML output of the element.</returns>
+        </member>
+        <member name="M:GDWebUtilities.HtmlElement.RenderOpeningTag">
+            <summary>Renders the opening HTML tag and the inner text of the element.</summary>
+            <returns>Opening HTML tag and the inner text.</returns>
+        </member>
+        <member name="M:GDWebUtilities.HtmlElement.RenderClosingTag(System.Boolean)">
+            <summary>Renders the closing HTML tag of the element.</summary>
+            <param name="includeIndentation">Whether or not to include leading indentation for the closing tag.</param>
+            <returns>Closing HTML tag.</returns>
+        </member>
+        <member name="M:GDWebUtilities.HtmlElement.RenderSingleTag">
+            <summary>Renders a single HTML tag containing the closing slash.</summary>
+            <returns>Single HTML tag.</returns>
+        </member>
+        <member name="M:GDWebUtilities.HtmlElement.RenderCompleteElement">
+            <summary>Renders the opening HTML tag, the inner HTML text, and the closing HTML tag.</summary>
+            <returns>Complete HTML element.</returns>
+        </member>
+        <member name="M:GDWebUtilities.HtmlElement.AddAttribute(GDWebUtilities.HtmlElementAttribute)">
+            <summary>Adds an attribute to the HTML element.</summary>
+            <param name="attributeToAdd">Attribute to add.</param>
+        </member>
+        <member name="M:GDWebUtilities.HtmlElement.AddAttribute(System.String,System.String)">
+            <summary>Adds an attribute to the HTML element.</summary>
+            <param name="attribute">Attribute to add.</param>
+            <param name="value">Value of the attribute.</param>
+        </member>
+        <member name="M:GDWebUtilities.HtmlElement.RenderAttributes">
+            <summary>Generates a string for all attributes of the element.</summary>
+            <returns>String of all attributes for the element.</returns>
+        </member>
+        <member name="M:GDWebUtilities.HtmlElement.AddStyle(GDWebUtilities.HtmlElementStyle)">
+            <summary>Adds a style to the HTML element.</summary>
+            <param name="styleToAdd">Style to add.</param>
+        </member>
+        <member name="M:GDWebUtilities.HtmlElement.AddStyle(System.String,System.String)">
+            <summary>Adds a style to the HTML element.</summary>
+            <param name="style">Style to add.</param>
+            <param name="value">Value of the style.</param>
+        </member>
+        <member name="M:GDWebUtilities.HtmlElement.RenderStyles">
+            <summary>Generates a string for the style attribute of the element.</summary>
+            <returns>String containing all styles for the element.</returns>
+        </member>
+        <member name="P:GDWebUtilities.HtmlElement.Tag">
+            <summary>Gets the element's HTML tag.</summary>
+        </member>
+        <member name="P:GDWebUtilities.HtmlElement.RenderOption">
+            <summary>Gets the render option of the element.</summary>
+        </member>
+        <member name="P:GDWebUtilities.HtmlElement.InnerHtml">
+            <summary>Gets or sets the inner HTML tag value of the element.</summary>
+        </member>
+        <member name="P:GDWebUtilities.HtmlElement.Attributes">
+            <summary>Gets an array of the attributes for the element.</summary>
+        </member>
+        <member name="P:GDWebUtilities.HtmlElement.Styles">
+            <summary>Gets an array of the styles for the element.</summary>
+        </member>
+        <member name="P:GDWebUtilities.HtmlElement.Indentation">
+            <summary>Gets the indentation level of the element.</summary>
+        </member>
+        <member name="T:GDWebUtilities.HtmlElementAttribute">
+            <summary>Class used to store an attribute on an HTML element.</summary>
+        </member>
+        <member name="M:GDWebUtilities.HtmlElementAttribute.#ctor(System.String,System.String)">
+            <summary>Instantiates an instance of the HtmlElementAttribute class with the specified attribute.</summary>
+            <param name="attribute">Attribute to create.</param>
+            <param name="value">Value of the attribute.</param>
+        </member>
+        <member name="M:GDWebUtilities.HtmlElementAttribute.RenderAttribute">
+            <summary>Renders and returns the text of the attribute.</summary>
+            <returns>Attribute tag.</returns>
+        </member>
+        <member name="P:GDWebUtilities.HtmlElementAttribute.Attribute">
+            <summary>Gets the name of the HTML attribute.</summary>
+        </member>
+        <member name="P:GDWebUtilities.HtmlElementAttribute.Value">
+            <summary>Gets the value of the attribute.</summary>
+        </member>
+        <member name="P:GDWebUtilities.HtmlElementAttribute.IsValid">
+            <summary>Gets whether the attribute has a valid tag and value and should be rendered out.</summary>
+        </member>
+        <member name="T:GDWebUtilities.HtmlElementStyle">
+            <summary>Class used to store a style on an HTML element.</summary>
+        </member>
+        <member name="M:GDWebUtilities.HtmlElementStyle.#ctor(System.String,System.String)">
+            <summary>Instantiates an instance of the HtmlElementStyle with the style tag.</summary>
+            <param name="style">Style tag to create.</param>
+            <param name="value">Value of the style.</param>
+        </member>
+        <member name="M:GDWebUtilities.HtmlElementStyle.RenderStyle">
+            <summary>Renders and returns the style tag.</summary>
+            <returns>Style tag.</returns>
+        </member>
+        <member name="P:GDWebUtilities.HtmlElementStyle.Style">
+            <summary>Gets the backing HTML style.</summary>
+        </member>
+        <member name="P:GDWebUtilities.HtmlElementStyle.Value">
+            <summary>Gets or sets the value of the style.</summary>
+        </member>
+        <member name="T:GDWebUtilities.HtmlStyles">
+            <summary>Stores string constants for HTML styles.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlStyles.Width">
+            <summary>Stores the string for the width style attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlStyles.Height">
+            <summary>Stores the string for the height style attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlStyles.Display">
+            <summary>Stores the string for the display style attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlStyles.TextAlign">
+            <summary>Stores the string for the text align style attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlStyles.VerticalAlign">
+            <summary>Stores the string for the vertical align style attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlStyles.FontWeight">
+            <summary>Stores the string for the font weight style attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlStyles.FontSize">
+            <summary>Stores the string for the font size style attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlStyles.Margin">
+            <summary>Stores the string for the margin style attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlStyles.MarginTop">
+            <summary>Stores the string for the margin top style attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlStyles.MarginBottom">
+            <summary>Stores the string for the margin bottom style attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlStyles.MarginLeft">
+            <summary>Stores the string for the margin left style attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlStyles.MarginRight">
+            <summary>Stores the string for the margin right style attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlStyles.Cursor">
+            <summary>Stores the string for the cursor style attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlStyles.Color">
+            <summary>Stores the string for the color style attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlStyles.BackgroundColor">
+            <summary>Stores the string for the background color style attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlStyles.Padding">
+            <summary>Stores the string for the padding style attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlStyles.PaddingTop">
+            <summary>Stores the string for the padding top style attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlStyles.PaddingBottom">
+            <summary>Stores the string for the padding bottom style attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlStyles.PaddingLeft">
+            <summary>Stores the string for the padding left style attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlStyles.PaddingRight">
+            <summary>Stores the string for the padding right style attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlStyles.BorderCollapse">
+            <summary>Stores the string for the border collapse style attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlStyles.Border">
+            <summary>Stores the string for the border style attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlStyles.BorderTop">
+            <summary>Stores the string for the border top style attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlStyles.BorderBottom">
+            <summary>Stores the string for the border bottom style attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlStyles.BorderLeft">
+            <summary>Stores the string for the border left style attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlStyles.BorderRight">
+            <summary>Stores the string for the border right style attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlStyles.BorderWidth">
+            <summary>Stores the string for the border width style attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlStyles.BorderWidthTop">
+            <summary>Stores the string for the top border width style attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlStyles.BorderWidthBottom">
+            <summary>Stores the string for the bottom border width style attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlStyles.BorderWidthLeft">
+            <summary>Stores the string for the left border width style attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlStyles.BorderWidthRight">
+            <summary>Stores the string for the right border width style attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlStyles.BorderColor">
+            <summary>Stores the string for the border color style attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlStyles.BorderColorTop">
+            <summary>Stores the string for the top border color style attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlStyles.BorderColorBottom">
+            <summary>Stores the string for the bottom border color style attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlStyles.BorderColorLeft">
+            <summary>Stores the string for the left border color style attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlStyles.BorderColorRight">
+            <summary>Stores the string for the right border color style attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlStyles.Overflow">
+            <summary>Stores the string for the overflow style attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlStyles.OverflowX">
+            <summary>Stores the string for the overflow x style attribute.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlStyles.OverflowY">
+            <summary>Stores the string for the overflow y style attribute.</summary>
+        </member>
+        <member name="T:GDWebUtilities.HtmlTags">
+            <summary>Stores string constants for HTML tags.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlTags.Div">
+            <summary>Stores the tag for a div element.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlTags.Break">
+            <summary>Stores the tag for a break element.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlTags.Hr">
+            <summary>Stores the tag for a horizontal line element.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlTags.Table">
+            <summary>Stores the tag for a table element.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlTags.TableHead">
+            <summary>Stores the tag for a table head element.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlTags.TableFoot">
+            <summary>Stores the tag for a table foot element.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlTags.TableBody">
+            <summary>Stores the tag for a table body element.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlTags.TableHeader">
+            <summary>Stores the tag for a table header row element.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlTags.TableRow">
+            <summary>Stores the tag for a table row element.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlTags.TableData">
+            <summary>Stores the tag for a table data element.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlTags.Column">
+            <summary>Stores the tag for a column element.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlTags.Input">
+            <summary>Stores the tag for an input element.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlTags.TextArea">
+            <summary>Stores the tag for a textarea element.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlTags.Select">
+            <summary>Stores the tag for a select element.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlTags.Option">
+            <summary>Stores the tag for an option element.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlTags.Label">
+            <summary>Stores the tag for a label element.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlTags.Span">
+            <summary>Stores the tag for a span element.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlTags.Anchor">
+            <summary>Stores the tag for an anchor element.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlTags.Paragraph">
+            <summary>Stores the tag for a paragraph element.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlTags.H1">
+            <summary>Stores the tag for a h1 element.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlTags.H2">
+            <summary>Stores the tag for a h2 element.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlTags.H3">
+            <summary>Stores the tag for a h3 element.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlTags.Image">
+            <summary>Stores the tag for an image element.</summary>
+        </member>
+        <member name="F:GDWebUtilities.HtmlTags.Strong">
+            <summary>Stores the tag for a strong element.</summary>
+        </member>
+        <member name="T:GDWebUtilities.CSS.CSSParser">
+            <summary>Used to parse attributes and selectors from a stylesheet.</summary>
+        </member>
+        <member name="M:GDWebUtilities.CSS.CSSParser.#ctor(System.String)">
+            <summary>Instantiates a new instance of the CSSParser class.</summary>
+            <param name="cssFile">Path of the CSS file to parse.</param>+
+        </member>
+        <member name="M:GDWebUtilities.CSS.CSSParser.Parse">
+            <summary>Parses the CSS file.</summary>
+        </member>
+        <member name="P:GDWebUtilities.CSS.CSSParser.Collection">
+            <summary>Gets the collection generated from parsing the stylesheet.</summary>
+        </member>
+        <member name="T:GDWebUtilities.WebUtilities">
+            <summary>Class for storing utility methods for working with web forms.</summary>
+        </member>
+        <member name="M:GDWebUtilities.WebUtilities.GetAllControls(System.Web.UI.Control,System.Collections.Generic.List{System.Type})">
+            <summary>Gets all child controls contained within the provided container.</summary>
+            <param name="container">Parent container to get all children controls of.</param>
+            <param name="ignoreList">List of control types to not include; Children of an ignored control will also not be returned.</param>
+            <returns>Enumerable list of all child controls found on the container.</returns>
+        </member>
+        <member name="M:GDWebUtilities.WebUtilities.ToHtmlString(System.String)">
+            <summary>Converts a string to an HTML friendly string.</summary>
+            <param name="s">String to convert.</param>
+            <returns>Html friendly string.</returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,1496 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PortalFramework</name>
+    </assembly>
+    <members>
+        <member name="T:PortalFramework.Database.ODAP">
+            <summary>Database Access Protocol used for communicating with an Oracle database.</summary>
+        </member>
+        <member name="M:PortalFramework.Database.ODAP.GetDataRow(System.String,PortalFramework.Database.DatabaseTarget)">
+            <summary>Queries a database and returns the first result found.</summary>
+            <param name="query">Query string.</param>
+            <param name="targetDB">Database to query.</param>
+            <returns>OracleResponse object containing information about the results of the query execution.</returns>
+        </member>
+        <member name="M:PortalFramework.Database.ODAP.GetDataRow(GDDatabaseClient.Oracle.OracleCommandInfo)">
+            <summary>Queries a database and returns the first result found.</summary>
+            <param name="cmdInfo">Information about the query and connection information.</param>
+            <returns>OracleResponse object containing information about the results of the query execution.</returns>
+        </member>
+        <member name="M:PortalFramework.Database.ODAP.GetDataTable(System.String,PortalFramework.Database.DatabaseTarget)">
+            <summary>Queries a database with the provided query string and returns the results.</summary>
+            <param name="query">Query string.</param>
+            <param name="targetDB">Database to query.</param>
+            <returns>OracleResponse object containing information about the results of the query execution.</returns>
+        </member>
+        <member name="M:PortalFramework.Database.ODAP.GetDataTable(System.String,PortalFramework.Database.DatabaseTarget,System.Int32)">
+            <summary>Queries a database with the provided query string and returns the results.</summary>
+            <param name="query">Query string.</param>
+            <param name="targetDB">Database to query.</param>
+            <param name="maxRecords">Maximum number of records to return.</param>
+            <returns>OracleResponse object containing information about the results of the query execution.</returns>
+        </member>
+        <member name="M:PortalFramework.Database.ODAP.GetDataTableFromProcedure(System.String,Oracle.DataAccess.Client.OracleParameter[],PortalFramework.Database.DatabaseTarget)">
+            <summary>Returns a database from the results of a procedure call.</summary>
+            <param name="procName">Name of the procedure to call.</param>
+            <param name="parameters">Procedure parameters.</param>
+            <param name="targetDB">Database to query.</param>
+            <returns>OracleResponse object containing information about the results of the query execution.</returns>
+        </member>
+        <member name="M:PortalFramework.Database.ODAP.GetDataSet(System.String[],PortalFramework.Database.DatabaseTarget)">
+            <summary>Queries a database with the provided query strings and returns the resulting DataSet.</summary>
+            <param name="queryStrings">Query strings to send to the database.</param>
+            <param name="targetDB">Database to query.</param>
+            <returns>OracleResponse object containing information about the results of the query execution.</returns>
+        </member>
+        <member name="M:PortalFramework.Database.ODAP.GetDataSet(GDDatabaseClient.Oracle.OracleCommandInfo[])">
+            <summary>Queries a database with the provided query strings and returns the resulting DataSet.</summary>
+            <param name="queryCommands">Commands containing query and database connection information.</param>
+            <returns>OracleResponse object containing information about the results of the query execution.</returns>
+        </member>
+        <member name="M:PortalFramework.Database.ODAP.CallProcedure(System.String,Oracle.DataAccess.Client.OracleParameter[],PortalFramework.Database.DatabaseTarget)">
+            <summary>Executes a stored procedure and returns the response.</summary>
+            <param name="procedureName">Name of the procedure to execute.</param>
+            <param name="procParameters">Parameters to pass to the procedure.</param>
+            <param name="targetDB">Database containing the stored procedure.</param>
+            <returns>OracleResponse object containing information about the results of the stored procedure execution.</returns>
+        </member>
+        <member name="M:PortalFramework.Database.ODAP.GetDataRowEnumerator(System.String,PortalFramework.Database.DatabaseTarget)">
+            <summary>Queries a database and returns an iterator for each DataRow in the results.</summary>
+            <param name="query">Query string.</param>
+            <param name="targetDB">Database to query.</param>
+            <returns>DataRow enumerator.</returns>
+        </member>
+        <member name="M:PortalFramework.Database.ODAP.ResolveDatabaseTarget(PortalFramework.Database.DatabaseTarget)">
+            <summary>Gets the connection string for the target database.</summary>
+            <param name="targetDB">Database to get the connection string of.</param>
+            <returns>Connection string for the target database.</returns>
+        </member>
+        <member name="M:PortalFramework.Database.ODAP.BuildOracleCommand(System.String,PortalFramework.Database.DatabaseTarget)">
+            <summary>Builds an OracleCommandInfo object.</summary>
+            <param name="commandText">Command text.</param>
+            <param name="targetDB">Target database.</param>
+            <returns>OracleCommandInfo object.</returns>
+        </member>
+        <member name="T:PortalFramework.Database.DatabaseTarget">
+            <summary>Represents a target database defined via the ini settings file.</summary>
+        </member>
+        <member name="F:PortalFramework.Database.DatabaseTarget.OLTP">
+            <summary>Database defined as the primary OLTP database.</summary>
+        </member>
+        <member name="F:PortalFramework.Database.DatabaseTarget.Adhoc">
+            <summary>Database defined as the primary Adhoc database.</summary>
+        </member>
+        <member name="F:PortalFramework.Database.DatabaseTarget.AdhocLimited">
+            <summary>Database defined as the primary Adhoc database, accessed by a locked down user.</summary>
+        </member>
+        <member name="T:PortalFramework.Export.Styling.CssInterpreter">
+            <summary>Class for interpreting CSS into table export styles.</summary>
+        </member>
+        <member name="M:PortalFramework.Export.Styling.CssInterpreter.ForTable(System.String)">
+            <summary>Generates export cell styles for a table.</summary>
+            <param name="classList">CSS class list of the table.</param>
+            <returns>Array of generated export cell styles.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.Styling.CssInterpreter.ForRow(System.String)">
+            <summary>Generates export cell styles for a row.</summary>
+            <param name="classList">CSS class list of the row.</param>
+            <returns>Array of generated export cell styles.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.Styling.CssInterpreter.ForCell(System.String)">
+            <summary>Generates an export cell style for a cell.</summary>
+            <param name="classList">CSS class list of the cell.</param>
+            <returns>Generated export cell style.</returns>
+        </member>
+        <member name="T:PortalFramework.Export.Styling.ExportCellStyle">
+            <summary>Stores information about the style for a cell to export.</summary>
+        </member>
+        <member name="M:PortalFramework.Export.Styling.ExportCellStyle.#ctor">
+            <summary>Instantiates a new instance of the ExportCellStyle class.</summary>
+        </member>
+        <member name="M:PortalFramework.Export.Styling.ExportCellStyle.GenerateStyleIndex(PortalFramework.Export.XLSXStyleHelper)">
+            <summary>Generates an XLSX style index for the cell style.</summary>
+            <param name="styleHelper">Style helper for the Excel worksheet.</param>
+        </member>
+        <member name="M:PortalFramework.Export.Styling.ExportCellStyle.SetProperty(System.String,System.String)">
+            <summary>Sets the value of a property of the cell style.</summary>
+            <param name="property">Property to set.</param>
+            <param name="value">Value to assign.</param>
+        </member>
+        <member name="M:PortalFramework.Export.Styling.ExportCellStyle.AssignMissing(PortalFramework.Export.Styling.ExportCellStyle)">
+            <summary>Fills in missing style properties from another cell style.</summary>
+            <param name="other">Other cell style to use for missing properties.</param>
+        </member>
+        <member name="M:PortalFramework.Export.Styling.ExportCellStyle.FontSizeToPoint(System.String)">
+            <summary>Converts a font size to its equivalent in point.</summary>
+            <param name="fontSize">Font size string to convert.</param>
+            <returns>Point size of the font.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.Styling.ExportCellStyle.ColorToHex(System.String)">
+            <summary>Converts a string to an RGB color format.</summary>
+            <param name="colorString">String to convert.</param>
+            <returns>Hex string representing the color.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.Styling.ExportCellStyle.HexToColor(System.String)">
+            <summary>Converts a hex color value to a Color object.</summary>
+            <param name="hex">Hex color string to translate.</param>
+            <returns>Color object for the provided hex string.</returns>
+        </member>
+        <member name="P:PortalFramework.Export.Styling.ExportCellStyle.CssClassName">
+            <summary>Gets or sets the css class name.</summary>
+        </member>
+        <member name="P:PortalFramework.Export.Styling.ExportCellStyle.XLSXStyleIndex">
+            <summary>Gets the XLSX style index of the cell.</summary>
+        </member>
+        <member name="P:PortalFramework.Export.Styling.ExportCellStyle.Border">
+            <summary>Gets the value of the cell's border.</summary>
+        </member>
+        <member name="P:PortalFramework.Export.Styling.ExportCellStyle.BackgroundColor">
+            <summary>Gets the RGB color code of the backgorund color.</summary>
+        </member>
+        <member name="P:PortalFramework.Export.Styling.ExportCellStyle.FontColor">
+            <summary>Gets the RGB color code of the font color.</summary>
+        </member>
+        <member name="P:PortalFramework.Export.Styling.ExportCellStyle.FontSize">
+            <summary>Gets or sets the font size string.</summary>
+        </member>
+        <member name="P:PortalFramework.Export.Styling.ExportCellStyle.FontPoint">
+            <summary>Gets the point size of the font.</summary>
+        </member>
+        <member name="P:PortalFramework.Export.Styling.ExportCellStyle.FontFamily">
+            <summary>Gets the font family.</summary>
+        </member>
+        <member name="P:PortalFramework.Export.Styling.ExportCellStyle.BoldFont">
+            <summary>Gets whether or not the font is bold.</summary>
+        </member>
+        <member name="P:PortalFramework.Export.Styling.ExportCellStyle.NthPsuedoSelector">
+            <summary>Gets or sets the Nth psuedo selector rule.</summary>
+        </member>
+        <member name="T:PortalFramework.Export.CSVExporter">
+            <summary>Exports a report to a CSV file format.</summary>
+        </member>
+        <member name="M:PortalFramework.Export.CSVExporter.#ctor(PortalFramework.ReportModel.Report,System.IO.FileInfo)">
+            <summary>Instantiates a new instance of the CSV exporter class.</summary>
+            <param name="report">Report to export.</param>
+            <param name="file">FileInfo object containing information about the file to write.</param>
+        </member>
+        <member name="M:PortalFramework.Export.CSVExporter.Dispose">
+            <summary>Disposes of the CSV file.</summary>
+        </member>
+        <member name="M:PortalFramework.Export.CSVExporter.WriteReport">
+            <summary>Writes the report to the CSV file.</summary>
+        </member>
+        <member name="M:PortalFramework.Export.CSVExporter.WriteReportInformation">
+            <summary>Writes information about the report and any meta data to the CSV file.</summary>
+        </member>
+        <member name="M:PortalFramework.Export.CSVExporter.WriteHeaderNote(PortalFramework.ReportModel.ReportTable)">
+            <summary>Writes the table's header file to the CSV file.</summary>
+        </member>
+        <member name="M:PortalFramework.Export.CSVExporter.WriteFooterNote(PortalFramework.ReportModel.ReportTable)">
+            <summary>Writes the table's footer note to the CSV file.</summary>
+        </member>
+        <member name="M:PortalFramework.Export.CSVExporter.WriteRow(PortalFramework.ReportModel.ReportRow)">
+            <summary>Writes a report row to the CSV file.</summary>
+            <param name="row">Row to write.</param>
+        </member>
+        <member name="M:PortalFramework.Export.CSVExporter.WriteCell(PortalFramework.ReportModel.ReportCell)">
+            <summary>Writes a report cell to the CSV file.</summary>
+            <param name="cell">Cell to write.</param>
+        </member>
+        <member name="T:PortalFramework.Export.CSVHelper">
+            <summary>Class used to assist with writing CSV files.</summary>
+        </member>
+        <member name="M:PortalFramework.Export.CSVHelper.ConvertArray(System.Object[])">
+            <summary>Converts an array of values to output to a CSV file.</summary>
+            <param name="values">Values to write.</param>
+            <returns>Converted values to write to a CSV file.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.CSVHelper.ConvertValue(System.Object)">
+            <summary>Converts a value to a CSV friendly format.</summary>
+            <param name="value">Value to convert.</param>
+            <returns>Value in a format for CSV.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.CSVHelper.EncloseValue(System.Object)">
+            <summary>Determines whether a value needs to be enclosed in double quotes for a CSV friendly format.</summary>
+            <param name="value">Value to check.</param>
+            <returns>True if the value needs to be enclosed, false otherwise.</returns>
+        </member>
+        <member name="T:PortalFramework.Export.PDFExporter">
+            <summary>Used to export a report to PDF format.</summary>
+        </member>
+        <member name="M:PortalFramework.Export.PDFExporter.#ctor(PortalFramework.ReportModel.Report,System.IO.FileInfo)">
+            <summary>Instantiates a new instance of the PDFExporter class.</summary>
+            <param name="report">Report to export.</param>
+            <param name="file">FileInfo object containing information about the file to write.</param>
+        </member>
+        <member name="M:PortalFramework.Export.PDFExporter.WriteFile">
+            <summary>Writes the PDF file to disk.</summary>
+        </member>
+        <member name="M:PortalFramework.Export.PDFExporter.WriteReport">
+            <summary>Writes the report to the PDF file.</summary>
+        </member>
+        <member name="M:PortalFramework.Export.PDFExporter.WriteReportInformation">
+            <summary>Writes information about the report and any meta data to the PDF file.</summary>
+        </member>
+        <member name="M:PortalFramework.Export.PDFExporter.Dispose">
+            <summary>Disposes of the PDF exporter.</summary>
+        </member>
+        <member name="M:PortalFramework.Export.PDFExporter.AddNumberingRange">
+            <summary>Adds the numbering range to the report.</summary>
+        </member>
+        <member name="T:PortalFramework.Export.Styling.ExportCellStyleFactory">
+            <summary>Factory class for creating ExportCellStyle objects.</summary>
+        </member>
+        <member name="M:PortalFramework.Export.Styling.ExportCellStyleFactory.FromSelector(GDWebUtilities.CSS.Selector)">
+            <summary>Creates a ExportCellStyle from a Selector.</summary>
+            <param name="s">Selector to create a cell style for.</param>
+            <returns>Generated cell style.</returns>
+        </member>
+        <member name="T:PortalFramework.Export.Styling.ExportTableCellStyles">
+            <summary>Used to hold information about the styling of a report table to export.</summary>
+        </member>
+        <member name="M:PortalFramework.Export.Styling.ExportTableCellStyles.#ctor">
+            <summary>Instantiates a new instance of the ExportTableCellStyles class.</summary>
+        </member>
+        <member name="M:PortalFramework.Export.Styling.ExportTableCellStyles.GenerateStyleIndexes">
+            <summary>Generates XLSX style indexes for the generated cell styles.</summary>
+        </member>
+        <member name="M:PortalFramework.Export.Styling.ExportTableCellStyles.FindStyleForRow(System.String)">
+            <summary>Matches the cell style for a row based on the provided class list.</summary>
+            <param name="classList">Class list of the row.</param>
+            <returns>Matching cell style to use for the row, or null if no match found.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.Styling.ExportTableCellStyles.FindStyleForRow(System.Int32)">
+            <summary>Matches the cell style for a row based on the row index.</summary>
+            <param name="rowIndex">Row index of the style to find.</param>
+            <returns>Cell style to use for the row.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.Styling.ExportTableCellStyles.FindPercentStyleIndex(System.UInt32)">
+            <summary>Finds the percent XLSX style index for the provided row index.</summary>
+            <param name="styleIndex">Style index of the style to find the percent number format equivalent of.</param>
+            <returns>XLSX style index.</returns>
+        </member>
+        <member name="P:PortalFramework.Export.Styling.ExportTableCellStyles.DefaultCellStyle">
+            <summary>Gets a reference to the default cell style of the table.</summary>
+        </member>
+        <member name="P:PortalFramework.Export.Styling.ExportTableCellStyles.HeaderCellStyle">
+            <summary>Gets a reference to the header cell style of the table.</summary>
+        </member>
+        <member name="P:PortalFramework.Export.Styling.ExportTableCellStyles.CellStyles">
+            <summary>Gets a list of cell styles generated for the table.</summary>
+        </member>
+        <member name="P:PortalFramework.Export.Styling.ExportTableCellStyles.StyleHelper">
+            <summary>Gets or sets the style helper for XLSX exports.</summary>
+        </member>
+        <member name="T:PortalFramework.Export.XLSXExporter">
+            <summary>Used to export a report to an Excel format.</summary>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXExporter.#ctor(PortalFramework.ReportModel.Report,System.IO.FileInfo)">
+            <summary>Instantiates a new instance of the ExcelExporter class.</summary>
+            <param name="report">Report to export.</param>
+            <param name="file">FileInfo object containing information about the file to write.</param>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXExporter.WriteFile">
+            <summary>Writes the Excel file to disk.</summary>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXExporter.WriteReport">
+            <summary>Writes the report to the Excel file.</summary>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXExporter.WriteReportInformation">
+            <summary>Writes information about the report and any meta data to the Excel file.</summary>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXExporter.WriteHeaderNote">
+            <summary>Writes the report's header note to the Excel file.</summary>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXExporter.WriteFooterNote">
+            <summary>Writes the report's footer note to the Excel file.</summary>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXExporter.WriteExcelRow(PortalFramework.ReportModel.ReportRow,System.String,System.UInt32)">
+            <summary>Writes a report row to the Excel file.</summary>
+            <param name="rptRow">Report row to export.</param>
+            <param name="sheetId">Id of the sheet to add the row to.</param>
+            <param name="rowIndex">Index of the row to add.</param>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXExporter.Dispose">
+            <summary>Disposes of the ExcelExporter.</summary>
+        </member>
+        <member name="T:PortalFramework.Export.XLSXHelper">
+            <summary>Utility class for assisting with working with the OpenXML library.</summary>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXHelper.#ctor(System.String)">
+            <summary>Instantiates a new instance of the XLSXHelper class.</summary>
+            <param name="fileName">Name of the XLSX file to create.</param>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXHelper.Dispose">
+            <summary>Disposes of the underlying SpreadsheetDocument object.</summary>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXHelper.InitializeExcelDocument(System.String)">
+            <summary>Instantiates a new Excel document.</summary>
+            <param name="fileName">Full path of the file to create.</param>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXHelper.SaveWorkbook">
+            <summary>Saves the Excel document to disk.</summary>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXHelper.AddWorksheet(System.String)">
+            <summary>Adds a new worksheet to an Excel document.</summary>
+            <param name="sheetName">Name to assign to the worksheet.</param>
+            <returns>Sheet id for the worksheet created.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXHelper.GetSheetId(System.UInt32)">
+            <summary>Gets the id of a worksheet in a spreadsheet document.</summary>
+            <param name="sheetNumber">Worksheet number.</param>
+            <returns>Sheet id for the provided sheet number, or an empty string if no match found.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXHelper.GetSheetId(System.String)">
+            <summary>Gets the sheet id of a worksheet in a spreadsheet document.</summary>
+            <param name="sheetName">Name of the worksheet.</param>
+            <returns>Sheet id for the provided sheet name, or an empty string if no match found.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXHelper.GetWorksheetCount">
+            <summary>Gets a count of the number of worksheets in the document.</summary>
+            <returns>Number of worksheets in the document.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXHelper.GetWorkSheetPart(System.String)">
+            <summary>Returns a reference to a WorksheetPart object contained in an Excel document.</summary>
+            <param name="sheetId">Sheet id to retrieve.</param>
+            <returns>WorksheetPart object for the provided sheet id, or null if no match found.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXHelper.GetWorksheet(System.String)">
+            <summary>Returns a reference to a Worksheet object contained in an Excel document.</summary>
+            <param name="sheetId">Sheet id to retrieve.</param>
+            <returns>Worksheet object for the provided sheet id, or null if no match found.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXHelper.GetSheetData(System.String)">
+            <summary>Returns a reference to a SheetData object contained in an Excel document.</summary>
+            <param name="sheetId">Sheet id to retrieve.</param>
+            <returns>SheetData object for the provided sheet id, or null if no match found.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXHelper.GetStylesheet">
+            <summary>Returns a reference to the Stylesheet for an Excel document.</summary>
+            <returns>Stylesheet object if available, or null if it document's Stylesheet is not instantiated.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXHelper.CreateRow(System.String,System.UInt32)">
+            <summary>Creates a row in a worksheet of an Excel document.</summary>
+            <param name="sheetId">Id of the sheet.</param>
+            <param name="rowIndex">Index of the row to create.</param>
+            <returns>Reference to the row object created.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXHelper.GetRow(System.String,System.UInt32)">
+            <summary>Returns a reference to a Row object in a work sheet.</summary>
+            <param name="sheetId">Id of the sheet.</param>
+            <param name="rowIndex">Index of the row to find.</param>
+            <returns>Row for the provided row index, or null if no match found.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXHelper.GetMaxRowIndex(System.String)">
+            <summary>Returns the maximum row index in a work sheet.</summary>
+            <param name="sheetId">Id of the sheet.</param>
+            <returns>Maximum row index of the work sheet, or 0 if no rows found.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXHelper.GetMaxRowIndex(DocumentFormat.OpenXml.Spreadsheet.SheetData)">
+            <summary>Returns the maximum row index in a work sheet.</summary>
+            <param name="sheetData">Sheet Data object to get the maximum row index of.</param>
+            <returns>Maximum row index of the work sheet, or 0 if no rows found.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXHelper.GetNextRowIndex(System.String)">
+            <summary>Gets the next available row index in a work sheet.</summary>
+            <param name="sheetId">Id of the sheet.</param>
+            <returns>The next available row index.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXHelper.GetMaxCellReference(DocumentFormat.OpenXml.Spreadsheet.Row)">
+            <summary>Gets the max cell reference value for the row.</summary>
+            <param name="row">Row to get the max cell reference value of.</param>
+            <returns>Maximum cell reference, or an empty string if no cell references are found.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXHelper.GetAvailableCellReference(DocumentFormat.OpenXml.Spreadsheet.Row)">
+            <summary>Gets the next available cell reference for a row.</summary>
+            <param name="row">Row to get the next available cell reference of.</param>
+            <returns>Next available cell reference.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXHelper.AppendCell(System.String,System.UInt32,System.String)">
+            <summary>Appends a cell to a row.</summary>
+            <param name="sheetId">Id of the sheet.</param>
+            <param name="rowIndex">Index of the row.</param>
+            <param name="cellValue">Value to assign to the cell.</param>
+            <returns>Cell reference if the cell was successfully appended, null otherwise.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXHelper.AppendCell(DocumentFormat.OpenXml.Spreadsheet.Row,System.String)">
+            <summary>Appends a cell to a row.</summary>
+            <param name="row">Row to append the cell to.</param>
+            <param name="cellValue">Value to assign to the cell.</param>
+            <returns>Cell reference if the cell was successfully appended, null otherwise.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXHelper.AppendCell(DocumentFormat.OpenXml.Spreadsheet.Row,System.String,DocumentFormat.OpenXml.Spreadsheet.CellValues)">
+            <summary>Appends a cell to a row.</summary>
+            <param name="row">Row to append the cell to.</param>
+            <param name="cellValue">Value to assign to the cell.</param>
+            <param name="cellType">Data type of the cell.</param>
+            <returns>Cell reference if the cell was successfully appended, null otherwise.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXHelper.AppendCell(DocumentFormat.OpenXml.Spreadsheet.Row,DocumentFormat.OpenXml.Spreadsheet.Cell)">
+            <summary>Appends a cell to a row.</summary>
+            <param name="row">Row to append the cell to.</param>
+            <param name="cell">Cell to append.</param>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXHelper.CreateCell(System.String)">
+            <summary>Creates a new cell with the provided value.</summary>
+            <param name="cellValue">Value to assign to the cell.</param>
+            <returns>Cell object containing the provided value.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXHelper.CreateCell(System.String,DocumentFormat.OpenXml.Spreadsheet.CellValues)">
+            <summary>Creates a new cell with the provided value.</summary>
+            <param name="cellValue">Value to assign to the cell.</param>
+            <param name="cellType">The data type of the cell.</param>
+            <returns>Cell object containing the provided value.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXHelper.SetCell(System.String,System.String,System.UInt32,System.String)">
+            <summary>Sets the value of a cell in a worksheet.</summary>
+            <param name="sheetId">Id of the sheet.</param>
+            <param name="columnName">The column name of the cell.</param>
+            <param name="rowIndex">The row index of the cell.</param>
+            <param name="cellValue">The value to assign to the cell.</param>
+            <returns>Reference to the cell.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXHelper.GetCell(System.String,System.String,System.UInt32)">
+            <summary>Returns a reference to a Cell within a worksheet.</summary>
+            <param name="sheetId">Id of the sheet.</param>
+            <param name="columnName">The column name of the cell.</param>
+            <param name="rowIndex">The row index of the cell.</param>
+            <returns>Reference to the cell.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXHelper.NumberToExcelColumn(System.UInt32)">
+            <summary>Converts the column number to the Excel column letter.</summary>
+            <param name="colNumber">Column number to convert.</param>
+            <returns>Excel column representation of the column number.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXHelper.ExcelColumnToNumber(System.String)">
+            <summary>Converts an Excel column letter to the column number.</summary>
+            <param name="column">Excel column to convert.</param>
+            <returns>Column number for the Excel column.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXHelper.ToXMLString(System.String)">
+            <summary>Converts a text into an XML safe string.</summary>
+            <param name="text">Text to convert.</param>
+            <returns>XML safe string.</returns>
+        </member>
+        <member name="P:PortalFramework.Export.XLSXHelper.Document">
+            <summary>Gets a reference to the spreadsheet document.</summary>
+        </member>
+        <member name="P:PortalFramework.Export.XLSXHelper.StyleHelper">
+            <summary>Gets a reference to the style helper for the spreadsheet document.</summary>
+        </member>
+        <member name="T:PortalFramework.Export.XLSXStyleHelper">
+            <summary>Used to assist with interacting with an Excel's Stylesheet.</summary>
+        </member>
+        <member name="F:PortalFramework.Export.XLSXStyleHelper.PERCENT_NUMBER_FORMAT">
+            <summary>Gets the id of the percentage formatter.</summary>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXStyleHelper.#ctor(DocumentFormat.OpenXml.Spreadsheet.Stylesheet)">
+            <summary>Initializes a new instance of the XLSXStyleHelper class.</summary>
+            <param name="stylesheet">Stylesheet for the Excel document.</param>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXStyleHelper.InitializeStylesheet">
+            <summary>Initializes the stylesheet for a document.</summary>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXStyleHelper.AddDefaultFills">
+            <summary>Adds default fills to the stylesheet.</summary>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXStyleHelper.AddDefaultFonts">
+            <summary>Adds default fonts to the stylesheet.</summary>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXStyleHelper.AddDefaultBorders">
+            <summary>Adds default borders to the stylesheet.</summary>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXStyleHelper.CreateNumberingFormat(System.UInt32,System.String)">
+            <summary>Creates a NumberingFormat object.</summary>
+            <param name="id">Id of the number format to create.</param>
+            <param name="format">Format of the numbering format.</param>
+            <returns>NumberingFormat object created with the provided parameters.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXStyleHelper.AddCellFormat(DocumentFormat.OpenXml.Spreadsheet.CellFormat)">
+            <summary>Adds a CellFormat to the Excel document's stylesheet.</summary>
+            <param name="cf">CellFormat to add.</param>
+            <returns>Id of the cell foramt added.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXStyleHelper.CreateCellFormat(System.UInt32,System.UInt32,System.UInt32,System.UInt32)">
+            <summary>Creates a new CellFormat object.</summary>
+            <param name="fontId">Id of the font style.</param>
+            <param name="fillId">Id of the fill style.</param>
+            <param name="borderId">Id of the border style.</param>
+            <param name="numberFormatId">Id of the number format.</param>
+            <returns>Cell format ID.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXStyleHelper.CloneCellFormat(DocumentFormat.OpenXml.Spreadsheet.CellFormat)">
+            <summary>Clones and creates a new CellFormat object from an existing CellFormat.</summary>
+            <param name="other">CellFormat to clone.</param>
+            <returns>Clonedd CellFormat object.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXStyleHelper.GetCellFormat(System.UInt32)">
+            <summary>Gets a cell format from the stylesheet.</summary>
+            <param name="cellFormatId">Id of the format to find.</param>
+            <returns>Cell format matching the format id, or null if no match found.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXStyleHelper.GetCellFormatId(System.UInt32,System.UInt32,System.UInt32,System.UInt32)">
+            <summary>Gets a cell format from the stylesheet.</summary>
+            <param name="fontId">Id of the font style.</param>
+            <param name="fillId">Id of the fill style.</param>
+            <param name="borderId">Id of the border style.</param>
+            <param name="numberFormatId">Id of the number format to apply.</param>
+            <returns>Style index of the cell format.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXStyleHelper.CreateFont(System.String)">
+            <summary>Creates a new font in a spreadsheet document.</summary>
+            <param name="name">Name of the font.</param>
+            <returns>Font id.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXStyleHelper.CreateFont(System.Double)">
+            <summary>Creates a new font in a spreadsheet document.</summary>
+            <param name="size">Size of the font.</param>
+            <returns>Font id.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXStyleHelper.CreateFont(System.String,System.Double)">
+            <summary>Creates a new font in a spreadsheet document.</summary>
+            <param name="name">Name of the font.</param>
+            <param name="size">Size of the font.</param>
+            <returns>Font id.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXStyleHelper.CreateFont(System.String,System.Double,System.String)">
+            <summary>Creates a new font in a spreadsheet document.</summary>
+            <param name="name">Name of the font.</param>
+            <param name="size">Size of the font.</param>
+            <param name="argb">ARGB color of the font.</param>
+            <returns>Font id.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXStyleHelper.CreateFont(System.String,System.Double,System.String,System.Boolean)">
+            <summary>Creates a new font in a spreadsheet document.</summary>
+            <param name="name">Name of the font.</param>
+            <param name="size">Size of the font.</param>
+            <param name="argb">ARGB color of the font.</param>
+            <param name="bold">Whether or not the font is bold.</param>
+            <returns>Font id.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXStyleHelper.GetFontId(System.String,System.Double,System.String,System.Boolean)">
+            <summary>Gets the id of the font matching the provided parameters.</summary>
+            <param name="name">Name of the font.</param>
+            <param name="size">Size of the font.</param>
+            <param name="argb">ARGB color of the font.</param>
+            <param name="bold">Whether or not the font is bold.</param>
+            <returns>Id of the matching font, or 0 if no match found.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXStyleHelper.CreateFill(System.String)">
+            <summary>Creates a new fill in the stylesheet of an Excel document.</summary>
+            <param name="argb">ARGB color of the fill.</param>
+            <returns>Reference to the created Fill.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXStyleHelper.CreateFill(DocumentFormat.OpenXml.Spreadsheet.PatternValues,System.String)">
+            <summary>Creates a new fill in the stylesheet of an Excel document.</summary>
+            <param name="patternValue">Pattern type of the fill.</param>
+            <param name="argb">ARGB color of the fill.</param>
+            <returns>Reference to the created Fill.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXStyleHelper.GetFillId(System.String)">
+            <summary>Gets the id of the fill matching the provided parameters.</summary>
+            <param name="argb">ARGB color of the fill.</param>
+            <returns>Id of the matching fill, or 0 if no match found.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXStyleHelper.GetFillId(DocumentFormat.OpenXml.Spreadsheet.PatternValues,System.String)">
+            <summary>Gets the id of the fill matching the provided parameters.</summary>
+            <param name="patternValue">Pattern type of the fill.</param>
+            <param name="argb">ARGB color of the fill.</param>
+            <returns>Id of the matching fill, or 0 if no match found.</returns>
+        </member>
+        <member name="M:PortalFramework.Export.XLSXStyleHelper.CreateBorder">
+            <summary>Create a new border in an Excel document's stylesheet.</summary>
+            <returns>Index of the created border.</returns>
+        </member>
+        <member name="P:PortalFramework.Export.XLSXStyleHelper.Stylesheet">
+            <summary>Gets a reference to the Stylesheet for the Excel document.</summary>
+        </member>
+        <member name="T:PortalFramework.PortalIniSettings">
+            <summary>Used to read and store IniSettings from an ini file.</summary>
+        </member>
+        <member name="M:PortalFramework.PortalIniSettings.#cctor">
+            <summary>Static constructor for the PortalIniSettings class.</summary>
+        </member>
+        <member name="M:PortalFramework.PortalIniSettings.Initialize(System.String)">
+            <summary>Initializes the PortalIniSettings with values from an INI file.</summary>
+            <param name="filename">File name of the ini file to load.</param>
+        </member>
+        <member name="M:PortalFramework.PortalIniSettings.BuildIniFilePath(System.String)">
+            <summary>Builds the file path for a file for the provided file name.</summary>
+            <param name="filename">Name of the file to build the path for.</param>
+            <returns>File path for the provided file name.</returns>
+        </member>
+        <member name="P:PortalFramework.PortalIniSettings.Settings">
+            <summary>Gets the INI settings for the Portal application.</summary>
+        </member>
+        <member name="T:PortalFramework.PortalIniSettings.Values">
+            <summary>Allows for access to the values for known keys provided in the ini file.</summary>
+        </member>
+        <member name="P:PortalFramework.PortalIniSettings.Values.AdhocConnectionString">
+            <summary>Gets the value stored for the ADHOC_DB key.</summary>
+        </member>
+        <member name="P:PortalFramework.PortalIniSettings.Values.OLTPConnectionString">
+            <summary>Gets the value stored for the OLTP_DB.</summary>
+        </member>
+        <member name="P:PortalFramework.PortalIniSettings.Values.AdhocLimitedConnectionString">
+            <summary>Gets the value stored for the ADHOC_DB_LIMITED key.</summary>
+        </member>
+        <member name="P:PortalFramework.PortalIniSettings.Values.PageTimeout">
+            <summary>Gets the page timeout value for the PAGE_TIMEOUT key.</summary>
+        </member>
+        <member name="P:PortalFramework.PortalIniSettings.Values.AdhocLimitCap">
+            <summary>Gets the maximum number of records to be returned via an adhoc query.  Stored in the ADHOC_LIMIT_CAP key.</summary>
+        </member>
+        <member name="T:PortalFramework.PortalIniSettings.Values.Directories">
+            <summary>Stores known directory values.</summary>
+        </member>
+        <member name="P:PortalFramework.PortalIniSettings.Values.Directories.Logs">
+            <summary>Gets a string representing the directory to use for log files. Stored in the DIR_LOGS key.</summary>
+        </member>
+        <member name="P:PortalFramework.PortalIniSettings.Values.Directories.Documents">
+            <summary>Gets a string representing the directory to use for uploaded documents. Stored in the DIR_DOCUMENTS key.</summary>
+        </member>
+        <member name="P:PortalFramework.PortalIniSettings.Values.Directories.DocumentArchive">
+            <summary>Gets a string representing the directory to use for deleted/archived documents. Stored in the DIR_DOCUMENTS_ARCHIVE key.</summary>
+        </member>
+        <member name="P:PortalFramework.PortalIniSettings.Values.Directories.Exports">
+            <summary>Gets a string representing the directory to use for exports. Stored in the DIR_EXPORTS key.</summary>
+        </member>
+        <member name="T:PortalFramework.MenuModel.PortalMenuItem">
+            <summary>Used to store information about a portal menu item.</summary>
+        </member>
+        <member name="M:PortalFramework.MenuModel.PortalMenuItem.#ctor(System.String,System.Int32)">
+            <summary>Instantiates a new instance of the PortalMenuItem class.</summary>
+            <param name="txt">Text to display for the menu item.</param>
+            <param name="permissionCd">Permission code to apply to the menu item.</param>
+        </member>
+        <member name="M:PortalFramework.MenuModel.PortalMenuItem.#ctor(System.String,System.Int32,System.String)">
+            <summary>Instantiates a new instance of the PortalMenuItem class.</summary>
+            <param name="txt">Text to display for the menu item.</param>
+            <param name="permissionCd">Permission code to apply to the menu item.</param>
+            <param name="trgtCode">Target navigation code.</param>
+        </member>
+        <member name="M:PortalFramework.MenuModel.PortalMenuItem.AddSubItem(PortalFramework.MenuModel.PortalMenuItem)">
+            <summary>Adds a menu item to the menu's sub items.</summary>
+            <param name="item">Menu item to add.</param>
+        </member>
+        <member name="M:PortalFramework.MenuModel.PortalMenuItem.ToMenuItem">
+            <summary>Converts the portal menu item to a .NET MenuItem.</summary>
+            <returns>MenuItem created from the portal menu item.</returns>
+        </member>
+        <member name="P:PortalFramework.MenuModel.PortalMenuItem.Text">
+            <summary>Gets the text to display for the menu item.</summary>
+        </member>
+        <member name="P:PortalFramework.MenuModel.PortalMenuItem.TargetCode">
+            <summary>Gets the navigation code to use for redirects for the menu item.</summary>
+        </member>
+        <member name="P:PortalFramework.MenuModel.PortalMenuItem.IsLink">
+            <summary>Gets whether or not the menu item is a link.</summary>
+        </member>
+        <member name="P:PortalFramework.MenuModel.PortalMenuItem.IsVisible">
+            <summary>Gets or sets whether or not to display the menu item.</summary>
+        </member>
+        <member name="P:PortalFramework.MenuModel.PortalMenuItem.SubItemsVisible">
+            <summary>Gets whether or not at least one sub item is visible.</summary>
+        </member>
+        <member name="P:PortalFramework.MenuModel.PortalMenuItem.PermissionCode">
+            <summary>Gets the permission code required to have access to the menu item. Read-only backing field.</summary>
+        </member>
+        <member name="P:PortalFramework.MenuModel.PortalMenuItem.SubItems">
+            <summary>Gets an array of sub menu items.</summary>
+        </member>
+        <member name="T:PortalFramework.MenuModel.PortalMenuItemCollection">
+            <summary>Stores a collection of navigation menu items.</summary>
+        </member>
+        <member name="M:PortalFramework.MenuModel.PortalMenuItemCollection.#ctor">
+            <summary>Instantiates a new instance of the PortalMenuItemCollection class.</summary>
+        </member>
+        <member name="M:PortalFramework.MenuModel.PortalMenuItemCollection.AddItem(PortalFramework.MenuModel.PortalMenuItem)">
+            <summary>Adds a menu item to the collection.</summary>
+            <param name="item">Menu item to add.</param>
+        </member>
+        <member name="M:PortalFramework.MenuModel.PortalMenuItemCollection.GetEnumerator">
+            <summary>Gets an enumerator for the portal menu items stored in the collection.</summary>
+            <returns>Portal menu item collection enumerator.</returns>
+        </member>
+        <member name="M:PortalFramework.MenuModel.PortalMenuItemCollection.System#Collections#IEnumerable#GetEnumerator">
+            <summary>Gets the enumerator for the portal menu item collection.</summary>
+            <returns>Portal menu item collection enumerator.</returns>
+        </member>
+        <member name="M:PortalFramework.MenuModel.PortalMenuItemCollection.ToMenuItems">
+            <summary>Converts the portal menu items stored to an array of MenuItem objects.</summary>
+            <returns>MenuItem array.</returns>
+        </member>
+        <member name="M:PortalFramework.MenuModel.PortalMenuItemCollection.GetNavigationUrl(PortalFramework.MenuModel.PortalMenuItem)">
+            <summary>Gets a javascript navigation function for a portal menu item.</summary>
+            <param name="menuItem">Portal menu item to get the navigation url of.</param>
+            <returns>Navigation url based on the item's target code, or a call to the empty navigation function.</returns>
+        </member>
+        <member name="P:PortalFramework.MenuModel.PortalMenuItemCollection.Items">
+            <summary>Gets an array of navigation menu items in the collection.</summary>
+        </member>
+        <member name="T:PortalFramework.Export.ReportExporter">
+            <summary>Class used for exporting reports to various formats.</summary>
+        </member>
+        <member name="M:PortalFramework.Export.ReportExporter.ToCsv(PortalFramework.ReportModel.Report,System.String)">
+            <summary>Exports a report to CSV format.</summary>
+            <param name="report">Report to export.</param>
+            <param name="fullpath">Full path of the file to write.</param>
+        </member>
+        <member name="M:PortalFramework.Export.ReportExporter.ToCsv(PortalFramework.ReportModel.Report,System.IO.FileInfo)">
+            <summary>Exports a report to CSV format.</summary>
+            <param name="report">Report to export.</param>
+            <param name="fileToWrite">Information about the file to write.</param>
+        </member>
+        <member name="M:PortalFramework.Export.ReportExporter.ToXLSX(PortalFramework.ReportModel.Report,System.String)">
+            <summary>Exports a report to XLSX format.</summary>
+            <param name="report">Report to export.</param>
+            <param name="fullpath">Full path of the file to write.</param>
+        </member>
+        <member name="M:PortalFramework.Export.ReportExporter.ToXLSX(PortalFramework.ReportModel.Report,System.IO.FileInfo)">
+            <summary>Exports a report to XLSX format.</summary>
+            <param name="report">Report to export.</param>
+            <param name="fileToWrite">Information about the file to write.</param>
+        </member>
+        <member name="M:PortalFramework.Export.ReportExporter.ToPDF(PortalFramework.ReportModel.Report,System.String)">
+            <summary>Exports a report to PDF format.</summary>
+            <param name="report">Report to export.</param>
+            <param name="fullpath">Full path of the file to write.</param>
+        </member>
+        <member name="M:PortalFramework.Export.ReportExporter.ToPDF(PortalFramework.ReportModel.Report,System.IO.FileInfo)">
+            <summary>Exports a report to PDF format.</summary>
+            <param name="report">Report to export.</param>
+            <param name="fileToWrite">Information about the file to write.</param>
+        </member>
+        <member name="T:PortalFramework.ReportModel.ReportCellCollection">
+            <summary>Stores a collection of ReportCell objects.</summary>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportCellCollection.#ctor">
+            <summary>Instantiates a new instance of the ReportCellCollection class.</summary>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportCellCollection.Add(System.Object)">
+            <summary>Adds a cell to the report row.</summary>
+            <param name="cellValue">Value to give to the cell.</param>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportCellCollection.Add(PortalFramework.ReportModel.ReportCell)">
+            <summary>Adds a cell to the report row.</summary>
+            <param name="cell">Cell to add.</param>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportCellCollection.Insert(System.Object,System.Int32)">
+            <summary>
+            Adds a report cell to the row at the specified index. <para />
+            Appends the cell to the end if the specified index is invalid.</summary>
+            <param name="cellValue">Value of the cell to insert.</param>
+            <param name="index">Index to insert the cell at.</param>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportCellCollection.Insert(PortalFramework.ReportModel.ReportCell,System.Int32)">
+            <summary>
+            Adds a report cell to the row at the specified index. <para />
+            Appends the cell to the end if the specified index is invalid.</summary>
+            <param name="cell">ReportCell to insert.</param>
+            <param name="index">Index to insert the cell at.</param>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportCellCollection.GetEnumerator">
+            <summary>Gets an enumerator for the cells in the collection.</summary>
+            <returns>Report cell enumerator.</returns>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportCellCollection.System#Collections#IEnumerable#GetEnumerator">
+            <summary>Gets an enumerator for the cells in the collection.</summary>
+            <returns>Report cell enumerator.</returns>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportCellCollection.Cells">
+            <summary>Gets an array of cells in the collection.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportCellCollection.Count">
+            <summary>Gets the number of cells in the collection.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportCellCollection.Item(System.Int32)">
+            <summary>Finds a report cell stored in the row.</summary>
+            <param name="index">Index of the cell to get.</param>
+            <returns>Report cell if the provided index is valid, null otherwise.</returns>
+        </member>
+        <member name="T:PortalFramework.ReportModel.ReportColumn">
+            <summary>Represents a column in a report table.</summary>
+        </member>
+        <member name="T:PortalFramework.ReportModel.ReportObject">
+            <summary>Class used to define and contain common properties for a report object.</summary>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportObject.#cctor">
+            <summary>Static constructor for initializing static variables.</summary>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportObject.#ctor">
+            <summary>Instantiates a new instance of the ReportObject class.</summary>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportObject.AddClass(System.String)">
+            <summary>Applies a CSS class to the report object.</summary>
+            <param name="className">CSS class to add.</param>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportObject.RemoveClass(System.String)">
+            <summary>Removes a CSS class from the report object.</summary>
+            <param name="className">CSS class to remove.</param>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportObject.ClearCss">
+            <summary>Clears all CSS classes from the report object.</summary>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportObject.GetClassListTag">
+            <summary>Returns a class list tag containing all class names stored.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportObject.CssClassNames">
+            <summary>Gets an array of CSS classes to apply to the report object.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportObject.ClassList">
+            <summary>Gets a string of all CSS classes for the object.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportObject.ID">
+            <summary>Gets or sets the ID of the report object.</summary>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportColumn.#ctor(PortalFramework.ReportModel.ReportTable,System.String)">
+            <summary>Instantiates a new instance of the ReportColumn class.</summary>
+            <param name="tbl">Table the column belongs to.</param>
+            <param name="columnName">Name of the column.</param>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportColumn.#ctor(PortalFramework.ReportModel.ReportTable,System.String,System.String)">
+            <summary>Instantiates a new instance of the ReportColumn class.</summary>
+            <param name="tbl">Table the column belongs to.</param>
+            <param name="colName">Name of the column.</param>
+            <param name="text">Text to display in the header cell of the column.</param>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportColumn.ToString">
+            <summary>Gets the text of the column.</summary>
+            <returns>The column's text.</returns>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportColumn.Table">
+            <summary>Gets the report table the report column belongs to.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportColumn.Name">
+            <summary>Gets or sets the name of the column.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportColumn.Text">
+            <summary>Gets or sets the text to display in the header row.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportColumn.ColumnDataType">
+            <summary>Gets or sets the data type of the column.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportColumn.Exportable">
+            <summary>Gets or sets whether or not the column is exportable.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportColumn.Visible">
+            <summary>Gets or sets whether to render the column to the page.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportColumn.Width">
+            <summary>Gets or sets the width of the column.</summary>
+        </member>
+        <member name="T:PortalFramework.ReportModel.ColumnDataType">
+            <summary>Specifies the type of data stored in the column.</summary>
+        </member>
+        <member name="F:PortalFramework.ReportModel.ColumnDataType.String">
+            <summary>Data is represented as a string.</summary>
+        </member>
+        <member name="F:PortalFramework.ReportModel.ColumnDataType.Number">
+            <summary>Data is represented as a numerical value.</summary>
+        </member>
+        <member name="F:PortalFramework.ReportModel.ColumnDataType.Percentage">
+            <summary>Data is represented by a percentage.</summary>
+        </member>
+        <member name="T:PortalFramework.ReportModel.ReportColumnCollection">
+            <summary>Stores a collection of ReportColumn objects.</summary>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportColumnCollection.#ctor(PortalFramework.ReportModel.ReportTable)">
+            <summary>Instantiates a new instance of the ReportColumnCollection class.</summary>
+            <param name="tbl">Report table the collection belongs to.</param>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportColumnCollection.Add(System.String)">
+            <summary>Adds a column to the collection.</summary>
+            <param name="columnName">Name of the column to add.</param>
+            <returns>Reference to the column added to the collection.</returns>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportColumnCollection.Add(System.String,System.String)">
+            <summary>Adds a column to the collection.</summary>
+            <param name="columnName">Name of the column to add.</param>
+            <param name="text">Text of the column.</param>
+            <returns>Reference to the column added to the collection.</returns>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportColumnCollection.Add(System.String,System.String,PortalFramework.ReportModel.ColumnDataType)">
+            <summary>Adds a column to the collection.</summary>
+            <param name="columnName">Name of the column.</param>
+            <param name="text">Text to display in the header cell.</param>
+            <param name="columnType">The data type of the column.</param>
+            <returns>Reference to the column added to the collection.</returns>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportColumnCollection.Add(PortalFramework.ReportModel.ReportColumn)">
+            <summary>Adds a column to the collection.</summary>
+            <param name="column">Column to add.</param>
+            <returns>Reference to the column added to the collection.</returns>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportColumnCollection.Insert(System.String,System.String,System.Int32)">
+            <summary>
+            Inserts a column at the specified index. <para />
+            Appends the column if the index is invalid.
+            </summary>
+            <param name="columnName">Name of the column.</param>
+            <param name="text">Text of the column.</param>
+            <param name="index">Index to insert the column at.</param>
+            <returns>Reference to the column inserted in the collection.</returns>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportColumnCollection.Insert(PortalFramework.ReportModel.ReportColumn,System.Int32)">
+            <summary>
+            Inserts a column at the specified index. <para />
+            Appends the column if the index is invalid.
+            </summary>
+            <param name="column">Column to insert.</param>
+            <param name="index">Index to insert the column at.</param>
+            <returns>Reference to the column inserted in the collection.</returns>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportColumnCollection.IndexOf(System.String)">
+            <summary>Gets the index of a column.</summary>
+            <param name="columnName">Name of the column to get the index of.</param>
+            <returns>Index of the column, or -1 if the column is not found.</returns>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportColumnCollection.GetEnumerator">
+            <summary>Gets an enumerator for the columns in the collection.</summary>
+            <returns>Column enumerator.</returns>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportColumnCollection.System#Collections#IEnumerable#GetEnumerator">
+            <summary>Gets an enumerator for the columns in the collection.</summary>
+            <returns>Column enumerator.</returns>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportColumnCollection.Columns">
+            <summary>Gets an array of columns in the collection.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportColumnCollection.Exportable">
+            <summary>Gets an array of exportable columns in the collection.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportColumnCollection.Visible">
+            <summary>Gets an array of visible columns in the collection.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportColumnCollection.Table">
+            <summary>Gets the report table the collection belongs to.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportColumnCollection.Item(System.Int32)">
+            <summary>Gets a reference to the column at the specified index.</summary>
+            <param name="index">Index of the column to get.</param>
+            <returns>Column at the provided index, or null if the index is invalid.</returns>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportColumnCollection.Item(System.String)">
+            <summary>Gets a reference to the column matching the provided name.</summary>
+            <param name="columnName">Name of the column to get.</param>
+            <returns>Column matching the provided name, or null if the column name is not found.</returns>
+        </member>
+        <member name="T:PortalFramework.ReportModel.ReportMetaDataCollection">
+            <summary></summary>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportMetaDataCollection.#ctor">
+            <summary>Instantiates a new instance of the ReportMetaDataCollection class.</summary>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportMetaDataCollection.GetEnumerator">
+            <summary>Returns the enumerator for the meta data contained in the collection.</summary>
+            <returns>Report meta data enumerator</returns>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportMetaDataCollection.System#Collections#IEnumerable#GetEnumerator">
+            <summary>Returns the enumerator for the meta data contained in the collection.</summary>
+            <returns>Report meta data enumerator</returns>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportMetaDataCollection.Add(System.String,System.String)">
+            <summary>Adds meta data to the collection.  Does not add if the key already exists.</summary>
+            <param name="key">Unique key to assign to the meta data.</param>
+            <param name="text">Display text and value of the meta data.</param>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportMetaDataCollection.Add(System.String,System.String,System.String)">
+            <summary>Adds meta data to the collection.  Does not add if the key already exists.</summary>
+            <param name="key">Unique key to assign to the meta data.</param>
+            <param name="text">Display text.</param>
+            <param name="value">Value of the data.</param>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportMetaDataCollection.Add(PortalFramework.ReportModel.ReportMetaData)">
+            <summary>Adds meta data to the collection.  Does not add if the key already exists.</summary>
+            <param name="item">Meta data to add.</param>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportMetaDataCollection.Clear">
+            <summary>Clears the collection.</summary>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportMetaDataCollection.Contains(PortalFramework.ReportModel.ReportMetaData)">
+            <summary>Returns whether or not the collection contains an item.</summary>
+            <param name="item">Item to check if the collection has.</param>
+            <returns>True if the item exists in the collection, false otherwise.</returns>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportMetaDataCollection.Remove(PortalFramework.ReportModel.ReportMetaData)">
+            <summary>Removes meta data from the collection.</summary>
+            <param name="item">Meta data to remove.</param>
+            <returns>True if the meta data was successfully remoed, false otherwise.</returns>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportMetaDataCollection.ToString">
+            <summary>Override method for converting the collection to a string.</summary>
+            <returns>String representation for each ReportMetaData object in the collection.</returns>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportMetaDataCollection.Data">
+            <summary>Gets an array of the meta data contained in the collection.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportMetaDataCollection.Count">
+            <summary>Gets a count of the number of items in the collection.</summary>
+        </member>
+        <member name="T:PortalFramework.ReportModel.ReportMetaData">
+            <summary>Represents meta data about a report.</summary>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportMetaData.#ctor(System.String,System.String,System.String)">
+            <summary>Instantiates a new instance of the ReportMetaData class.</summary>
+            <param name="key">Unique key to assign to the meta data.</param>
+            <param name="text">Display text.</param>
+            <param name="value">Value of the data.</param>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportMetaData.ToString">
+            <summary>Gets the meta data as a string.</summary>
+            <returns>String representation of the key/value pairs stored.</returns>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportMetaData.Key">
+            <summary>Gets the key for the meta data.  Read-only field.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportMetaData.Text">
+            <summary>Gets or sets the display text for the meta data.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportMetaData.Value">
+            <summary>Gets or sets the value backing the meta data.</summary>
+        </member>
+        <member name="T:PortalFramework.ReportModel.Report">
+            <summary>Used to hold information and data about a report.</summary>
+        </member>
+        <member name="T:PortalFramework.ReportModel.ReportTable">
+            <summary>Represents a container used to hold tabular data for a report.</summary>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportTable.#ctor">
+            <summary>Instantiates a new instance of the ReportTable class.</summary>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportTable.#ctor(System.Data.DataTable)">
+            <summary>Instantiates a new instance of the ReportTable class.</summary>
+            <param name="dt">DataTable to create the ReportTable from.</param>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportTable.FromDataTable(System.Data.DataTable)">
+            <summary>Creates the report table from a data table object.</summary>
+            <param name="dt">Data Table containing report results to store.</param>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportTable.GenerateExportStyles">
+            <summary>Generates the export styles for the report table.</summary>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportTable.GetStyleForRow(PortalFramework.ReportModel.ReportRow)">
+            <summary>Gets the style for the provided report row.</summary>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportTable.GetEnumerator">
+            <summary>Gets an enumerator for the report rows in the table.</summary>
+            <returns>Report row enumerator.</returns>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportTable.System#Collections#IEnumerable#GetEnumerator">
+            <summary>Gets an enumerator for the report rows in the table.</summary>
+            <returns>Report row enumerator.</returns>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportTable.Title">
+            <summary>Gets or sets the title of the table.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportTable.WorksheetName">
+            <summary>Gets the name to apply to the Excel worksheet for the table.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportTable.Columns">
+            <summary>Gets a collection of columns in the table.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportTable.Rows">
+            <summary>Gets a collection of rows in the table.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportTable.ColumnCount">
+            <summary>Gets the number of columns in the table.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportTable.ExportableColumnCount">
+            <summary>Gets the number of exportable columns in the table.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportTable.ResultCount">
+            <summary>Gets the number of rows in the report, as returned by the report's query.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportTable.Sortable">
+            <summary>Gets or sets whether or not the table should be sortable.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportTable.HeaderNote">
+            <summary>Gets or sets the header for the table.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportTable.FooterNote">
+            <summary>Gets or sets the footer for the table.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportTable.HeaderVisible">
+            <summary>Gets or sets whether or not to display/export the header row.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportTable.FooterVisibility">
+            <summary>Gets or sets the visibility behavior for the table's footer. Defaulted to Auto.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportTable.RenderLocation">
+            <summary>Gets or sets the location to render the table at.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportTable.ExportStyles">
+            <summary>Gets the cell styles for exports.</summary>
+        </member>
+        <member name="M:PortalFramework.ReportModel.Report.#ctor(System.String)">
+            <summary>Instantiates a new instance of the Report class.</summary>
+            <param name="title">Title to assign to the report.</param>
+        </member>
+        <member name="M:PortalFramework.ReportModel.Report.#ctor(System.String,System.Data.DataTable)">
+            <summary>Instantiates a new instance of the Report class.</summary>
+            <param name="title">Title to assign to the report.</param>
+            <param name="dt">DataTable to initialize the report with.</param>
+        </member>
+        <member name="M:PortalFramework.ReportModel.Report.GetGenerationDateString">
+            <summary>Returns the generation date/time in the default date/time format specified by the Report class.</summary>
+            <returns>String representation of the generation date and time.</returns>
+        </member>
+        <member name="P:PortalFramework.ReportModel.Report.GenerationDate">
+            <summary>Gets the date and time the report was generated.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.Report.MetaData">
+            <summary>Gets the meta data for the report.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.Report.Tables">
+            <summary>Gets the collection of additional tables in the report.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.Report.ExportTitle">
+            <summary>Gets the title to assign to the exported table.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.Report.HasMetatData">
+            <summary>Gets whether or not the report has meta data associated with it.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.Report.HeaderContent">
+            <summary>Gets or sets non-exportable header content to display on the page.</summary>
+        </member>
+        <member name="T:PortalFramework.ReportModel.ReportCell">
+            <summary>Represents a single cell in a report.</summary>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportCell.#ctor">
+            <summary>Instantiates a new instance of the ReportCell class.</summary>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportCell.#ctor(System.Object)">
+            <summary>Instantiates a new instance of the ReportCell class.</summary>
+            <param name="val">Value to assign to the cell.</param>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportCell.ToString">
+            <summary>Returns the Value property of the ReportCell.</summary>
+            <returns>The value of the cell.</returns>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportCell.Value">
+            <summary>Gets or sets the value of the cell.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportCell.ValueAsInt">
+            <summary>Gets the value of the cell as an Int32.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportCell.RowSpan">
+            <summary>Gets or sets the row span of the cell.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportCell.ColumnSpan">
+            <summary>Gets or sets the column span of the cell.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportCell.Href">
+            <summary>Gets or sets the href value of the cell. Wraps the value in an html anchor tag.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportCell.OnClick">
+            <summary>Gets or sets the onclick event of the cell. Wraps the value in an html anchor tag.</summary>
+        </member>
+        <member name="T:PortalFramework.ReportModel.HTMLReportRenderer">
+            <summary>Used to render a report out to HTML.</summary>
+        </member>
+        <member name="M:PortalFramework.ReportModel.HTMLReportRenderer.#ctor">
+            <summary>Instantiates a new instance of the HTMLReportRenderer class.</summary>
+        </member>
+        <member name="M:PortalFramework.ReportModel.HTMLReportRenderer.ToString">
+            <summary>Returns the contents of the report rendered by the renderer.</summary>
+            <returns>Returns the rendered output of the report.</returns>
+        </member>
+        <member name="M:PortalFramework.ReportModel.HTMLReportRenderer.RenderReport(PortalFramework.ReportModel.Report)">
+            <summary>Renders the report to an HTML string.</summary>
+            <param name="rpt">Report to render.</param>
+            <returns>HTML representation of the report.</returns>
+        </member>
+        <member name="M:PortalFramework.ReportModel.HTMLReportRenderer.RenderReportTable(PortalFramework.ReportModel.ReportTable)">
+            <summary>Renders a report table to an HTML string.</summary>
+            <param name="rptTable">Report table to render.</param>
+            <returns>HTML representation of the report table.</returns>
+        </member>
+        <member name="P:PortalFramework.ReportModel.HTMLReportRenderer.ShowFooterThreshold">
+            <summary>Gets or sets the row count threshold to use for determining whether or not to display the table footer.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.HTMLReportRenderer.MaximumOnScreenCount">
+            <summary>Gets or sets the maximum number of rows to render on screen.</summary>
+        </member>
+        <member name="T:PortalFramework.ReportModel.ReportRow">
+            <summary>Represents a row in a report.</summary>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportRow.#ctor(PortalFramework.ReportModel.ReportTable)">
+            <summary>Instantiates a new instance of the ReportRow class.</summary>
+            <param name="tbl">Report table the row belongs to.</param>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportRow.#ctor(PortalFramework.ReportModel.ReportTable,System.Data.DataRow)">
+            <summary>Instantiates a new instance of the ReportRow class.</summary>
+            <param name="tbl">Report table the row belongs to.</param>
+            <param name="dr">DataRow containing information to add to the row.</param>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportRow.GetEnumerator">
+            <summary>Gets the enumerator for the list of ReportCells contained in the row.</summary>
+            <returns>Enumerator of cells in the row.</returns>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportRow.System#Collections#IEnumerable#GetEnumerator">
+            <summary>Gets the enumerator for the list of ReportCells contained in the row.</summary>
+            <returns>Enumerator of cells in the row.</returns>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportRow.Table">
+            <summary>Gets the report table the report row belongs to.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportRow.Cells">
+            <summary>Gets a collection of cells in the row.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportRow.ExportableCells">
+            <summary>Gets an array of exportable cells in the row.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportRow.VisibleCells">
+            <summary>Gets an array of visible cells in the row.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportRow.Item(System.Int32)">
+            <summary>Finds a report cell stored in the row.</summary>
+            <param name="index">Index of the cell to get.</param>
+            <returns>Report cell if the provided index is valid, null otherwise.</returns>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportRow.Item(System.String)">
+            <summary>Finds a report cell stored in the row.</summary>
+            <param name="columnName">Column name of the cell to get.</param>
+            <returns>Report cell if the column name is found, null otherwise.</returns>
+        </member>
+        <member name="T:PortalFramework.ReportModel.ReportRowCollection">
+            <summary>Stores a collection of ReportRow objects.</summary>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportRowCollection.#ctor(PortalFramework.ReportModel.ReportTable)">
+            <summary>Instantiates a new instance of the ReportRowCollection class.</summary>
+            <param name="tbl">Report table the collection belongs to.</param>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportRowCollection.Add">
+            <summary>Adds a report row to the table.</summary>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportRowCollection.Add(System.Data.DataRow)">
+            <summary>Adds a report row to the table.</summary>
+            <param name="dr">DataRow to add.</param>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportRowCollection.Add(PortalFramework.ReportModel.ReportRow)">
+            <summary>Adds a report row to the table.</summary>
+            <param name="row">Row to add.</param>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportRowCollection.Insert(System.Int32)">
+            <summary>
+            Adds a report row to the table at the specified index. <para />
+            Appends the row to the end if the specified index is invalid.</summary>
+            <param name="index">Index to insert the row at.</param>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportRowCollection.Insert(PortalFramework.ReportModel.ReportRow,System.Int32)">
+            <summary>
+            Adds a report row to the table at the specified index. <para />
+            Appends the row to the end if the specified index is invalid.</summary>
+            <param name="row">Row to add.</param>
+            <param name="index">Index to insert the row at.</param>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportRowCollection.Remove(PortalFramework.ReportModel.ReportRow)">
+            <summary>Removes a report row from the table.</summary>
+            <param name="row">Row to remove.</param>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportRowCollection.Remove(System.Int32)">
+            <summary>Removes a report row from the table at the specified index.</summary>
+            <param name="index">Index of the row to remove.</param>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportRowCollection.GetEnumerator">
+            <summary>Gets an enumerator for the rows in the collection.</summary>
+            <returns>Report row enumerator.</returns>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportRowCollection.System#Collections#IEnumerable#GetEnumerator">
+            <summary>Gets an enumerator for the rows in the collection.</summary>
+            <returns>Report row enumerator.</returns>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportRowCollection.Rows">
+            <summary>Gets an array of report rows in the collection.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportRowCollection.Table">
+            <summary>Gets the report table the collection belongs to.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportRowCollection.Count">
+            <summary>Gets the number of rows in the collection.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportRowCollection.Item(System.Int32)">
+            <summary>Gets a reference to the row at the specified index.</summary>
+            <param name="index">Index of the row to get.</param>
+            <returns>Row at the provided index, or null if the index is invalid.</returns>
+        </member>
+        <member name="T:PortalFramework.ReportModel.FooterVisibility">
+            <summary>Defines the behavior to follow for rendering the footer of the table.</summary>
+        </member>
+        <member name="F:PortalFramework.ReportModel.FooterVisibility.None">
+            <summary>Do not display the table's footer.</summary>
+        </member>
+        <member name="F:PortalFramework.ReportModel.FooterVisibility.Auto">
+            <summary>Automatically determine whether or not to display the table's footer.</summary>
+        </member>
+        <member name="F:PortalFramework.ReportModel.FooterVisibility.Show">
+            <summary>Always display the table's footer.</summary>
+        </member>
+        <member name="T:PortalFramework.ReportModel.RenderLocation">
+            <summary>Specifies the location the table should be rendered at.</summary>
+        </member>
+        <member name="F:PortalFramework.ReportModel.RenderLocation.Main">
+            <summary>Renders the table as the main report table.</summary>
+        </member>
+        <member name="F:PortalFramework.ReportModel.RenderLocation.Above">
+            <summary>Render the table above the main report table.</summary>
+        </member>
+        <member name="F:PortalFramework.ReportModel.RenderLocation.Below">
+            <summary>Render the table below the main report table.</summary>
+        </member>
+        <member name="T:PortalFramework.ReportModel.ReportTableCollection">
+            <summary>Stores a collection of ReportTable objects.</summary>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportTableCollection.#ctor">
+            <summary>Instantiates a new instance of the ReportTableCollection class.</summary>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportTableCollection.Add(PortalFramework.ReportModel.ReportTable)">
+            <summary>Adds a table to the collection.</summary>
+            <param name="table">Table to add.</param>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportTableCollection.Insert(PortalFramework.ReportModel.ReportTable,System.Int32)">
+            <summary>Inserts a table in the collection.</summary>
+            <param name="table">Table to insert.</param>
+            <param name="index">Index to insert the table at.</param>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportTableCollection.Remove(System.Int32)">
+            <summary>Removes a table at the specified index.</summary>
+            <param name="index">Index of the table to remove.</param>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportTableCollection.Remove(System.String)">
+            <summary>Removes the first table matching the specified title.</summary>
+            <param name="tableTitle">Title of the table to remove.</param>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportTableCollection.Clear">
+            <summary>Removes all tables from the collection.</summary>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportTableCollection.GetEnumerator">
+            <summary>Gets an enumerator for the tables in the collection.</summary>
+            <returns>Report table enumerator.</returns>
+        </member>
+        <member name="M:PortalFramework.ReportModel.ReportTableCollection.System#Collections#IEnumerable#GetEnumerator">
+            <summary>Gets an enumerator for the tables in the collection.</summary>
+            <returns>Report table enumerator.</returns>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportTableCollection.Tables">
+            <summary>Gets an aray of tables in the collection.</summary>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportTableCollection.Item(System.Int32)">
+            <summary>Gets a reference to the key/value pair of the table at the provided </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="P:PortalFramework.ReportModel.ReportTableCollection.Count">
+            <summary>Gets the number of tables in the collection.</summary>
+        </member>
+        <member name="T:PortalFramework.Utilities">
+            <summary>Contains utility methods for the Portal.</summary>
+        </member>
+        <member name="M:PortalFramework.Utilities.#cctor">
+            <summary>Static constructor for the Utilities class.</summary>
+        </member>
+        <member name="M:PortalFramework.Utilities.DownloadFile(System.String,System.String,System.Web.HttpResponse)">
+            <summary>Writes a file to the HttpResponse's OutputStream to send to the client.</summary>
+            <param name="filename">Name of the file to download.</param>
+            <param name="fullPath">Full path of the file to download.</param>
+            <param name="response">HttpResponse object.</param>
+            <returns>True if the file was successfully written to the output stream, false otherwise.</returns>
+        </member>
+        <member name="P:PortalFramework.Utilities.Stylesheets">
+            <summary>Gets a collection of parsed stylesheets.</summary>
+        </member>
+        <member name="T:PortalFramework.WebControls.ReportListBox">
+            <summary>Extends the ListBox control to add common functionality to ListBoxes used for report criteria.</summary>
+        </member>
+        <member name="M:PortalFramework.WebControls.ReportListBox.Initialize">
+            <summary>Initializes the items in the ListBox.</summary>
+        </member>
+        <member name="M:PortalFramework.WebControls.ReportListBox.#ctor">
+            <summary>Constructor for the ReportListBox class.</summary>
+        </member>
+        <member name="M:PortalFramework.WebControls.ReportListBox.AddItem(System.String,System.String)">
+            <summary>Adds an item to the ListBox.</summary>
+            <param name="text">Display text of the item.</param>
+            <param name="value">Backing value of the item.</param>
+        </member>
+        <member name="M:PortalFramework.WebControls.ReportListBox.GetDelimitedValues(System.String)">
+            <summary>Gets a delimited list of the selected values.</summary>
+            <param name="delimiter">Delimiter to use to separate each value.</param>
+            <returns>Delimited string of all selected values.</returns>
+        </member>
+        <member name="M:PortalFramework.WebControls.ReportListBox.GetDelimitedText(System.String)">
+            <summary>Gets a delimited string of the display text for all selected items.</summary>
+            <param name="delimiter">Delimiter to use to separate each text.</param>
+            <returns>Delimited string of all selected text.</returns>
+        </member>
+        <member name="M:PortalFramework.WebControls.ReportListBox.GetOracleText">
+            <summary>Gets an IN where clause containing a comma delimited list of selected values.</summary>
+            <returns>Oracle text to use in as part of a where clause.</returns>
+        </member>
+        <member name="M:PortalFramework.WebControls.ReportListBox.GetOracleText(System.Boolean)">
+            <summary>Gets an IN where clause containing a comma delimited list of selected values.</summary>
+            <param name="useTrimAndUpper">Whether or not to trim and upper the Oracle field.</param>
+            <returns>Oracle text to use in as part of a where clause.</returns>
+        </member>
+        <member name="M:PortalFramework.WebControls.ReportListBox.SetSelectedValue(System.String)">
+            <summary>Sets the selected index to the item that matches the provided value.</summary>
+            <param name="value">Value to select.</param>
+        </member>
+        <member name="M:PortalFramework.WebControls.ReportListBox.SelectValue(System.String)">
+            <summary>Sets the Selected property of the item that matches the provided value to true.</summary>
+            <param name="value">Value to select.</param>
+        </member>
+        <member name="M:PortalFramework.WebControls.ReportListBox.SetSelectedValues(System.String[])">
+            <summary>Selects multiple items in the ListBox that match the provided values.</summary>
+            <param name="values">Values to select.</param>
+        </member>
+        <member name="M:PortalFramework.WebControls.ReportListBox.SetSelectedText(System.String)">
+            <summary>Sets the selected index to the item that matches the provided text.</summary>
+            <param name="txt">Text to select.</param>
+        </member>
+        <member name="M:PortalFramework.WebControls.ReportListBox.SelectText(System.String)">
+            <summary>Sets the Selected property of the item that matches the provided text to true.</summary>
+            <param name="text">Text to select.</param>
+        </member>
+        <member name="M:PortalFramework.WebControls.ReportListBox.SetSelectedTexts(System.String[])">
+            <summary>Selects multiple items in the ListBox that match the provided texts.</summary>
+            <param name="texts">Texts to select.</param>
+        </member>
+        <member name="P:PortalFramework.WebControls.ReportListBox.ColumnName">
+            <summary>Gets or sets the column name.</summary>
+        </member>
+        <member name="P:PortalFramework.WebControls.ReportListBox.ValueType">
+            <summary>Gets or sets the types of values to store in the ListBox.</summary>
+        </member>
+        <member name="P:PortalFramework.WebControls.ReportListBox.AllSelected">
+            <summary>Gets whether all items have been selected.</summary>
+            <remarks>This property assumes that the first item in the ListBox is the "All" item.</remarks>
+        </member>
+        <member name="P:PortalFramework.WebControls.ReportListBox.ValuesSelected">
+            <summary>Gets whether or not values have been selected in the ListBox.</summary>
+        </member>
+        <member name="P:PortalFramework.WebControls.ReportListBox.SelectedItems">
+            <summary>Gets an array of all selected ListItems.</summary>
+        </member>
+        <member name="P:PortalFramework.WebControls.ReportListBox.SelectedValues">
+            <summary>Gets an array of all selected values.</summary>
+        </member>
+        <member name="P:PortalFramework.WebControls.ReportListBox.SelectedText">
+            <summary>Gets an array of all selected texts.</summary>
+        </member>
+        <member name="T:PortalFramework.WebControls.ListBoxValueType">
+            <summary>Enum for indicating the type of values being stored in the ListBox.</summary>
+        </member>
+        <member name="F:PortalFramework.WebControls.ListBoxValueType.Alpha">
+            <summary>The ListBox stores alpha values.</summary>
+        </member>
+        <member name="F:PortalFramework.WebControls.ListBoxValueType.Numeric">
+            <summary>The ListBox stores numeric values.</summary>
+        </member>
+        <member name="F:PortalFramework.WebControls.ListBoxValueType.AlphaNumeric">
+            <summary>The ListBox stores both alpha and numeric values, or alphanumeric values.</summary>
+        </member>
+    </members>
+</doc>

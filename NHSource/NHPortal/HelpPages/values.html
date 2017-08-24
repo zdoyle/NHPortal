@@ -1,0 +1,370 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Allowed Data Values</title>
+    <link rel="stylesheet" type="text/css" href="/../Style/Report.css" />
+    <link rel="stylesheet" type="text/css" href="/../Style/Site.css" />
+    <style>
+        <!--
+        body {
+            font-family: arial;
+            /*font-size: 12px;*/
+        }
+
+        div.Section1 {
+            page: Section1;
+        }
+
+        div.container {
+            width: 100%;
+            margin: 0px;
+        }
+
+        div.content {
+            border-top: 1px solid gray;
+            padding: 1em;
+        }
+
+        #Header {
+            margin: auto;
+            text-align: center;
+            margin-top: 5px;
+            align-content:center;
+        }
+
+        #tbl-report {
+            width: 100%;
+        }
+
+        .indent {
+            text-indent: 20px;
+        }
+
+        /*add styling for buttons to make them bigger. make header like the reports*/
+        -->
+    </style>
+</head>
+<body>
+    <div id="header" align="center"><img src="/../Images/GDHEADING.gif" alt="Gordon-Darby New Hampshire"></div>
+    <div class="Section1">
+        <h3>INSPECTION FIELD VALUES</h3>
+
+        <div id="sub-header">
+            <p>
+                <div id="County">
+                    <strong>New Hampshire Counties with NHOST stations</strong><br />
+
+                    <br> BELKNAP<br> CARROLL<br> CHESHIRE<br> COOS<br> GRAFTON<br> HILLSBOROUGH<br> MERRIMACK<br> ROCKINGHAM<br> STRAFFORD<br> SULLIVAN<br>
+                </div>
+                <hr><br>
+                <div id="TestResult">
+                    <strong>Visual, OBD, Safety, Overall Inspection Status</strong><br /><br />
+                    <table border="1" cellpadding="5" cellspacing="5">
+                        <tr>
+                            <td>
+                                VISUALPF<br>
+                                OBDPF<br>
+                                SAFETYPF<br>
+                                OVERALLPF<br>
+                            </td>
+                            <td>
+                                0 = No Result (Aborted)<br>
+                                1 = Pass <br>2 = Reject <br> 3 = Correct <br> 4 = Not Applicable <br>  5 = AdminCert <br> 6 = Abort <br> 9 = Untested
+                            </td>
+                        </tr>
+                    </table>
+                    <br />
+                    ADMINCERT = Administrator Certificate; Vehicle Test Exemption for current test cycle only<br>
+                    <!-- DIRCERT = Director Certificate (AZ); Vehicle Test Exemption -->
+                    <hr>
+                    <br>
+                </div>
+                <div id="GVW">
+                    <strong>Weight Class Types</strong>
+                    <br>
+                    <table>
+                        <tr><td>L = Light Duty;</td><td> 8500 lbs or less</td></tr>
+                        <tr><td>M = Medium Duty; </td><td> 8501 - 10000 lbs </td></tr>
+                        <tr><td>H = Heavy Duty;  </td><td> 10001 lbs or more</td></tr>
+                    </table>
+                    <hr><br>
+                </div>
+                <div id="STT">
+                    <strong>Safety Test Types</strong>
+                    <br>
+                    <br>
+                    A = Agriculture <br>
+                    B = Basic <br>
+                    M = Motorcycle <br>
+                    R = Trailer <br>
+                    T = TruckBus <br>
+                    <hr><br>
+                </div>
+                <div id="ETT">
+                    <strong>Emission Test Types</strong>
+                    <br>
+                    <br>
+                    N = None <br>
+                    O = OBD Inspection <br>
+                    V = Visual Inspection <br>
+                    <hr><br>
+                </div>
+                <div id="VISTest">
+                    <strong>Visual Tests Status</strong>
+                    <br>
+                    <br>
+                    There are 5 Visual Tests performed:
+                    <table border="1" cellpadding="5" cellspacing="5">
+                        <tr>
+                            <td>
+                                VISPCV <br>
+                                VISAIRPUMP <br>
+                                VISEVAP <br>
+                                VISFUEL <br>
+                                VISCAT <br>
+                            </td>
+                            <td>
+                                <br>
+                                1=Pass<br>
+                                2=Rejected<br>
+                                3=Corrected<br>
+                                4=N/A<br>
+                            </td>
+                        </tr>
+                    </table>
+                    <hr>
+                    <br>
+                </div>
+                <div id="OBDReady">
+                    <strong>ODB Readiness Monitor Status</strong>
+                    <br>
+                    <br>
+                    There are 11 OBD Readiness monitors<table border="1" cellpadding="5" cellspacing="5">
+                        <tr>
+                            <td>
+                                OBDMISFIRE<br>
+                                OBDFUELSYSTEM<br>
+                                OBDCOMPONENT<br>
+                                OBDCATALYST<br>
+                                OBDHEATEDCATALYST<br>
+                                OBDEVAP<br>
+                                OBDAIRSYSTEM<br>
+                                OBDAC<br>
+                                OBDOXYGEN<br>
+                                OBDHEATEDOXYGEN<br>
+                                OBDEGR<br>
+                            </td>
+                            <td>
+                                <br>
+                                0 = Untested i.e. Non-OBD (or) OBD Un-communicable inspections <br>
+                                1 = Ready<br>
+                                2 = Unready<br>
+                                4 = Not Supported<br>
+                            </td>
+                        </tr>
+                    </table>
+                    <hr>
+                    <br>
+                </div>
+                <div id="OBDMILCMDON">
+                    <b>OBD Malfunction Indicator Light Status</b><br>
+                    <br>
+                    The value is composed of 2 separate digits, each one with its own set of values<br><br>
+                    The first digit is the <b>OBD DLC Locate</b> status whose values are: <br>
+                    0 = OK <br> 1 = Missing <br> 2 = Damaged<br>  3 = Modified<br>  4 = Tampered <br> 5 = Obstructed <br> 6 = Disconnected.
+                    <br><br>
+                    The second digit is the <b>result of the OBD inspection</b>: <br>
+                    0 = Mil Not Commanded On (Pass) <br> 3 = Unable to communicate (Reject) <br> 4 = Unready (Reject) <br> 5 = MIL Commanded On (Reject)
+                    <br /><br />
+                    A "6" in the second character means this vehicle is Ready Exempt i.e. the vehicle falls into a category of known vehicles
+                    that may have problems reporting readiness and so is exempt from readiness
+                    testing
+                    <br /><br />
+                    A "7" in the second character means this vehicle is Comm Exempt i.e. the vehicle falls into a category of known vehicles with OBD communication
+                    problems and so is exempt from communications
+
+                    <hr>
+                    <br>
+                </div>
+                <div id="OBDLOCATABLE">
+                    <b>OBD Locatable Status</b> </a><br>
+                    <br>
+                    Was the DLC Locatable? <br>
+                    0 = Unknown <br> 1 = DLC Locatable <br> 2 = DLC Locatable, Unable to Connect <br>  3 = Could Not Locate DLC
+                    <hr>
+                    <br>
+                </div>
+                <div id="OBDSTEP">
+                    <b>OBD Step Status</b> </a><br>
+                    <br>
+                    Indicates the most recent (broader) OBD Inspection step that was successfully completed during the current OBD inspection <br>
+
+                    2 = Battery Voltage <br>
+                    3 = Vehicle Comm <br>
+                    4 = First RPM <br>
+                    5 = Readiness & MIL <br>
+                    6 = DTC <br>
+                    7-9, 1 = Additional OBD Info Check
+                    <hr>
+                    <br>
+                </div>
+                <div id="SAFETY01_400">
+                    <b>Safety Inspection Results</b> </a><br>
+                    <br>
+                    1 = Pass <br> 2 = Reject <br> 3 = Corrected <br> 4 = N/A
+                    <hr>
+                    <br>
+                    <center><img border="0" src="/images/div0011.gif" width="605" height="15"></center>
+                    <br><br>
+
+                    <h3>CALLCENTER FIELD VALUES</h3>
+
+                    <a name="StationID"> <b>Station ID Types</b> </a><br>
+                    <br>
+                    JQPUBLIC: &nbsp;&nbsp; Anyone other than a NHost Station calling helpdesk <br>
+                    STATIONID:&nbsp;&nbsp; ID of the NHost Station which made the call to the helpdesk
+                    <hr>
+                    <br>
+                </div>
+                <div id="CallReason">
+                    <b> Reasons for Call</b> </a><br>
+                    <br>
+                    <table border="1" cellspacing="2" cellpadding="3">
+                        <tr>
+                            <td>
+                                Reasons for Public Calls <br>
+                            </td>
+                            <td>
+                                Reasons for Station Call <br>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <br>A - General Information Inquiry
+                                <br>B - Complaint - Station
+                                <br>C - Complaint - Program
+                                <br>D - Complaint - DMV
+                                <br>F - Repair Dispute
+                                <br>G - Rejection Inquiry
+                                <br>H - Fee Question
+                                <br>I - Station Locations
+                                <br>J - DMV Information
+                                <br>K - Sticker Replacement
+                                <br>L - Agreement Inquiry
+                                <br>M - New Station Inquiry
+                                <br>N - Referee Action
+                                <br>W - Technician - Check In
+                                <br>X - Other
+                            </td>
+                            <td>
+                                A - General Information Inquiry
+                                <br>C - Complaint - Program
+                                <br>E - Complaint - GD
+                                <br>L - Agreement Inquiry
+                                <br>M - New Station Inquiry
+                                <br>O - Hardware Problem
+                                <br>P - How-To (Software)
+                                <br>Q - Cannot Contact VID Network
+                                <br>R - Request Information Change
+                                <br>S - Request Password Reset
+                                <br>T - Cancel Agreement
+                                <br>U - Additional NHOST Units Needed
+                                <br>V - Billing Questions
+                                <br>X - Other
+                            </td>
+                        </tr>
+                    </table>
+                    <hr>
+                    <br>
+                </div>
+                <div id="CallResolution">
+                    <b> Call Resolutions</b> </a><br>
+                    <br>
+                    <table border="1" cellspacing="2" cellpadding="3">
+                        <tr>
+                            <td>
+                                Resolutions for Public Calls <br>
+                            </td>
+                            <td>
+                                Resolutions for Station Call <br>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <br>C - Referred To Call Manager
+                                <br>D - Customer Needs To Call DMV
+                                <br>I - Information Provided
+                                <br>M - Referred To Program Manager
+                                <br>P - Corrected On Phone
+                                <br>X - Other<br><br><br><br><br><br>
+                            </td>
+                            <td>
+                                <br>B - Referred To Billing
+                                <br>C - Referred To Call Manager
+                                <br>D - Customer Needs To Call DMV
+                                <br>F - Resolved Through Flow Chart
+                                <br>I - Information Provided
+                                <br>M - Referred To Program Manager
+                                <br>P - Corrected On Phone
+                                <br>R - Reset Mechanic Password
+                                <br>S - Ship Parts
+                                <br>T - Escalate To Technician
+                                <br>X - Other
+                            </td>
+                        </tr>
+                    </table>
+                    <hr>
+                    <br>
+                </div>
+                <div id="CallStatus">
+                    <b>Status of Call</b><br>
+                    <br>
+                    O: &nbsp;&nbsp; Issue is OPEN; i.e. CallBackNumber is set and ESCALATED to Tech<br>
+                    C: &nbsp;&nbsp; Issue was CLOSED over phone or by Tech.
+                    <hr>
+                    <br>
+                    </div>
+                    <center><img border="0" src="/images/div0011.gif" width="605" height="15"></center>
+
+            <p>&nbsp;</p>
+            <h3>SERVICE REPORT FIELD VALUES</h3>
+            <p><b><a name="SupportType">Support Type </a></b></p>
+            <ul>
+                <li>S - Service/Support </li>
+                <li>A - Sales </li>
+            </ul>
+            <hr>
+            <p><b><a name="SupportMthd">Support Method</a> </b></p>
+            <ul>
+                <li>N - None </li>
+                <li>O - On-Site</li>
+                <li>S - Ship </li>
+                <li>D - Depot</li>
+                <li>B - Tech Callback / originally on-site</li>
+                <li>A - Tech Callback / originally ship</li>
+                <li>C - Manager Callback </li>
+            </ul>
+            <hr>
+            <p><b><a name="Location">Location Codes</a> </b></p>
+            <ul>
+                <li>WHSTR - Warehouse (In Storage) </li>
+                <li>WHRMA - Warehouse (Waiting RMA) </li>
+                <li>WHTFU - Warehouse (Waiting Test For Field Use) </li>
+                <li>WHTMF - Warehouse (Waiting Test For Return To Manufacturer) </li>
+                <li>WHRMF - Warehouse (Waiting Return To Manufacturer) </li>
+                <li>WHBYR - Warehouse (Beyond Repair) </li>
+                <li>WHSMF - Warehouse (Sent To Manufacturer) </li>
+                <li>KYEVL - Sent To Louisville For Evaluation </li>
+                <li>KYRTN - Returned To Louisville</li>
+            </ul>
+            <hr>
+            <p align="center">
+                <br>
+                <img border="0" src="/images/div0011.gif" width="605" height="15">
+            </p>
+        </div>
+        </p>
+    </div>
+    
+</body>
+</html>

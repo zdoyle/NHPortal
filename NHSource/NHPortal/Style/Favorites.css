@@ -1,0 +1,100 @@
+﻿.fav-section {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 25px;
+}
+
+.fav-section__title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.fav-section__table {
+    text-align: left;
+    border-collapse: collapse;
+    margin-top: 10px;
+    margin-left: 40px;
+}
+
+    .fav-section__table td, th {
+        border: 1px solid #000;
+        padding: 3px;
+        padding-right: 15px;
+    }
+
+    .fav-section__table th {
+        text-align: left;
+    }
+
+    .fav-section__table tr:nth-of-type(2n+1) {
+        background-color: #aaaaaa;
+        color: #000000;
+    }
+
+    .fav-section__table tr:nth-of-type(2n) {
+        background-color: #ffffff;
+        color: #000000;
+    }
+
+/*.fav-section__table tr:nth-of-type(1) {
+        background-color: #ffd800;
+    }*/
+
+.fav-section__table-col1 {
+    width: 175px;
+}
+
+.fav-section__table-col2 {
+    width: 500px;
+}
+
+.fav-section__table-col3 {
+    width: 45px;
+}
+
+#div-favorite {
+    width: 500px;
+    height: 90px;
+    background-color: #ffffff;
+    border: 0px solid #000000;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 15px;
+    margin: auto;
+}
+
+.fav-line {
+    display: block;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    width: 100%;
+}
+
+.fav-text {
+    text-align: right;
+    width: 18%;
+    display: inline-block;
+}
+
+.fav-textbox {
+    width: 72%;
+    /*display: inline-block;*/
+}
+
+.fav-button-div {
+    margin: 0 auto;
+    width: auto;
+    text-align: center;
+    padding-top: 9px;
+}
+
+#div-fav-container {
+    height: auto;
+    max-height: 550px;
+    overflow-y: auto;
+    margin-bottom: 30px;
+}

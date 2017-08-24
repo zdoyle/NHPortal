@@ -1,0 +1,31 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/MasterPages/ReportMaster.master" AutoEventWireup="true" CodeBehind="InspectionReportMaster.master.cs" Inherits="NHPortal.MasterPages.InspectionReportMaster" %>
+
+<%@ MasterType VirtualPath="~/MasterPages/ReportMaster.master" %>
+
+<%@ Register Assembly="NHPortal" Namespace="NHPortal.Classes.WebControls" TagPrefix="GD" %>
+<%@ Register Src="~/UserControls/DateTextBox.ascx" TagPrefix="GD" TagName="DatePicker" %>
+<%@ Register Src="~/UserControls/DatePeriodSelector.ascx" TagPrefix="GD" TagName="DatePeriodSelector" %>
+
+<asp:Content runat="server" ID="ReportMasterContent" ContentPlaceHolderID="ReportContent">
+    <div id="inspectionCriteria" class="report-criteria padded centered-text">
+        <asp:Panel runat="server" ID="divMainCriteria" CssClass="report-input-container">
+            <label class="report-criteria__label">Test Sequence</label>
+            <GD:TestSequenceListBox runat="server" ID="lstTestSeq"></GD:TestSequenceListBox>
+
+            <label class="report-criteria__label">Model Year</label>
+            <GD:ModelYearListBox runat="server" ID="lstModelYear"></GD:ModelYearListBox>
+
+            <label class="report-criteria__label">Vehicle Type</label>
+            <GD:VehicleTypeListBox runat="server" ID="lstVehicleType"></GD:VehicleTypeListBox>
+
+            <label class="report-criteria__label">County</label>
+            <GD:CountyListBox runat="server" ID="lstCounty"></GD:CountyListBox>
+        </asp:Panel>
+        <GD:DatePeriodSelector runat="server" ID="dateSelector"></GD:DatePeriodSelector>
+    </div>
+
+    <asp:HiddenField runat="server" ID="hidReportType" />
+
+</asp:Content>
+<asp:Content ID="ReportMasterExtraContent" ContentPlaceHolderID="ReportExtraContent" runat="server">
+</asp:Content>

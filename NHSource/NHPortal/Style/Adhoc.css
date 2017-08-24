@@ -1,0 +1,142 @@
+﻿.textbox-editor {
+    height: 400px;
+    width: 75%;
+    resize: none;
+}
+
+.textbox-editor-notes {
+    font-style: italic;
+    display: block;
+}
+
+#disclaimer {
+    width: 75%;
+}
+
+#disclaimer__label {
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2em;
+    display: block;
+}
+
+#adhoc-builder-wrap {
+    width: 1140px;
+    overflow-x: auto;
+    margin: 0 auto 0 auto;
+}
+
+#adhoc-builder-scrollable {
+    height: 700px;
+    width: 1140px;
+    overflow-y: auto;
+}
+
+.adhoc-section-label {
+    font-size: 1.25em;
+    font-weight: bold;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.adhoc-builder-txt {
+    resize: none;
+    width: 200px;
+    height: 60px;
+    vertical-align: middle;
+}
+
+.adhoc-builder-listbox {
+    width: 205px;
+    height: 80px;
+}
+
+.adhoc-section-row {
+    background-color: #999;
+    height: 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/*.adhoc-table-whitespace-row {
+    height: 40px;
+    background-color: #FFF !important;
+}
+
+    .adhoc-table-whitespace-row td, th {
+        background-color: #FFF;
+        border: none;
+    }*/
+
+.adhoc-builder-table {
+    width: 1120px;
+    background-color: #c0c0c0;
+    border-collapse: collapse;
+    text-align: center;
+    font-size: 1.1em;
+}
+
+    .adhoc-builder-table td, th {
+        border: 1px solid #000;
+        padding: 3px;
+    }
+
+    .adhoc-builder-table tr td:nth-child(1) {
+        width: 350px;
+    }
+
+    .adhoc-builder-table tr td:nth-child(2) {
+        width: 75px;
+    }
+
+    .adhoc-builder-table tr td:nth-child(3) {
+        width: 250px;
+    }
+
+    .adhoc-builder-table tr td:nth-child(4) {
+        width: 50px;
+    }
+
+    .adhoc-builder-table tr td:nth-child(5) {
+        width: 50px;
+    }
+
+    .adhoc-builder-table tr td:nth-child(6) {
+        width: 50px;
+    }
+
+    .adhoc-builder-table tr td:nth-child(7) {
+        width: 50px;
+    }
+
+    .adhoc-builder-table tr td:nth-child(8) {
+        width: 50px;
+    }
+
+.adhoc-builder-table--spacer {
+    margin-bottom: 35px;
+}
+
+.adhoc-builder-table__empty-cell {
+    background-color: #E0E0E0;
+}
+
+.adhoc-help-div {
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+.sql-editor-links {
+    text-align: center;
+    padding-top: 0px;
+    padding-bottom: 4px;
+}
+
+.highlight {
+    background-color: #e6e8c0;
+}
+
+.checkbox-cell:hover {
+    background-color: #ccc;
+    cursor: pointer;
+}

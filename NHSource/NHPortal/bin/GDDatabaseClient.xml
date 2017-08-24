@@ -1,0 +1,243 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GDDatabaseClient</name>
+    </assembly>
+    <members>
+        <member name="T:GDDatabaseClient.Oracle.OracleCommandInfo">
+            <summary>Class for holding information for an OracleCommand.</summary>
+        </member>
+        <member name="M:GDDatabaseClient.Oracle.OracleCommandInfo.#ctor">
+            <summary>Instantiates a new instance of the OracleQueryInfo class. Defaults to a CommandType of text.</summary>
+        </member>
+        <member name="M:GDDatabaseClient.Oracle.OracleCommandInfo.#ctor(System.String,System.String)">
+            <summary>Instantiates a new instance of the OracleQueryInfo class. Defaults to a CommandType of text.</summary>
+            <param name="cmdText">Command text.</param>
+            <param name="connString">Connection string of the Oracle database.</param>
+        </member>
+        <member name="M:GDDatabaseClient.Oracle.OracleCommandInfo.#ctor(System.String,System.String,Oracle.DataAccess.Client.OracleParameter[])">
+            <summary>Instantiates a new instance of the OracleQueryInfo class. Defaults to a CommandType of text.</summary>
+            <param name="cmdText">Command text.</param>
+            <param name="connString">Connection string of the Oracle database.</param>
+            <param name="param">Oracle parameters to use for the command.</param>
+        </member>
+        <member name="M:GDDatabaseClient.Oracle.OracleCommandInfo.AddParameter(Oracle.DataAccess.Client.OracleParameter)">
+            <summary>Adds an Oracle parameter for use with the OracleCommand.</summary>
+            <param name="parameter">Oracle parameter to add.</param>
+        </member>
+        <member name="M:GDDatabaseClient.Oracle.OracleCommandInfo.AddParameter(System.Object,Oracle.DataAccess.Client.OracleDbType,System.Data.ParameterDirection)">
+            <summary>Adds an Oracle Parameter for use with the OracleCommand.</summary>
+            <param name="value">Value of the parameter.</param>
+            <param name="type">Type of the parameter.</param>
+            <param name="direction">Direction of the parameter.</param>
+        </member>
+        <member name="M:GDDatabaseClient.Oracle.OracleCommandInfo.AddParameters(Oracle.DataAccess.Client.OracleParameter[])">
+            <summary>Adds an array of Oracle Parameters for use with the OracleCommand.</summary>
+            <param name="parameterArray">Array of Oracle parameters to add.</param>
+        </member>
+        <member name="P:GDDatabaseClient.Oracle.OracleCommandInfo.Text">
+            <summary>Gets or sets the text for the Oracle command.</summary>
+        </member>
+        <member name="P:GDDatabaseClient.Oracle.OracleCommandInfo.ConnectionString">
+            <summary>Gets or sets the connection string for the Oracle command.</summary>
+        </member>
+        <member name="P:GDDatabaseClient.Oracle.OracleCommandInfo.CommandType">
+            <summary>Gets or sets the CommandType of the Oracle command.</summary>
+        </member>
+        <member name="P:GDDatabaseClient.Oracle.OracleCommandInfo.TableName">
+            <summary>Gets or sets the name to assign to the DataTable.</summary>
+        </member>
+        <member name="P:GDDatabaseClient.Oracle.OracleCommandInfo.Parameters">
+            <summary>Gets an array of Oracle parameters to use with the Oracle command.</summary>
+        </member>
+        <member name="P:GDDatabaseClient.Oracle.OracleCommandInfo.LogString">
+            <summary>Builds a string to write to a log file.</summary>
+            <returns>String to write to a log file.</returns>
+        </member>
+        <member name="T:GDDatabaseClient.Oracle.OracleResponse">
+            <summary>Stores information about the results from an Oracle transaction.</summary>
+        </member>
+        <member name="M:GDDatabaseClient.Oracle.OracleResponse.#ctor(GDDatabaseClient.Oracle.OracleResultType)">
+            <summary>Instantiates a new instance of the OracleResponse class.</summary>
+        </member>
+        <member name="M:GDDatabaseClient.Oracle.OracleResponse.SetException(System.Exception)">
+            <summary>
+            Sets the exception property for an exception that occurs during the Oracle transaction.<para />
+            Sets any additional associated information if the exception is an OracleException.
+            </summary>
+            <param name="ex">Exception to set.</param>
+        </member>
+        <member name="P:GDDatabaseClient.Oracle.OracleResponse.ErrorCode">
+            <summary>Gets the error code from the OracleException generated during the Oracle transaction.</summary>
+        </member>
+        <member name="P:GDDatabaseClient.Oracle.OracleResponse.ErrorMessage">
+            <summary>Gets the error message from the OracleException generated during the Oracle transaction.</summary>
+        </member>
+        <member name="P:GDDatabaseClient.Oracle.OracleResponse.Exception">
+            <summary>Gets the exception that occurred during the Oracle transaction.</summary>
+        </member>
+        <member name="P:GDDatabaseClient.Oracle.OracleResponse.ResultType">
+            <summary>Gets the type of result being returned.</summary>
+        </member>
+        <member name="P:GDDatabaseClient.Oracle.OracleResponse.ResultsRow">
+            <summary>Gets the resulting DataRow contained in the response.</summary>
+        </member>
+        <member name="P:GDDatabaseClient.Oracle.OracleResponse.ResultsTable">
+            <summary>Gets the resulting DataTable contained in the response.</summary>
+        </member>
+        <member name="P:GDDatabaseClient.Oracle.OracleResponse.ResultsSet">
+            <summary>Gets the resulting DataSet contained in the response.</summary>
+        </member>
+        <member name="P:GDDatabaseClient.Oracle.OracleResponse.ReturnParameters">
+            <summary>Gets a string/object key value list of out parameters for stored procedure call.</summary>
+        </member>
+        <member name="P:GDDatabaseClient.Oracle.OracleResponse.ExecutionTime">
+            <summary>Gets the execution time of the Oracle command.</summary>
+        </member>
+        <member name="P:GDDatabaseClient.Oracle.OracleResponse.Results">
+            <summary>Gets the resulting data of the Oracle transaction.</summary>
+        </member>
+        <member name="P:GDDatabaseClient.Oracle.OracleResponse.HasResults">
+            <summary>Gets whether or not the response contains a valid result.</summary>
+        </member>
+        <member name="P:GDDatabaseClient.Oracle.OracleResponse.Successful">
+            <summary>Gets whether or not the Oracle transaction was successful.</summary>
+        </member>
+        <member name="T:GDDatabaseClient.Oracle.OracleResultType">
+            <summary>Declares the type of result being returned in the Oracle response object.</summary>
+        </member>
+        <member name="F:GDDatabaseClient.Oracle.OracleResultType.DataRow">
+            <summary>Indicates the response will contain a DataRow.</summary>
+        </member>
+        <member name="F:GDDatabaseClient.Oracle.OracleResultType.DataTable">
+            <summary>Indicates the response will contain a DataTable.</summary>
+        </member>
+        <member name="F:GDDatabaseClient.Oracle.OracleResultType.DataSet">
+            <summary>Indicates the response will contain a DataSet.</summary>
+        </member>
+        <member name="F:GDDatabaseClient.Oracle.OracleResultType.None">
+            <summary>Indicates the response is not expected to return any results.</summary>
+        </member>
+        <member name="T:GDDatabaseClient.Oracle.OracleWorker">
+            <summary>Contains methods for interacting with an Oracle database.</summary>
+        </member>
+        <member name="M:GDDatabaseClient.Oracle.OracleWorker.#cctor">
+            <summary>Static constructor for the OracleWorker class.</summary>
+        </member>
+        <member name="M:GDDatabaseClient.Oracle.OracleWorker.QueryDataRow(System.String,System.String)">
+            <summary>Executes an Oracle query and returns the first row from the results.</summary>
+            <param name="queryString">Query string to execute.</param>
+            <param name="connectionString">Connection string of the Oracle database.</param>
+            <returns>OracleResponse object containing information about the results of the query execution.</returns>
+        </member>
+        <member name="M:GDDatabaseClient.Oracle.OracleWorker.QueryDataRow(System.String,System.String,Oracle.DataAccess.Client.OracleParameter)">
+            <summary>Executes an Oracle query and returns the first row from the results.</summary>
+            <param name="queryString">Query string to execute.</param>
+            <param name="connectionString">Connection string of the Oracle database.</param>
+            <param name="bindParameter">Oracle parameter to pass to the query.</param>
+            <returns>OracleResponse object containing information about the results of the query execution.</returns>
+        </member>
+        <member name="M:GDDatabaseClient.Oracle.OracleWorker.QueryDataRow(System.String,System.String,Oracle.DataAccess.Client.OracleParameter[])">
+            <summary>Executes an Oracle query and returns the first row from the results.</summary>
+            <param name="queryString">Query string to execute.</param>
+            <param name="connectionString">Connection string of the Oracle database.</param>
+            <param name="binds">Oracle parameters to pass to the query.</param>
+            <returns>OracleResponse object containing information about the results of the query execution.</returns>
+        </member>
+        <member name="M:GDDatabaseClient.Oracle.OracleWorker.QueryDataRow(GDDatabaseClient.Oracle.OracleCommandInfo)">
+            <summary>Executes an Oracle query and returns the first row from the results.</summary>
+            <param name="cmdInfo">Information about the Oracle query and connection.</param>
+            <returns>OracleResponse object containing information about the results of the query execution.</returns>
+        </member>
+        <member name="M:GDDatabaseClient.Oracle.OracleWorker.QueryDataTable(System.String,System.String)">
+            <summary>Executes an Oracle query and returns the resulting DataTable.</summary>
+            <param name="queryString">Query string to execute.</param>
+            <param name="connectionString">Connection string of the Oracle database.</param>
+            <returns>OracleResponse object containing information about the results of the query execution.</returns>
+        </member>
+        <member name="M:GDDatabaseClient.Oracle.OracleWorker.QueryDataTable(System.String,System.String,System.Int32)">
+            <summary>Executes an Oracle query and returns the resulting DataTable.</summary>
+            <param name="queryString">Query string to execute.</param>
+            <param name="connectionString">Connection string of the Oracle database.</param>
+            <param name="maxRecords">Maximum records to return.  Pass a non-positive integer to return all results.</param>
+            <returns>OracleResponse object containing information about the results of the query execution.</returns>
+        </member>
+        <member name="M:GDDatabaseClient.Oracle.OracleWorker.QueryDataTable(System.String,System.String,Oracle.DataAccess.Client.OracleParameter[])">
+            <summary>Executes an Oracle query and returns the resulting DataTable.</summary>
+            <param name="queryString">Query string to execute.</param>
+            <param name="connectionString">Connection string of the Oracle database.</param>
+            <param name="binds">Oracle parameters to pass to the query.</param>
+            <returns>OracleResponse object containing information about the results of the query execution.</returns>
+        </member>
+        <member name="M:GDDatabaseClient.Oracle.OracleWorker.QueryDataTable(System.String,System.String,Oracle.DataAccess.Client.OracleParameter[],System.Int32)">
+            <summary>Executes an Oracle query and returns the resulting DataTable.</summary>
+            <param name="queryString">Query string to execute.</param>
+            <param name="connectionString">Connection string of the Oracle database.</param>
+            <param name="binds">Oracle parameters to pass to the query.</param>
+            <param name="maxRecords">Maximum records to return.  Pass a non-positive integer to return all results.</param>
+            <returns>OracleResponse object containing information about the results of the query execution.</returns>
+        </member>
+        <member name="M:GDDatabaseClient.Oracle.OracleWorker.QueryDataTable(GDDatabaseClient.Oracle.OracleCommandInfo)">
+            <summary>Executes an Oracle query and returns the resulting DataTable.</summary>
+            <param name="cmdInfo">Information about the Oracle query and connection.</param>
+            <returns>OracleResponse object containing information about the results of the query execution.</returns>
+        </member>
+        <member name="M:GDDatabaseClient.Oracle.OracleWorker.QueryDataTable(GDDatabaseClient.Oracle.OracleCommandInfo,System.Int32)">
+            <summary>Executes an Oracle query and returns the resulting DataTable.</summary>
+            <param name="cmdInfo">Information about the Oracle query and connection.</param>
+            <param name="maxRecords">Maximum number of records to return.</param>
+            <returns>OracleResponse object containing information about the results of the query execution.</returns>
+        </member>
+        <member name="M:GDDatabaseClient.Oracle.OracleWorker.QueryDataSet(GDDatabaseClient.Oracle.OracleCommandInfo[])">
+            <summary>Executes Oracle queries and returns all resulting DataTables in a single DataSet.</summary>
+            <param name="commandInfo">Array of commands to execute.</param>
+            <returns>OracleResponse object containing information about the results of the query execution.</returns>
+        </member>
+        <member name="M:GDDatabaseClient.Oracle.OracleWorker.QueryEnumerable(System.String,System.String,Oracle.DataAccess.Client.OracleParameter[])">
+            <summary>Executes an Oracle query and iterates over the resulting DataTable.</summary>
+            <param name="queryString">Query text to send to Oracle.</param>
+            <param name="connectionString">Connection string of the database to query.</param>
+            <param name="binds">Values to assign to the bind variables of the query string.</param>
+            <returns>DataRow iterator.</returns>
+        </member>
+        <member name="M:GDDatabaseClient.Oracle.OracleWorker.QueryEnumerable(GDDatabaseClient.Oracle.OracleCommandInfo)">
+            <summary>Executes an Oracle query and iterates over the resulting DataTable.</summary>
+            <param name="cmdInfo">Information about the Oracle query and connection.</param>
+            <returns>DataRow iterator.</returns>
+        </member>
+        <member name="M:GDDatabaseClient.Oracle.OracleWorker.CallProcedure(System.String,Oracle.DataAccess.Client.OracleParameter[])">
+            <summary>Executes a stored procedure and returns an OracleResponse object containing the execution results.</summary>
+            <param name="procName">Name of the stored procedure to execute.</param>
+            <param name="procParameters">Oracle parameters to pass to the stored procedure.</param>
+            <returns>OracleResponse containing the results of the stored procedure call.</returns>
+        </member>
+        <member name="M:GDDatabaseClient.Oracle.OracleWorker.CallProcedure(GDDatabaseClient.Oracle.OracleCommandInfo)">
+            <summary>Executes a stored procedure and returns an OracleResponse object containing the execution results.</summary>
+            <param name="cmdInfo">Information about the command to execute.</param>
+            <returns>OracleResponse containing the results of the stored procedure call.</returns>
+        </member>
+        <member name="M:GDDatabaseClient.Oracle.OracleWorker.BuildDataTable(System.Data.DataTable)">
+            <summary>Builds a DataTable object representing the results of an Oracle query.</summary>
+            <param name="schemaInfo">DataTable containing schema information about the data returned.</param>
+            <returns>DataTable object representing the structure of the results of an Oracle query.</returns>
+        </member>
+        <member name="M:GDDatabaseClient.Oracle.OracleWorker.SetParameters(Oracle.DataAccess.Client.OracleCommand,Oracle.DataAccess.Client.OracleParameter[])">
+            <summary>Sets the parameters on an OracleCommand.</summary>
+            <param name="cmd">OracleCommand to set parameters on.</param>
+            <param name="binds">Oracle parameters to assign to the command.</param>
+        </member>
+        <member name="M:GDDatabaseClient.Oracle.OracleWorker.BuildParameter(System.Object,Oracle.DataAccess.Client.OracleDbType,System.Data.ParameterDirection)">
+            <summary>Builds an Oracle Parameter to pass in an OracleCommand.</summary>
+            <param name="value">Value of the parameter.</param>
+            <param name="type">Type of the parameter.</param>
+            <param name="direction">Direction of the parameter.</param>
+            <returns>Oracle Parameter generated with the provided settings.</returns>
+        </member>
+        <member name="P:GDDatabaseClient.Oracle.OracleWorker.Logger">
+            <summary>Gets the OracleWorker class logger.</summary>
+        </member>
+        <member name="P:GDDatabaseClient.Oracle.OracleWorker.CurrentThreadId">
+            <summary>Gets the thread ID of the current thread.</summary>
+        </member>
+    </members>
+</doc>
