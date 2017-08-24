@@ -1,2 +1,0 @@
-﻿<%@ Page Title="Gordon-Darby Inspection First Test Retest Report" Language="C#" MasterPageFile="~/MasterPages/InspectionReportMaster.Master" AutoEventWireup="true" CodeBehind="InspectionFirstTestReset.aspx.cs" Inherits="NHPortal.InspectionFirstTestReset" %>
-<%@ MasterType VirtualPath="~/MasterPages/InspectionReportMaster.Master" %>
